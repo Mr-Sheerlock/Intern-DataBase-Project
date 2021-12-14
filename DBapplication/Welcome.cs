@@ -36,6 +36,9 @@ namespace DBapplication
             else
             {
                 string pas = dt.Rows[0][0].ToString();
+
+                //TODO: ADD A hahshing function here
+                //string hashed = hash_func( Password_TextBox.Text)
                 if (pas == Password_TextBox.Text)
                 {
                     AdminLogin a = new AdminLogin();
