@@ -10,11 +10,79 @@ create table Accounts
 (
 ID varchar(30) not null,
 Pass varchar(15) not null,
+F_Name varchar(15),
+L_Name varchar(15),
+Job_Code nchar(1), --should be not nulled later 
+Age  int,
+Gender char,
+Account_Status binary,  --the status is used for banning and such 
+Dep_No varchar(3)
 )
+
+create table Applicant_Intern
+(
+ID varchar(30) not null,
+Grade_of_Entrance_Exam char,
+College Varchar(30),
+Years_of_Experience int,
+Status_of_application char, --should be not nulled later
+CV_Link varchar(50)
+)
+
+create table department
+( 
+Department_Number varchar(3) not null,
+DepartmentName varchar(10) not null,
+)
+
+create table Course
+( 
+CourseID varchar(3) not null,
+CourseName varchar(10),
+Active_Status binary, --should be not nulled later
+DepNo varchar(3) --should be not nulled later
+)
+
+create table Lectures
+( 
+LectureNo int,
+LectureDay varchar(10), 
+Course_ID varchar(3) not null ,  
+LocationID varchar(10)  --should be not nulled later
+)
+
+
+
+create table Instructs
+(
+Instruct_ID  varchar(30) not null,
+CourseID varchar(3) not null
+)
+
+create table Takes
+(
+App_ID  varchar(30) not null,
+CourseID varchar(3), --should be not nulled later
+Year_of_Intern varchar(4),  --should be not nulled later
+Grade char
+)
+
+create table Locations
+(
+Branch_ID  varchar(4) not null, 
+LocationName varchar(20) ,
+Dep_No varchar(3) --should be not nulled later
+)
+
 -----------------Inserting values into Accounts----------------
-insert into Accounts 
+insert into Accounts (ID,Pass)
 values
 ('1','1')
+
+
+
+
+
 --create table Department
 --(
 --Dname varchar(50),
