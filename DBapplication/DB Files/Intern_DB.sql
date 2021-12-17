@@ -8,76 +8,81 @@ use Intern_DB
 ------------Table Creation-----------------
 create table Accounts
 (
-ID varchar(30) not null,
+ID SMALLINT not null,
+UserName varchar(20),
 Pass varchar(15) not null,
 F_Name varchar(15),
 L_Name varchar(15),
-Job_Code nchar(1), --should be not nulled later 
-Age  int,
-Gender char,
-Account_Status binary,  --the status is used for banning and such 
+Job_Code nchar(1), --should be not nulled later  --a constraint should be added later {1,2,3,4} 1-admin 2-instructor 3-intern 4-applicant
+Age  TINYINT, --a constraint should be added later (0,140)
+Gender char, --a constraint should be added later {M,F}
+Account_Status nchar(1),  --the status is used for getting confirmation from admin and such --a constraint should be added later {0,1} 0-pending 1-active
 Dep_No varchar(3)
 )
 
 create table Applicant_Intern
 (
-ID varchar(30) not null,
-Grade_of_Entrance_Exam char,
+ID SMALLINT not null, 
+Grade_of_Entrance_Exam char,  --a constraint should be added later {A,B,C,D,E,F}
 College Varchar(30),
-Years_of_Experience int,
-Status_of_application char, --should be not nulled later
-CV_Link varchar(50)
+Years_of_Experience TINYINT,  --a constraint should be added later 0,40
+Status_of_application binary(1), --should be not nulled later 
+CV_Link varchar(50) 
 )
 
 create table department
 ( 
-Department_Number varchar(3) not null,
-DepartmentName varchar(10) not null,
+Department_Number SMALLINT not null,
+DepartmentName varchar(30) not null,
 )
 
 create table Course
 ( 
-CourseID varchar(3) not null,
-CourseName varchar(10),
+CourseID SMALLINT not null,
+CourseName varchar(30),
 Active_Status binary, --should be not nulled later
-DepNo varchar(3) --should be not nulled later
+DepNo SMALLINT --should be not nulled later
 )
 
 create table Lectures
 ( 
-LectureNo int,
+LectureNo Tinyint,
 LectureDay varchar(10), 
-Course_ID varchar(3) not null ,  
-LocationID varchar(10)  --should be not nulled later
+Course_ID SMALLINT not null ,  
+LocationID SMALLINT  --should be not nulled later
 )
 
 
 
 create table Instructs
 (
-Instruct_ID  varchar(30) not null,
-CourseID varchar(3) not null
+Instruct_ID  SMALLINT not null,
+CourseID SMALLINT not null
 )
 
 create table Takes
 (
-App_ID  varchar(30) not null,
-CourseID varchar(3), --should be not nulled later
-Year_of_Intern varchar(4),  --should be not nulled later
-Grade char
+App_ID  SMALLINT not null,
+CourseID SMALLINT, --should be not nulled later
+Year_of_Intern SMALLINT,  --should be not nulled later  --A constraint should be added
+Grade char   --a constraint should be added later {A,B,C,D,E,F,T}
 )
 
 create table Locations
 (
-Branch_ID  varchar(4) not null, 
-LocationName varchar(20) ,
-Dep_No varchar(3) --should be not nulled later
+Branch_ID  Smallint not null, 
+LocationName varchar(30) ,
+Dep_No Smallint --should be not nulled later
 )
 
 -----------------Inserting values into Accounts----------------
-insert into Accounts (ID,Pass)
+insert into Accounts (ID,Pass,UserName)
 values
-('1','1')
+(1, '1','Loler')
+
+--insert into Accounts (ID,Pass,UserName)
+--values
+--('2','2',"Loler2")
 
 
 

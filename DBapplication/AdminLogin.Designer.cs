@@ -92,7 +92,7 @@
             this.Controls.Add(this.Access_Departments_Button);
             this.Controls.Add(this.Access_Users_Button);
             this.Name = "AdminLogin";
-            this.Text = "AdminLogin";
+            this.Text = "Admin";
             this.ResumeLayout(false);
 
         }

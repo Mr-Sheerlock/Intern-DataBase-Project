@@ -13,6 +13,7 @@ namespace DBapplication
         static string DB_Connection_String = @"Data Source=DESKTOP-69T7GLK;Initial Catalog=Intern_DB;Integrated Security=True;MultipleActiveResultSets=true";
         SqlConnection myConnection;
 
+        
         public DBManager()
         {
             myConnection = new SqlConnection(DB_Connection_String);

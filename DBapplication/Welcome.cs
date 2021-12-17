@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 
 
+
+
 namespace DBapplication
 {
     public partial class Welcome : Form
@@ -27,20 +29,26 @@ namespace DBapplication
         private void Login_Button_Click(object sender, EventArgs e)
         {
             DataTable dt= new DataTable();
-            dt=controllerObj.SelectPassword(ID_TextBox.Text);
+            dt=controllerObj.SelectPassword(UserName_TextBox.Text);
 
             if (dt == null)
             {
-                MessageBox.Show("Wrong ID");
+                MessageBox.Show("Wrong UserName");
             }
             else
             {
                 string pas = dt.Rows[0][0].ToString();
 
-                //TODO: ADD A hahshing function here
-                //string hashed = hash_func( Password_TextBox.Text)
+                //string key = "b14ca5898a4e4133bbce2ea2315a1916";
+
+
+                ////TODO: ADD A hahshing function here
+                //var decryptedString = EncryptionClass.DecryptString(key, pas);
+                
+                
                 if (pas == Password_TextBox.Text)
                 {
+                        
                     AdminLogin a = new AdminLogin();
                     a.Show();
                 }
@@ -55,6 +63,8 @@ namespace DBapplication
         private void Register_Button_Click(object sender, EventArgs e)
         {
             //Here we need to decide how to make other users register and if we will redirect them to a tab each
+            Register r = new Register();
+            r.Show();
         }
     }
 }
