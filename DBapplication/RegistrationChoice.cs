@@ -30,5 +30,11 @@ namespace DBapplication
             InstructorRegistration r = new InstructorRegistration();
             r.Show();
         }
+
+        private void Change_Password_Button_Click(object sender, EventArgs e)
+        {
+            Change_Password c = new Change_Password();
+            c.Show();
+        }
     }
 }

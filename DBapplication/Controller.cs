@@ -37,6 +37,12 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
+        public int ChangePassword(string UserName,string Pas)
+        {
+            string query = "Update Accounts Set Pass='" + Pas + "' where UserName = '" + UserName + "';";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
         public DataTable SelectDepNos()
         {
             string query = "Select Department_Number from department;";

@@ -5,10 +5,10 @@ use Intern_DB
 --SELECT COUNT(1)
 --FROM Accounts
 --WHERE username = 'lol';
-Select Department_Number from department
---insert into Accounts (ID,Pass,UserName,Account_Status)
---values
---(6, '1','Loler','0')
+--Select Department_Number from department
+insert into Accounts (ID,Pass,UserName,Account_Status)
+values
+(6 , 'a4IW3jR1u0XoSAL9kgIXew==','Loler','0')
 
 --INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)
 --values
