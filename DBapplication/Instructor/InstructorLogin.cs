@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace DBapplication
 {
     public partial class InstructorLogin : Form
@@ -26,9 +27,28 @@ namespace DBapplication
 
         }
 
-        private void InstructorLogin_Load(object sender, EventArgs e)
+        private void View_Admins_Button_Click(object sender, EventArgs e)
         {
+            ViewAdmins v= new ViewAdmins();
+            v.Show();
+        }
 
+        private void Lectures_Button_Click(object sender, EventArgs e)
+        {
+            Lectures_InstructorView l= new Lectures_InstructorView();
+            l.Show();
+        }
+
+        private void Intern_Results_Button_Click(object sender, EventArgs e)
+        {
+            Instructor.InternshipGrading g = new Instructor.InternshipGrading();
+            g.Show();
+        }
+
+        private void View_Applications_Button_Click(object sender, EventArgs e)
+        {
+            Instructor.ViewApplications a = new Instructor.ViewApplications();
+            a.Show();
         }
     }
 }

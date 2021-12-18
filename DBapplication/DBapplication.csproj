@@ -49,55 +49,79 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminLogin.cs">
+    <Compile Include="Admin\AdminLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminLogin.Designer.cs">
+    <Compile Include="Admin\AdminLogin.Designer.cs">
       <DependentUpon>AdminLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Controller.cs" />
     <Compile Include="DBManager.cs" />
     <Compile Include="EncryptionClass.cs" />
-    <Compile Include="ApplicantLogin.cs">
+    <Compile Include="Applicant\ApplicantLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicantLogin.Designer.cs">
+    <Compile Include="Applicant\ApplicantLogin.Designer.cs">
       <DependentUpon>ApplicantLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangePassword.cs">
+    <Compile Include="Instructor\ViewApplications.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangePassword.Designer.cs">
+    <Compile Include="Instructor\ViewApplications.Designer.cs">
+      <DependentUpon>ViewApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Instructor\InternshipGrading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Instructor\InternshipGrading.Designer.cs">
+      <DependentUpon>InternshipGrading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registration\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registration\ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstructorRegistration.cs">
+    <Compile Include="Instructor\Lectures_InstructorView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstructorRegistration.Designer.cs">
+    <Compile Include="Instructor\Lectures_InstructorView.Designer.cs">
+      <DependentUpon>Lectures_InstructorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommonFunctionalities\ViewAdmins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommonFunctionalities\ViewAdmins.Designer.cs">
+      <DependentUpon>ViewAdmins.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registration\InstructorRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registration\InstructorRegistration.Designer.cs">
       <DependentUpon>InstructorRegistration.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationChoice.cs">
+    <Compile Include="Registration\RegistrationChoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrationChoice.Designer.cs">
+    <Compile Include="Registration\RegistrationChoice.Designer.cs">
       <DependentUpon>RegistrationChoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="InternLogin.cs">
+    <Compile Include="Intern\InternLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InternLogin.Designer.cs">
+    <Compile Include="Intern\InternLogin.Designer.cs">
       <DependentUpon>InternLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ApplicantRegistration.cs">
+    <Compile Include="Registration\ApplicantRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ApplicantRegistration.Designer.cs">
+    <Compile Include="Registration\ApplicantRegistration.Designer.cs">
       <DependentUpon>ApplicantRegistration.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstructorLogin.cs">
+    <Compile Include="Instructor\InstructorLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstructorLogin.Designer.cs">
+    <Compile Include="Instructor\InstructorLogin.Designer.cs">
       <DependentUpon>InstructorLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -108,25 +132,37 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminLogin.resx">
+    <EmbeddedResource Include="Admin\AdminLogin.resx">
       <DependentUpon>AdminLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ApplicantLogin.resx">
+    <EmbeddedResource Include="Applicant\ApplicantLogin.resx">
       <DependentUpon>ApplicantLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangePassword.resx">
+    <EmbeddedResource Include="Instructor\ViewApplications.resx">
+      <DependentUpon>ViewApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Instructor\InternshipGrading.resx">
+      <DependentUpon>InternshipGrading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registration\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstructorRegistration.resx">
+    <EmbeddedResource Include="Instructor\Lectures_InstructorView.resx">
+      <DependentUpon>Lectures_InstructorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommonFunctionalities\ViewAdmins.resx">
+      <DependentUpon>ViewAdmins.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registration\InstructorRegistration.resx">
       <DependentUpon>InstructorRegistration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationChoice.resx">
+    <EmbeddedResource Include="Registration\RegistrationChoice.resx">
       <DependentUpon>RegistrationChoice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InternLogin.resx">
+    <EmbeddedResource Include="Intern\InternLogin.resx">
       <DependentUpon>InternLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstructorLogin.resx">
+    <EmbeddedResource Include="Instructor\InstructorLogin.resx">
       <DependentUpon>InstructorLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -138,7 +174,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ApplicantRegistration.resx">
+    <EmbeddedResource Include="Registration\ApplicantRegistration.resx">
       <DependentUpon>ApplicantRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">

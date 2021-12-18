@@ -42,6 +42,7 @@
             this.View_Applications_Button.TabIndex = 0;
             this.View_Applications_Button.Text = "View Applications";
             this.View_Applications_Button.UseVisualStyleBackColor = true;
+            this.View_Applications_Button.Click += new System.EventHandler(this.View_Applications_Button_Click);
             // 
             // Lectures_Button
             // 
@@ -51,37 +52,39 @@
             this.Lectures_Button.TabIndex = 1;
             this.Lectures_Button.Text = "Lectures";
             this.Lectures_Button.UseVisualStyleBackColor = true;
+            this.Lectures_Button.Click += new System.EventHandler(this.Lectures_Button_Click);
             // 
             // View_Admins_Button
             // 
-            this.View_Admins_Button.Location = new System.Drawing.Point(312, 327);
+            this.View_Admins_Button.Location = new System.Drawing.Point(326, 162);
             this.View_Admins_Button.Name = "View_Admins_Button";
             this.View_Admins_Button.Size = new System.Drawing.Size(75, 23);
             this.View_Admins_Button.TabIndex = 2;
             this.View_Admins_Button.Text = "View Admins";
             this.View_Admins_Button.UseVisualStyleBackColor = true;
+            this.View_Admins_Button.Click += new System.EventHandler(this.View_Admins_Button_Click);
             // 
             // Intern_Results_Button
             // 
-            this.Intern_Results_Button.Location = new System.Drawing.Point(82, 284);
+            this.Intern_Results_Button.Location = new System.Drawing.Point(103, 140);
             this.Intern_Results_Button.Name = "Intern_Results_Button";
             this.Intern_Results_Button.Size = new System.Drawing.Size(75, 66);
             this.Intern_Results_Button.TabIndex = 3;
             this.Intern_Results_Button.Text = "Decide Internship Results";
             this.Intern_Results_Button.UseVisualStyleBackColor = true;
+            this.Intern_Results_Button.Click += new System.EventHandler(this.Intern_Results_Button_Click);
             // 
             // InstructorLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 554);
+            this.ClientSize = new System.Drawing.Size(594, 329);
             this.Controls.Add(this.Intern_Results_Button);
             this.Controls.Add(this.View_Admins_Button);
             this.Controls.Add(this.Lectures_Button);
             this.Controls.Add(this.View_Applications_Button);
             this.Name = "InstructorLogin";
             this.Text = "Instructor";
-            this.Load += new System.EventHandler(this.InstructorLogin_Load);
             this.ResumeLayout(false);
 
         }
