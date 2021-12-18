@@ -38,19 +38,51 @@ namespace DBapplication
             else
             {
                 string pas = dt.Rows[0][0].ToString();
+               
 
-                //string key = "b14ca5898a4e4133bbce2ea2315a1916";
+                string key = "b14ca5898a4e4133bbce2ea2315a1916";
 
 
-                ////TODO: ADD A hahshing function here
-                //var decryptedString = EncryptionClass.DecryptString(key, pas);
-                
-                
+                //Encrypted
+                pas = EncryptionClass.DecryptString(key, pas);
+
+
                 if (pas == Password_TextBox.Text)
                 {
-                        
-                    AdminLogin a = new AdminLogin();
-                    a.Show();
+                    if (dt.Rows[0][1].ToString() == "0")
+                    {
+                        MessageBox.Show("Sorry Your account is currently inactive");
+                    }
+                    else
+                    {
+                        //Now we check for every user type
+                        if (dt.Rows[0][2].ToString() == "1")
+                        {
+                            //Admin
+                            AdminLogin a = new AdminLogin();
+                            a.Show();
+                        }else if(dt.Rows[0][2].ToString() == "2")
+                        {
+                            //Instructor
+                            InstructorLogin i = new InstructorLogin();
+                            i.Show();
+
+                        }
+                        else if (dt.Rows[0][2].ToString() == "3")
+                        {
+                            //Intern
+                            InternLogin i = new InternLogin();
+                            i.Show();
+                        }
+                        else
+                        {
+                            //Applicant
+                            ApplicantLogin i = new ApplicantLogin();
+                            i.Show();
+
+                        }
+
+                    }
                 }
                 else
                 {
@@ -63,7 +95,7 @@ namespace DBapplication
         private void Register_Button_Click(object sender, EventArgs e)
         {
             //Here we need to decide how to make other users register and if we will redirect them to a tab each
-            Register r = new Register();
+            RegistrationChoice r= new RegistrationChoice();
             r.Show();
         }
     }

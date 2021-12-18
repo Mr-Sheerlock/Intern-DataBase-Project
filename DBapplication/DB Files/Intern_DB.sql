@@ -10,7 +10,7 @@ create table Accounts
 (
 ID SMALLINT not null,
 UserName varchar(20),
-Pass varchar(15) not null,
+Pass varchar(30) not null,
 F_Name varchar(15),
 L_Name varchar(15),
 Job_Code nchar(1), --should be not nulled later  --a constraint should be added later {1,2,3,4} 1-admin 2-instructor 3-intern 4-applicant

@@ -58,11 +58,35 @@
     <Compile Include="Controller.cs" />
     <Compile Include="DBManager.cs" />
     <Compile Include="EncryptionClass.cs" />
-    <Compile Include="Register.cs">
+    <Compile Include="ApplicantLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
+    <Compile Include="ApplicantLogin.Designer.cs">
+      <DependentUpon>ApplicantLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InstructorRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstructorRegistration.Designer.cs">
+      <DependentUpon>InstructorRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationChoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrationChoice.Designer.cs">
+      <DependentUpon>RegistrationChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InternLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InternLogin.Designer.cs">
+      <DependentUpon>InternLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicantRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicantRegistration.Designer.cs">
+      <DependentUpon>ApplicantRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="InstructorLogin.cs">
       <SubType>Form</SubType>
@@ -81,6 +105,18 @@
     <EmbeddedResource Include="AdminLogin.resx">
       <DependentUpon>AdminLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ApplicantLogin.resx">
+      <DependentUpon>ApplicantLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstructorRegistration.resx">
+      <DependentUpon>InstructorRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrationChoice.resx">
+      <DependentUpon>RegistrationChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InternLogin.resx">
+      <DependentUpon>InternLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InstructorLogin.resx">
       <DependentUpon>InstructorLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,8 +129,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Register.resx">
-      <DependentUpon>Register.cs</DependentUpon>
+    <EmbeddedResource Include="ApplicantRegistration.resx">
+      <DependentUpon>ApplicantRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>

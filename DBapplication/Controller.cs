@@ -25,10 +25,21 @@ namespace DBapplication
         //    string query = "SELECT * FROM Employee;";
         //    return dbMan.ExecuteReader(query);
         //}
+        public int CheckifUserTaken(string UserName)
+        {
+            string query = "Select Count(1) from Accounts where UserName = '" + UserName + "';";
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
 
         public DataTable SelectPassword(string UserName)
         {
-            string query = "Select Pass from Accounts where UserName = '" + UserName + "';";
+            string query = "Select Pass,Account_Status,Job_Code from Accounts where UserName = '" + UserName + "';";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectDepNos()
+        {
+            string query = "Select Department_Number from department;";
             return dbMan.ExecuteReader(query);
         }
 
@@ -46,24 +57,37 @@ namespace DBapplication
         }
 
 
-        public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender)
+        public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, string Dep_no="")
         {
             string query;
-            if (JobCode == 50) { //50 =2+48 
-                //Instructor
-              query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)" +
+            if (Dep_no == "") {
+                if (JobCode == 50)
+                { //50 =2+48 
+                  //Instructor
+                    query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)" +
+                                      "Values ('" + ID + "','" + UserName + "','" + Password +
+                                      "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
+                                      ",'" + Gender + "'," + '0' + ");";
+                }
+                else
+                { //Applicant
+                    query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)" +
                                 "Values ('" + ID + "','" + UserName + "','" + Password +
                                 "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                ",'" + Gender + "'," + '0' + ");";
-            }
-            else
-            { //Applicant
-                query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)" +
-                            "Values ('" + ID + "','" + UserName + "','" + Password +
-                            "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                            ",'" + Gender + "'," + '1' + ");";
+                                ",'" + Gender + "'," + '1' + ");";
+
+                }
 
             }
+            else
+            {
+                query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,Dep_No)" +
+                                "Values ('" + ID + "','" + UserName + "','" + Password +
+                                "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
+                                ",'" + Gender + "'," + '1' + ",'" + Dep_no + "');";
+
+            }
+
             return dbMan.ExecuteNonQuery(query);
         }
 
