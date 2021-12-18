@@ -64,7 +64,7 @@ namespace DBapplication
                         }else if(dt.Rows[0][2].ToString() == "2")
                         {
                             //Instructor
-                            InstructorLogin i = new InstructorLogin();
+                            InstructorLogin i = new InstructorLogin(UserName_TextBox.Text);
                             i.Show();
 
                         }

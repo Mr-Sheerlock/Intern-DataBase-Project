@@ -17,6 +17,7 @@ Job_Code nchar(1), --should be not nulled later  --a constraint should be added 
 Age  TINYINT, --a constraint should be added later (0,140)
 Gender char, --a constraint should be added later {M,F}
 Account_Status nchar(1),  --the status is used for getting confirmation from admin and such --a constraint should be added later {0,1} 0-pending 1-active
+TelephoneNumber varchar(10),
 Dep_No varchar(3)
 )
 

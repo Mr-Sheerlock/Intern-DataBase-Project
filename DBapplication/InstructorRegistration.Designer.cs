@@ -43,6 +43,8 @@
             this.Register_Button = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.Departments_Combobox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Telephone_Number_Textbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label6
@@ -174,11 +176,29 @@
             this.Departments_Combobox.Size = new System.Drawing.Size(100, 21);
             this.Departments_Combobox.TabIndex = 32;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(423, 239);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 13);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "Telephone Number";
+            // 
+            // Telephone_Number_Textbox
+            // 
+            this.Telephone_Number_Textbox.Location = new System.Drawing.Point(565, 236);
+            this.Telephone_Number_Textbox.Name = "Telephone_Number_Textbox";
+            this.Telephone_Number_Textbox.Size = new System.Drawing.Size(100, 20);
+            this.Telephone_Number_Textbox.TabIndex = 34;
+            // 
             // InstructorRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.Telephone_Number_Textbox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Departments_Combobox);
             this.Controls.Add(this.label6);
@@ -217,5 +237,7 @@
         private System.Windows.Forms.Button Register_Button;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox Departments_Combobox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox Telephone_Number_Textbox;
     }
 }

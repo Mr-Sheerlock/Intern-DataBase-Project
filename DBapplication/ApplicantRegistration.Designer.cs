@@ -41,6 +41,8 @@
             this.Gender_Combobox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Telephone_Number_Textbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Register_Button
@@ -55,7 +57,7 @@
             // 
             // User_Name_Textbox
             // 
-            this.User_Name_Textbox.Location = new System.Drawing.Point(138, 44);
+            this.User_Name_Textbox.Location = new System.Drawing.Point(165, 47);
             this.User_Name_Textbox.Name = "User_Name_Textbox";
             this.User_Name_Textbox.Size = new System.Drawing.Size(100, 20);
             this.User_Name_Textbox.TabIndex = 2;
@@ -63,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 47);
+            this.label1.Location = new System.Drawing.Point(39, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 5;
@@ -72,7 +74,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 100);
+            this.label2.Location = new System.Drawing.Point(39, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 7;
@@ -80,7 +82,7 @@
             // 
             // Password_Textbox
             // 
-            this.Password_Textbox.Location = new System.Drawing.Point(138, 100);
+            this.Password_Textbox.Location = new System.Drawing.Point(165, 103);
             this.Password_Textbox.Name = "Password_Textbox";
             this.Password_Textbox.Size = new System.Drawing.Size(100, 20);
             this.Password_Textbox.TabIndex = 6;
@@ -119,7 +121,7 @@
             // 
             // Age_Textbox
             // 
-            this.Age_Textbox.Location = new System.Drawing.Point(138, 163);
+            this.Age_Textbox.Location = new System.Drawing.Point(165, 166);
             this.Age_Textbox.Name = "Age_Textbox";
             this.Age_Textbox.Size = new System.Drawing.Size(100, 20);
             this.Age_Textbox.TabIndex = 12;
@@ -139,7 +141,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 163);
+            this.label5.Location = new System.Drawing.Point(54, 166);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 15;
@@ -154,11 +156,29 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Gender";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(30, 243);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Telephone Number";
+            // 
+            // Telephone_Number_Textbox
+            // 
+            this.Telephone_Number_Textbox.Location = new System.Drawing.Point(165, 240);
+            this.Telephone_Number_Textbox.Name = "Telephone_Number_Textbox";
+            this.Telephone_Number_Textbox.Size = new System.Drawing.Size(100, 20);
+            this.Telephone_Number_Textbox.TabIndex = 17;
+            // 
             // ApplicantRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Telephone_Number_Textbox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Gender_Combobox);
@@ -194,5 +214,7 @@
         private System.Windows.Forms.ComboBox Gender_Combobox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox Telephone_Number_Textbox;
     }
 }

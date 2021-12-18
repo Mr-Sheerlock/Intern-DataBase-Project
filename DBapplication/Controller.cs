@@ -63,57 +63,51 @@ namespace DBapplication
         }
 
 
-        public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, string Dep_no="")
+        public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, string TelephoneNumber ,string Dep_no="")
         {
             string query;
             if (Dep_no == "") {
                 if (JobCode == 50)
                 { //50 =2+48 
                   //Instructor
-                    query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)" +
+                    query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,TelephoneNumber)" +
                                       "Values ('" + ID + "','" + UserName + "','" + Password +
                                       "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                      ",'" + Gender + "'," + '0' + ");";
+                                      ",'" + Gender + "'," + '0' + ",'" + TelephoneNumber + "');";
                 }
                 else
                 { //Applicant
-                    query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)" +
+                    query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,TelephoneNumber)" +
                                 "Values ('" + ID + "','" + UserName + "','" + Password +
                                 "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                ",'" + Gender + "'," + '1' + ");";
+                                ",'" + Gender + "'," + '1' + ",'" + TelephoneNumber + "');";
 
                 }
 
             }
             else
             {
-                query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,Dep_No)" +
+                query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,Dep_No,TelephoneNumber)" +
                                 "Values ('" + ID + "','" + UserName + "','" + Password +
                                 "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                ",'" + Gender + "'," + '1' + ",'" + Dep_no + "');";
+                                ",'" + Gender + "'," + '1' + ",'" + Dep_no + "','" + TelephoneNumber + "');";
 
             }
 
             return dbMan.ExecuteNonQuery(query);
         }
 
-        //public DataTable SelectDepNum()
-        //{
-        //    string query= "SELECT Dnumber FROM Department;";
-        //    return dbMan.ExecuteReader(query);
-        //}
-        //public DataTable SelectDepLoc()
-        //{
-        //    string query = "SELECT DISTINCT Dlocation FROM Dept_Locations;";
-        //    return dbMan.ExecuteReader(query);
-        //}
+        public int GetAdmins()
+        {
+            string query = "Select Max(ID) from Accounts" + ";";
 
-        //public DataTable SelectProject(string location)
-        //{
-        //    string query = "SELECT Pname,Dname FROM Department D, Project P, Dept_Locations L"
-        //     +" where P.Dnum=D.Dnumber and L.Dnumber=D.Dnumber and L.Dlocation='"+location+"';"; 
+            //in case there are no accounts in the DB 
+            if (dbMan.ExecuteScalar(query) == DBNull.Value)
+            {
+                return 0;
+            }
 
-        //    return dbMan.ExecuteReader(query);
-        //}
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
     }
 }

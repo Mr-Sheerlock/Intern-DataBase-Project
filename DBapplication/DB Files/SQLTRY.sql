@@ -10,7 +10,9 @@ insert into Accounts (ID,Pass,UserName,Account_Status)
 values
 (6 , 'a4IW3jR1u0XoSAL9kgIXew==','Loler','0')
 
---INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)
+--INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,TelephoneNumber)
+--Values ('7','loljo','/eMMoWzYexztJ+pUEneKig==','lol','loler','4',11,'M',1,'123454');
+----INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)
 --values
 --(1,'lol','lol','lol','lol','1',11,'M','1')
 --INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status)
