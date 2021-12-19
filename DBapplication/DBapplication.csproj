@@ -64,6 +64,12 @@
     <Compile Include="Applicant\ApplicantLogin.Designer.cs">
       <DependentUpon>ApplicantLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applicant\ApplyToCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applicant\ApplyToCourse.Designer.cs">
+      <DependentUpon>ApplyToCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Instructor\ViewApplications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applicant\ApplicantLogin.resx">
       <DependentUpon>ApplicantLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applicant\ApplyToCourse.resx">
+      <DependentUpon>ApplyToCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Instructor\ViewApplications.resx">
       <DependentUpon>ViewApplications.cs</DependentUpon>

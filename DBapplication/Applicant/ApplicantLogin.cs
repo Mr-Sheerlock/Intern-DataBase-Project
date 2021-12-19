@@ -16,5 +16,11 @@ namespace DBapplication
         {
             InitializeComponent();
         }
+
+        private void Apply_ToCourse_Click(object sender, EventArgs e)
+        {
+            ApplyToCourse a = new ApplyToCourse();  
+            a.Show();   
+        }
     }
 }
