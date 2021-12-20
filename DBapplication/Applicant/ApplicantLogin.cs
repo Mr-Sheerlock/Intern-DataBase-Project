@@ -14,8 +14,11 @@ namespace DBapplication
     {
         string AppId;
         int CurrentYear;
+        Controller controllerObj;
+        
         public ApplicantLogin(string AppID, int Currentyear)
         {
+            controllerObj = new Controller();
             CurrentYear = Currentyear;
             InitializeComponent();
             AppId = AppID;
@@ -23,8 +26,29 @@ namespace DBapplication
 
         private void Apply_ToCourse_Click(object sender, EventArgs e)
         {
-            ApplyToCourse a = new ApplyToCourse(AppId, CurrentYear);  
-            a.Show();   
+            //if newly registered, he should first fill in college and years of experience and CVLink
+
+            if(controllerObj.CheckiffullyRegistered(AppId) == 0)
+            {
+                MessageBox.Show("You should first complete your registration and fill in extra information before you can apply to courses.");
+                Applicant_ExtraInfo a = new Applicant_ExtraInfo(AppId);
+                a.Show();
+            }
+            else
+            {
+                if (controllerObj.CheckAvailableCourse() == 0)
+                {
+                    MessageBox.Show("There are no available courses to apply to right now.");
+                }
+                else
+                {           
+                    ApplyToCourse a = new ApplyToCourse(AppId, CurrentYear);
+                    a.Show();
+                }
+            }
+
+
+            
         }
     }
 }

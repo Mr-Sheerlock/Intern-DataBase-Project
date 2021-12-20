@@ -2,6 +2,34 @@
 --This is just an SQL file to try the queries before writing them
 use Intern_DB
 
+--Update Takes Set CourseID= '1' Where App_ID = '2';
+
+select count (1) from Applicant_Intern where ID ='2'; 
+--select count (1) 
+
+--from Takes 
+--where App_ID = 1
+
+--AND Year_of_Intern =2000
+
+--insert into takes (App_ID,CourseID,Year_of_Intern) values(2,4,2000)
+
+--Select Count(Branch_ID)
+--from department,Locations
+--where Branch_ID in  --BranchID having available courses
+--			(
+--			Select BranchNo
+			
+--			From Course	
+			
+--			where Enrolled<Capacity
+--			AND Course.CourseID in (
+--				Select CourseID
+--				From Instructs
+--			)
+--			)
+--			AND Locations.Dep_No= department.Department_Number
+
 --SELECT COUNT(1)
 --FROM Accounts
 --WHERE username = 'lol';
@@ -37,7 +65,18 @@ use Intern_DB
 --				From Instructs
 --			)
 
-Select Max(ID) from Accounts
+
+--Select CourseName, CourseID
+
+--From Course
+
+--Where BranchNo= '3'
+--AND Course.CourseID in (
+--				Select CourseID
+--				From Instructs
+--			)
+
+--Select Max(ID) from Accounts
 		
 
 --insert into Locations values (5, 'Zayed',3)

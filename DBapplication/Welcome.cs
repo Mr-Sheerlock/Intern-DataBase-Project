@@ -21,7 +21,7 @@ namespace DBapplication
         {
             InitializeComponent();
             controllerObj = new Controller();
-            CurrentYear =controllerObj.GetCurrentYear();
+            CurrentYear =controllerObj.GetCurrentYear(); 
 
         }
 

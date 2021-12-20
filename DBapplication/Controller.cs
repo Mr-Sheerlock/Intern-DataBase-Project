@@ -98,8 +98,8 @@ namespace DBapplication
                 "from department, Locations "+
                 "where Branch_ID in "+
                             "("+
-                            "Select BranchNo "+
-                            "From Course "+
+                            "Select BranchNo " +   //BranchID having available courses
+                            "From Course " +
                             "where Enrolled < Capacity "+
                             "AND Course.CourseID in "+
                             "("+
@@ -110,6 +110,27 @@ namespace DBapplication
                             "AND Locations.Dep_No = department.Department_Number";
             return dbMan.ExecuteReader(query);
         }
+
+        public int CheckAvailableCourse() //Checks if there are available courses to apply
+        {
+            string query = "Select Count(Branch_ID) " +
+                "from department, Locations " +
+                "where Branch_ID in " +
+                            "(" +
+                            "Select BranchNo " +   //BranchID having available courses
+                            "From Course " +
+                            "where Enrolled < Capacity " +
+                            "AND Course.CourseID in " +
+                            "(" +
+                                    "Select CourseID " +
+                                    "From Instructs " +
+                                    ") " +
+                            ") " +
+                            "AND Locations.Dep_No = department.Department_Number";
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
+
+
         public DataTable SelectCourse(string BranchID)
         {
             string query = "Select CourseName, CourseID " +
@@ -131,6 +152,26 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(query);
         }
 
+        
+
+        public int CheckifApplied(string AppID, int CurrentYear)
+        {
+
+            string query = "select count (1) " +
+                            "from Takes " +
+                            "where App_ID ='" + AppID + "' " +
+                            "AND Year_of_Intern =" + CurrentYear + ";";
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
+        public int ChangeApplication(string AppID, string CourseID)
+        {
+
+            string query = "Update Takes Set CourseID= '" + CourseID + "' " +
+                            "Where App_ID = '" + AppID + "';";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+
         public int GetCurrentYear()
         {
             string query ="select Max(Year_of_Intern) from Takes";
@@ -140,5 +181,22 @@ namespace DBapplication
             }
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
+
+        public int CheckiffullyRegistered(string AppID)
+        {
+
+            string query = "select count (1) " +
+                            "from Applicant_Intern " +
+                            "where ID ='" + AppID + "';";
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
+        public int CompleteRegistration(string AppID, string CollegeName, int YearsofXP, string CV)
+        {
+
+            string query = "insert into Applicant_Intern (ID, College, Years_of_Experience, CV_Link)" +
+                            "values('" +AppID  +"', '" +CollegeName + "', " + YearsofXP + ", '" + CV + "');";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        
     }
 }

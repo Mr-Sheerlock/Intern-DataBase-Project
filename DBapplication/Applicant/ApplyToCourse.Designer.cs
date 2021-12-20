@@ -39,7 +39,7 @@
             // 
             this.DepartmentBranch_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepartmentBranch_Combobox.FormattingEnabled = true;
-            this.DepartmentBranch_Combobox.Location = new System.Drawing.Point(305, 113);
+            this.DepartmentBranch_Combobox.Location = new System.Drawing.Point(225, 69);
             this.DepartmentBranch_Combobox.Name = "DepartmentBranch_Combobox";
             this.DepartmentBranch_Combobox.Size = new System.Drawing.Size(153, 21);
             this.DepartmentBranch_Combobox.TabIndex = 15;
@@ -49,15 +49,15 @@
             // 
             this.Course_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Course_Combobox.FormattingEnabled = true;
-            this.Course_Combobox.Location = new System.Drawing.Point(305, 165);
+            this.Course_Combobox.Location = new System.Drawing.Point(225, 121);
             this.Course_Combobox.Name = "Course_Combobox";
-            this.Course_Combobox.Size = new System.Drawing.Size(100, 21);
+            this.Course_Combobox.Size = new System.Drawing.Size(153, 21);
             this.Course_Combobox.TabIndex = 16;
             this.Course_Combobox.SelectedIndexChanged += new System.EventHandler(this.Course_Combobox_SelectedIndexChanged);
             // 
             // Apply_ToCourse
             // 
-            this.Apply_ToCourse.Location = new System.Drawing.Point(296, 273);
+            this.Apply_ToCourse.Location = new System.Drawing.Point(225, 221);
             this.Apply_ToCourse.Name = "Apply_ToCourse";
             this.Apply_ToCourse.Size = new System.Drawing.Size(120, 23);
             this.Apply_ToCourse.TabIndex = 17;
@@ -68,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(196, 116);
+            this.label1.Location = new System.Drawing.Point(116, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 18;
@@ -77,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(226, 168);
+            this.label2.Location = new System.Drawing.Point(146, 124);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 19;
@@ -87,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(527, 343);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Apply_ToCourse);

@@ -19,26 +19,16 @@ namespace DBapplication
         DataTable dt;
         DataTable dt2;
         int CurrentYear;
-        //bool lol = false;
+        bool appliedbefore;
         public ApplyToCourse(string Appid,int Currentyear)
         {
-            //Make a query to check if there are open courses 
-
-            //if not 
-
-            //if(true)
-            //{
-            //    MessageBox.Show("There are no available courses to apply on right now.");
-            //    this.Close();
-
-            //}
-
-
             CurrentYear = Currentyear;
             AppID = Appid;
-            //We still need to handle the case that there is no courses that satisfy this
 
             //+ the case where the applicant had already applied before 
+            appliedbefore = false;
+
+
             InitializeComponent();
             controllerObj = new Controller();
             dt = controllerObj.SelectDep_Loc();
@@ -52,7 +42,7 @@ namespace DBapplication
             Course_Combobox.DataSource = dt2;
             Course_Combobox.DisplayMember = "CourseName";
             CourseID = dt2.Rows[0][1].ToString();
-
+            
         }
         
         
@@ -84,13 +74,47 @@ namespace DBapplication
         }
         private void Apply_ToCourse_Click(object sender, EventArgs e)
         {
-            //Make a query that applies based on the courseID
-
-            //If the applicant had already applied warn him that he can only choose 1 course
 
 
-            //else
-            controllerObj.ApplytoCourse(AppID, CourseID, CurrentYear);
+            //DO NOT FORGET TO UPDATE APPLICANT_INTERN TABLE
+
+            //if first time ask for extra info 
+            if (false)
+            {
+
+                MessageBox.Show("You need to fill in more information before applying to courses");
+                Applicant_ExtraInfo a =new Applicant_ExtraInfo(AppID);
+                a.Show();   
+            }
+
+
+
+
+            if (controllerObj.CheckifApplied(AppID,CurrentYear) == 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("You have already applied to a course and you can only apply to one course per year. Are you sure you want to change the application?", "Confirmation", MessageBoxButtons.YesNo);
+                
+                if (dialogResult == DialogResult.Yes)
+                {
+                    controllerObj.ChangeApplication(AppID, CourseID);
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("The Application wasn't changed.");
+                }
+
+
+            }
+            else
+            {
+                controllerObj.ApplytoCourse(AppID, CourseID, CurrentYear);
+                MessageBox.Show("Application Recieved Best of Luck!");
+            }
+
+            
         }
+
+        
     }
 }
