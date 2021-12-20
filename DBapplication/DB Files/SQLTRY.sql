@@ -9,21 +9,36 @@ use Intern_DB
 --insert into Accounts (ID,Pass,UserName,Account_Status)
 --values
 --(6 , 'a4IW3jR1u0XoSAL9kgIXew==','Loler','0')
-Select CONCAT(departmentName,'- ', LocationName), Branch_ID 
-from department,Locations
-where Branch_ID in 
-			(
-			Select BranchNo
+
+
+--Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID 
+--from department,Locations
+--where Branch_ID in 
+--			(
+--			Select BranchNo
 			
-			From Course	
+--			From Course	
 			
-			where Numberofinterns<Capacity
-			AND Active_Status='1'
-			)
-			AND Locations.Dep_No= department.Department_Number
+--			where Enrolled<Capacity
+--			AND Course.CourseID in (
+--				Select CourseID
+--				From Instructs
+--			)
+--			)
+--			AND Locations.Dep_No= department.Department_Number
 
+--Select CourseName, CourseID
 
+--From Course
 
+--Where BranchNo= '3'
+--AND Course.CourseID in (
+--				Select CourseID
+--				From Instructs
+--			)
+
+Select Max(ID) from Accounts
+		
 
 --insert into Locations values (5, 'Zayed',3)
 --insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo,BranchNo) 
@@ -43,13 +58,13 @@ where Branch_ID in
 
 --Courses
 
---insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo) 
+--insert into Course (CourseID,CourseName,Active_Status,Capacity,Enrolled, DepNo) 
 --values (1,'MLone','1',60,0,2)
---insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo) 
+--insert into Course (CourseID,CourseName,Active_Status,Capacity,Enrolled, DepNo) 
 --values (2,'MLtwo','1',60,0,2)
---insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo) 
+--insert into Course (CourseID,CourseName,Active_Status,Capacity,Enrolled, DepNo) 
 --values (3,'R&D1','1',60,0,1)
---insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo) 
+--insert into Course (CourseID,CourseName,Active_Status,Capacity,Enrolled, DepNo) 
 --values (4,'R&D1','1',60,0,1)
 
 

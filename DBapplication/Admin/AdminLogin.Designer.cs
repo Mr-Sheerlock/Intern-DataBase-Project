@@ -80,6 +80,7 @@
             this.Access_Statistics_Button.TabIndex = 4;
             this.Access_Statistics_Button.Text = "Statistics";
             this.Access_Statistics_Button.UseVisualStyleBackColor = true;
+            this.Access_Statistics_Button.Click += new System.EventHandler(this.Access_Statistics_Button_Click);
             // 
             // AdminLogin
             // 

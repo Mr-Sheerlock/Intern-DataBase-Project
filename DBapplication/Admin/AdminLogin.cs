@@ -22,5 +22,10 @@ namespace DBapplication
         {
 
         }
+
+        private void Access_Statistics_Button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

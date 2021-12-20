@@ -15,10 +15,14 @@ namespace DBapplication
     public partial class Welcome : Form
     {
         Controller controllerObj;
+        string ID;
+        int CurrentYear;
         public Welcome()
         {
             InitializeComponent();
             controllerObj = new Controller();
+            CurrentYear =controllerObj.GetCurrentYear();
+
         }
 
         private void Welcome_Load(object sender, EventArgs e)
@@ -49,6 +53,7 @@ namespace DBapplication
 
                 if (pas == Password_TextBox.Text)
                 {
+                    ID = dt.Rows[0][3].ToString();
                     if (dt.Rows[0][1].ToString() == "0")
                     {
                         MessageBox.Show("Sorry Your account is currently inactive");
@@ -77,7 +82,7 @@ namespace DBapplication
                         else
                         {
                             //Applicant
-                            ApplicantLogin i = new ApplicantLogin();
+                            ApplicantLogin i = new ApplicantLogin(ID);
                             i.Show();
 
                         }

@@ -44,9 +44,8 @@ create table Course
 ( 
 CourseID SMALLINT not null,
 CourseName varchar(30),
-Active_Status char, --should be not nulled later
 Capacity smallint,
-Numberofinterns smallint, --we should put a constraint here to make the number never exceed the capacity 
+Enrolled smallint, --No. of Enrolled People --we should put a constraint here to make the number never exceed the capacity 
 DepNo SMALLINT, --should be not nulled later
 BranchNo Smallint
 
@@ -65,7 +64,7 @@ LocationID SMALLINT  --should be not nulled later
 
 create table Instructs
 (
-Instruct_ID  SMALLINT not null,
+Instruct_ID  SMALLINT not null,    
 CourseID SMALLINT not null
 )
 
@@ -74,8 +73,12 @@ create table Takes
 App_ID  SMALLINT not null, 
 CourseID SMALLINT, --should be not nulled later
 Year_of_Intern SMALLINT,  --should be not nulled later  --A constraint should be added
-Grade char   --a constraint should be added later {A,B,C,D,E,F,T}
+Grade char   --a constraint should be added later {A,B,C,D,E,F,T} --T for terminated
 )
+
+
+select Max(Year_of_Intern) from Takes
+	
 
 create table Locations
 (
@@ -101,6 +104,18 @@ values
 (2 , 'a4IW3jR1u0XoSAL9kgIXew==','Loler','1','4')
 
 --pass is lol 
+--Instructor1
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+values
+(3 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr','1','2')
+--Instructor2
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+values
+(4 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr2','1','2')
+--instructor3
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+values
+(5 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr3','1','2')
 
 insert into department values (1,'R&D')
 insert into department values (2,'ML')
@@ -112,16 +127,28 @@ insert into Locations values(3, 'Giza',2)
 insert into Locations values(4, 'Helwan',2)
 insert into Locations values (5, 'Zayed',3)
 
-insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo,BranchNo) 
-values (1,'MLone','1',60,0,2,3)
-insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo,BranchNo) 
-values (2,'MLtwo','1',60,0,2,4)
-insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo,BranchNo) 
-values (3,'R&D1','1',60,0,1,1)
-insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo,BranchNo) 
-values (4,'R&D1','1',60,0,1,2)   
-insert into Course (CourseID,CourseName,Active_Status,Capacity,Numberofinterns, DepNo,BranchNo) 
-values (5,'Sales1','1',60,0,3,5)
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
+values (1,'MLone',60,0,2,3)
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
+values (2,'MLtwo',60,0,2,4)
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
+values (3,'R&D1',60,0,1,1)
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
+values (4,'R&D1',60,0,1,2)   
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
+values (5,'Sales1',60,0,3,5)
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
+values (6,'MLone',60,0,2,2)
 --8alebn handtr n-associate el course bl mkan m4 bl department
 
 
+--Insert in instructs 
+
+insert into Instructs (CourseID,Instruct_ID)
+values ('1','3')
+
+insert into Instructs (CourseID,Instruct_ID)
+values ('4','4')
+
+insert into Instructs (CourseID,Instruct_ID)
+values ('6','6')

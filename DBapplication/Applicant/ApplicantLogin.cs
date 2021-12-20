@@ -12,14 +12,18 @@ namespace DBapplication
 {
     public partial class ApplicantLogin : Form
     {
-        public ApplicantLogin()
+        string AppId;
+        int CurrentYear;
+        public ApplicantLogin(string AppID, int Currentyear)
         {
+            CurrentYear = Currentyear;
             InitializeComponent();
+            AppId = AppID;
         }
 
         private void Apply_ToCourse_Click(object sender, EventArgs e)
         {
-            ApplyToCourse a = new ApplyToCourse();  
+            ApplyToCourse a = new ApplyToCourse(AppId, CurrentYear);  
             a.Show();   
         }
     }

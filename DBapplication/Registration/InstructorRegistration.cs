@@ -21,7 +21,7 @@ namespace DBapplication
             InitializeComponent();
             controllerObj = new Controller();
 
-            lastID = controllerObj.GetID();
+            lastID = controllerObj.GetLastID();
 
             DataTable dt = controllerObj.SelectDepNos();
             Departments_Combobox.DataSource = dt;

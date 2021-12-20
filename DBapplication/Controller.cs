@@ -20,11 +20,7 @@ namespace DBapplication
         {
             dbMan.CloseConnection();
         }
-        //public DataTable SelectAllEmp()
-        //{
-        //    string query = "SELECT * FROM Employee;";
-        //    return dbMan.ExecuteReader(query);
-        //}
+        
         public int CheckifUserTaken(string UserName)
         {
             string query = "Select Count(1) from Accounts where UserName = '" + UserName + "';";
@@ -33,7 +29,7 @@ namespace DBapplication
 
         public DataTable SelectPassword(string UserName)
         {
-            string query = "Select Pass,Account_Status,Job_Code from Accounts where UserName = '" + UserName + "';";
+            string query = "Select Pass,Account_Status,Job_Code,ID from Accounts where UserName = '" + UserName + "';";
             return dbMan.ExecuteReader(query);
         }
 
@@ -49,17 +45,17 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public int GetID()
+        public int GetLastID()
         {
-            string query = "Select Max(ID) from Accounts"+";";
-            
+            string query = "Select Max(ID) from Accounts" + ";";
+
             //in case there are no accounts in the DB 
-            if(dbMan.ExecuteScalar(query) == DBNull.Value) 
+            if (dbMan.ExecuteScalar(query) == DBNull.Value)
             {
-               return 0; 
+                return 0;
             }
 
-              return Convert.ToInt16(dbMan.ExecuteScalar(query));
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
 
 
@@ -90,40 +86,59 @@ namespace DBapplication
                 query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,Dep_No,TelephoneNumber)" +
                                 "Values ('" + ID + "','" + UserName + "','" + Password +
                                 "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                ",'" + Gender + "'," + '1' + ",'" + Dep_no + "','" + TelephoneNumber + "');";
-
+                                ",'" + Gender + "'," + '0' + ",'" + Dep_no + "','" + TelephoneNumber + "');";
             }
 
             return dbMan.ExecuteNonQuery(query);
         }
 
-        public int GetAdmins()
-        {
-            string query = "Select Max(ID) from Accounts" + ";";
-
-            //in case there are no accounts in the DB 
-            if (dbMan.ExecuteScalar(query) == DBNull.Value)
-            {
-                return 0;
-            }
-
-            return Convert.ToInt16(dbMan.ExecuteScalar(query));
-        }
-
         public DataTable SelectDep_Loc()
         {
-            string query = "SELECT CONCAT(departmentName,'- ', LocationName) , Branch_ID  " +
-                            "FROM department, Locations " +
-                            "WHERE Branch_ID in " +
-                            "(" +
-                               "Select BranchNo " +
-                               "From Course " +
-                               "where Numberofinterns < Capacity " +
-                               "AND Active_Status='1' "+
-                             ") " +
-                               "AND Locations.Dep_No = department.Department_Number;";
+            string query= "Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID "+
+                "from department, Locations "+
+                "where Branch_ID in "+
+                            "("+
+                            "Select BranchNo "+
+                            "From Course "+
+                            "where Enrolled < Capacity "+
+                            "AND Course.CourseID in "+
+                            "("+
+                                    "Select CourseID "+
+                                    "From Instructs "+
+			                        ") "+
+                            ") " +
+                            "AND Locations.Dep_No = department.Department_Number";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectCourse(string BranchID)
+        {
+            string query = "Select CourseName, CourseID " +
+                            "From Course " +
+                            "Where BranchNo = '" + BranchID +"' "+
+                            "AND Course.CourseID in ( " +
+                                            "Select CourseID " +
+                                            "From Instructs " +
+                                        "); ";
             return dbMan.ExecuteReader(query);
         }
 
+
+        public int ApplytoCourse(string AppID,string CourseID,int CurrentYear)
+        {
+
+            string query = "Insert into Takes(App_ID, CourseID, Year_of_Intern) " +
+                            "values( '" + AppID + "', '"+CourseID+"', "+CurrentYear + ");";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int GetCurrentYear()
+        {
+            string query ="select Max(Year_of_Intern) from Takes";
+            if (dbMan.ExecuteScalar(query) == DBNull.Value)
+            {
+                return 2000;  //Base Assumption
+            }
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
     }
 }

@@ -55,7 +55,7 @@
             // 
             // Apply_ToCourse
             // 
-            this.Apply_ToCourse.Location = new System.Drawing.Point(103, 131);
+            this.Apply_ToCourse.Location = new System.Drawing.Point(103, 137);
             this.Apply_ToCourse.Name = "Apply_ToCourse";
             this.Apply_ToCourse.Size = new System.Drawing.Size(120, 23);
             this.Apply_ToCourse.TabIndex = 2;

@@ -39,9 +39,6 @@
             // 
             this.DepartmentBranch_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepartmentBranch_Combobox.FormattingEnabled = true;
-            this.DepartmentBranch_Combobox.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
             this.DepartmentBranch_Combobox.Location = new System.Drawing.Point(305, 113);
             this.DepartmentBranch_Combobox.Name = "DepartmentBranch_Combobox";
             this.DepartmentBranch_Combobox.Size = new System.Drawing.Size(153, 21);
@@ -52,13 +49,11 @@
             // 
             this.Course_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Course_Combobox.FormattingEnabled = true;
-            this.Course_Combobox.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
             this.Course_Combobox.Location = new System.Drawing.Point(305, 165);
             this.Course_Combobox.Name = "Course_Combobox";
             this.Course_Combobox.Size = new System.Drawing.Size(100, 21);
             this.Course_Combobox.TabIndex = 16;
+            this.Course_Combobox.SelectedIndexChanged += new System.EventHandler(this.Course_Combobox_SelectedIndexChanged);
             // 
             // Apply_ToCourse
             // 
