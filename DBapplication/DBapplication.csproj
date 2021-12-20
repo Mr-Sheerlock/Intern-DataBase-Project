@@ -55,6 +55,12 @@
     <Compile Include="Admin\AdminLogin.Designer.cs">
       <DependentUpon>AdminLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Course.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Course.Designer.cs">
+      <DependentUpon>Course.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controller.cs" />
     <Compile Include="DBManager.cs" />
     <Compile Include="EncryptionClass.cs" />
@@ -134,6 +140,9 @@
     </Compile>
     <EmbeddedResource Include="Admin\AdminLogin.resx">
       <DependentUpon>AdminLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Course.resx">
+      <DependentUpon>Course.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applicant\ApplicantLogin.resx">
       <DependentUpon>ApplicantLogin.cs</DependentUpon>
