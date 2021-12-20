@@ -24,17 +24,17 @@ namespace DBapplication.Applicant
             CurrentYear = currentYear;
 
             controllerObj = new Controller();
-            dt = controllerObj.SelectDep_Loc();
+            //dt = controllerObj.SelectDep_Loc();
             //DepartmentBranch_Combobox.DataSource = dt;
             //DepartmentBranch_Combobox.DisplayMember = "val";
 
-            DepartmentID = dt.Rows[0][1].ToString();
-            dt2 = controllerObj.SelectCourse(BranchID);
+            //DepartmentID = dt.Rows[0][1].ToString();
+            //dt2 = controllerObj.SelectCourse(BranchID);
 
 
             //Course_Combobox.DataSource = dt2;
             //Course_Combobox.DisplayMember = "CourseName";
-            BranchID = dt2.Rows[0][1].ToString();
+            //BranchID = dt2.Rows[0][1].ToString();
 
         }
 
