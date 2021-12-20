@@ -19,11 +19,26 @@ namespace DBapplication
         DataTable dt;
         DataTable dt2;
         int CurrentYear;
+        //bool lol = false;
         public ApplyToCourse(string Appid,int Currentyear)
         {
+            //Make a query to check if there are open courses 
+
+            //if not 
+
+            //if(true)
+            //{
+            //    MessageBox.Show("There are no available courses to apply on right now.");
+            //    this.Close();
+
+            //}
+
+
             CurrentYear = Currentyear;
             AppID = Appid;
             //We still need to handle the case that there is no courses that satisfy this
+
+            //+ the case where the applicant had already applied before 
             InitializeComponent();
             controllerObj = new Controller();
             dt = controllerObj.SelectDep_Loc();
@@ -39,7 +54,7 @@ namespace DBapplication
             CourseID = dt2.Rows[0][1].ToString();
 
         }
-        //We probably need a join command that gets the deoartmentname and location
+        
         
 
         private void DepartmentBranch_Combobox_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,10 +62,10 @@ namespace DBapplication
             //Here we will make the change reflect in the second combobox
 
             //Make a query that determines the available courses given the branchID
-            // BranchID= DepartmentBranch_Combobox.SelectedItem.toString();
+            
             int index = ((int)DepartmentBranch_Combobox.SelectedIndex); 
 
-            //index works fine
+            
             BranchID = dt.Rows[index][1].ToString();
 
             dt2= controllerObj.SelectCourse(BranchID);
@@ -70,6 +85,11 @@ namespace DBapplication
         private void Apply_ToCourse_Click(object sender, EventArgs e)
         {
             //Make a query that applies based on the courseID
+
+            //If the applicant had already applied warn him that he can only choose 1 course
+
+
+            //else
             controllerObj.ApplytoCourse(AppID, CourseID, CurrentYear);
         }
     }

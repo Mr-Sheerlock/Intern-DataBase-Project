@@ -82,7 +82,7 @@ namespace DBapplication
                         else
                         {
                             //Applicant
-                            ApplicantLogin i = new ApplicantLogin(ID);
+                            ApplicantLogin i = new ApplicantLogin(ID,CurrentYear);
                             i.Show();
 
                         }
