@@ -4,7 +4,10 @@ use Intern_DB
 
 --Update Takes Set CourseID= '1' Where App_ID = '2';
 
-select count (1) from Applicant_Intern where ID ='2'; 
+--select count (1) from Applicant_Intern where ID ='2'; 
+
+
+Delete from Takes where ID= '2' AND Year_of_Intern =2000;
 --select count (1) 
 
 --from Takes 

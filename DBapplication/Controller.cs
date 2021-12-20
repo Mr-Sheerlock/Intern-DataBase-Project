@@ -20,13 +20,14 @@ namespace DBapplication
         {
             dbMan.CloseConnection();
         }
-        
+
+        #region Accounts
+
         public int CheckifUserTaken(string UserName)
         {
             string query = "Select Count(1) from Accounts where UserName = '" + UserName + "';";
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
-
         public DataTable SelectPassword(string UserName)
         {
             string query = "Select Pass,Account_Status,Job_Code,ID from Accounts where UserName = '" + UserName + "';";
@@ -37,12 +38,6 @@ namespace DBapplication
         {
             string query = "Update Accounts Set Pass='" + Pas + "' where UserName = '" + UserName + "';";
             return dbMan.ExecuteNonQuery(query);
-        }
-
-        public DataTable SelectDepNos()
-        {
-            string query = "Select Department_Number from department;";
-            return dbMan.ExecuteReader(query);
         }
 
         public int GetLastID()
@@ -57,8 +52,7 @@ namespace DBapplication
 
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
-
-
+       
         public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, string TelephoneNumber ,string Dep_no="")
         {
             string query;
@@ -91,7 +85,17 @@ namespace DBapplication
 
             return dbMan.ExecuteNonQuery(query);
         }
+        
+        #endregion
 
+
+
+        #region Department
+        public DataTable SelectDepNos()
+        {
+            string query = "Select Department_Number from department;";
+            return dbMan.ExecuteReader(query);
+        }
         public DataTable SelectDep_Loc()
         {
             string query= "Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID "+
@@ -111,6 +115,38 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
+
+        #endregion
+
+
+
+        #region Course 
+        public DataTable SelectCourse(string BranchID)
+        {
+            string query = "Select CourseName, CourseID " +
+                            "From Course " +
+                            "Where BranchNo = '" + BranchID +"' "+
+                            "AND Course.CourseID in ( " +
+                                            "Select CourseID " +
+                                            "From Instructs " +
+                                        "); ";
+            return dbMan.ExecuteReader(query);
+        }
+       
+        public int ApplytoCourse(string AppID,string CourseID,int CurrentYear)
+        {
+
+            string query = "Insert into Takes(App_ID, CourseID, Year_of_Intern) " +
+                            "values( '" + AppID + "', '"+CourseID+"', "+CurrentYear + ");";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        #endregion
+
+
+        #region Locations
+
+        //THIS CHECKS USING BRANCH THOUGH!!
         public int CheckAvailableCourse() //Checks if there are available courses to apply
         {
             string query = "Select Count(Branch_ID) " +
@@ -130,30 +166,10 @@ namespace DBapplication
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
 
-
-        public DataTable SelectCourse(string BranchID)
-        {
-            string query = "Select CourseName, CourseID " +
-                            "From Course " +
-                            "Where BranchNo = '" + BranchID +"' "+
-                            "AND Course.CourseID in ( " +
-                                            "Select CourseID " +
-                                            "From Instructs " +
-                                        "); ";
-            return dbMan.ExecuteReader(query);
-        }
+        #endregion
 
 
-        public int ApplytoCourse(string AppID,string CourseID,int CurrentYear)
-        {
-
-            string query = "Insert into Takes(App_ID, CourseID, Year_of_Intern) " +
-                            "values( '" + AppID + "', '"+CourseID+"', "+CurrentYear + ");";
-            return dbMan.ExecuteNonQuery(query);
-        }
-
-        
-
+        #region Takes
         public int CheckifApplied(string AppID, int CurrentYear)
         {
 
@@ -163,6 +179,7 @@ namespace DBapplication
                             "AND Year_of_Intern =" + CurrentYear + ";";
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
+
         public int ChangeApplication(string AppID, string CourseID)
         {
 
@@ -170,7 +187,6 @@ namespace DBapplication
                             "Where App_ID = '" + AppID + "';";
             return dbMan.ExecuteNonQuery(query);
         }
-
 
         public int GetCurrentYear()
         {
@@ -182,6 +198,17 @@ namespace DBapplication
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
 
+        public int CancelApplication(string AppID, int CurrentYear)
+        {
+
+            string query = "Delete from Takes where App_ID= '" + AppID + "' AND Year_of_Intern ="+ CurrentYear+";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        #endregion
+
+
+        #region Applicant_Intern
         public int CheckiffullyRegistered(string AppID)
         {
 
@@ -190,6 +217,7 @@ namespace DBapplication
                             "where ID ='" + AppID + "';";
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
+
         public int CompleteRegistration(string AppID, string CollegeName, int YearsofXP, string CV)
         {
 
@@ -197,6 +225,11 @@ namespace DBapplication
                             "values('" +AppID  +"', '" +CollegeName + "', " + YearsofXP + ", '" + CV + "');";
             return dbMan.ExecuteNonQuery(query);
         }
-        
+
+
+        #endregion
+
+
+
     }
 }

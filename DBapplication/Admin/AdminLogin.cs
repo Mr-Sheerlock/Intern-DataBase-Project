@@ -11,9 +11,15 @@ namespace DBapplication
 {
     public partial class AdminLogin : Form
     {
-        public AdminLogin()
+        string AdminId;
+        int CurrentYear;
+        Controller controllerObj;
+        public AdminLogin(string Adminid, int year)
         {
             InitializeComponent();
+            AdminId = Adminid;
+            CurrentYear = year;
+            controllerObj = new Controller();
         }
 
         

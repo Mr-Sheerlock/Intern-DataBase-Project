@@ -19,14 +19,10 @@ namespace DBapplication
         DataTable dt;
         DataTable dt2;
         int CurrentYear;
-        bool appliedbefore;
         public ApplyToCourse(string Appid,int Currentyear)
         {
             CurrentYear = Currentyear;
             AppID = Appid;
-
-            //+ the case where the applicant had already applied before 
-            appliedbefore = false;
 
 
             InitializeComponent();
@@ -97,7 +93,7 @@ namespace DBapplication
                 if (dialogResult == DialogResult.Yes)
                 {
                     controllerObj.ChangeApplication(AppID, CourseID);
-
+                    MessageBox.Show("Application Updated Successfully!");
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -115,6 +111,16 @@ namespace DBapplication
             
         }
 
-        
+        private void Cancel_Application_Button_Click(object sender, EventArgs e)
+        {
+            if (controllerObj.CancelApplication(AppID,CurrentYear) == 1)
+            {
+                MessageBox.Show("Deleted Successfully");
+            }
+            else
+            {   
+                MessageBox.Show("Already Cancelled or doesn't exist");
+            }
+        }
     }
 }

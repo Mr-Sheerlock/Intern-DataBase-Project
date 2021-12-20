@@ -31,8 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Apply_ToCourse = new System.Windows.Forms.Button();
-            this.Departments_Combobox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.View_DepInfo_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -63,34 +62,22 @@
             this.Apply_ToCourse.UseVisualStyleBackColor = true;
             this.Apply_ToCourse.Click += new System.EventHandler(this.Apply_ToCourse_Click);
             // 
-            // Departments_Combobox
+            // View_DepInfo_Button
             // 
-            this.Departments_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Departments_Combobox.FormattingEnabled = true;
-            this.Departments_Combobox.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.Departments_Combobox.Location = new System.Drawing.Point(555, 43);
-            this.Departments_Combobox.Name = "Departments_Combobox";
-            this.Departments_Combobox.Size = new System.Drawing.Size(100, 21);
-            this.Departments_Combobox.TabIndex = 15;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(428, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Department";
+            this.View_DepInfo_Button.Location = new System.Drawing.Point(431, 156);
+            this.View_DepInfo_Button.Name = "View_DepInfo_Button";
+            this.View_DepInfo_Button.Size = new System.Drawing.Size(180, 23);
+            this.View_DepInfo_Button.TabIndex = 17;
+            this.View_DepInfo_Button.Text = "View Department Information";
+            this.View_DepInfo_Button.UseVisualStyleBackColor = true;
+            this.View_DepInfo_Button.Click += new System.EventHandler(this.View_DepInfo_Button_Click);
             // 
             // ApplicantLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.Departments_Combobox);
+            this.Controls.Add(this.View_DepInfo_Button);
             this.Controls.Add(this.Apply_ToCourse);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -106,7 +93,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Apply_ToCourse;
-        private System.Windows.Forms.ComboBox Departments_Combobox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button View_DepInfo_Button;
     }
 }

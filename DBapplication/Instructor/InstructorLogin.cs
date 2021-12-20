@@ -15,13 +15,16 @@ namespace DBapplication
     {
         Controller controllerObj;
         string instructorUser;
-        public InstructorLogin(string insUser)
+        string InstructorId;
+        int CurrentYear;
+        public InstructorLogin(string Instructorid,int year)
         {
             //We need to pass certain information here for the instructor, like the associated department and course etc 
             //in order to determine the associated applicants
             InitializeComponent();
             controllerObj = new Controller();
-            instructorUser = insUser;
+            CurrentYear = year;
+            InstructorId=Instructorid;
 
             //Get the correspondng course, if there is no corresponding course, then disable the course functionalities
 

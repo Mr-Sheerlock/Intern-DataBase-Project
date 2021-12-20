@@ -12,9 +12,20 @@ namespace DBapplication
 {
     public partial class InternLogin : Form
     {
-        public InternLogin()
+        string InternId;
+        int CurrentYear;
+        Controller controllerObj;
+        public InternLogin(string internid, int year)
         {
             InitializeComponent();
+            InternId = internid;    
+            CurrentYear = year;
+            controllerObj = new Controller();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

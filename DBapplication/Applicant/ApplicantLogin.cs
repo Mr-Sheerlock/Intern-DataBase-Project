@@ -22,6 +22,10 @@ namespace DBapplication
             CurrentYear = Currentyear;
             InitializeComponent();
             AppId = AppID;
+
+            //Set the app status : {"Still being reviewed or "Rejected"}
+
+
         }
 
         private void Apply_ToCourse_Click(object sender, EventArgs e)
@@ -49,6 +53,12 @@ namespace DBapplication
 
 
             
+        }
+
+        private void View_DepInfo_Button_Click(object sender, EventArgs e)
+        {
+            Applicant.Departments_Info d = new Applicant.Departments_Info(CurrentYear);
+            d.Show();
         }
     }
 }

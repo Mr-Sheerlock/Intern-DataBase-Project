@@ -73,7 +73,7 @@ create table Takes
 App_ID  SMALLINT not null, 
 CourseID SMALLINT, --should be not nulled later
 Year_of_Intern SMALLINT,  --should be not nulled later  --A constraint should be added
-Grade char   --a constraint should be added later {A,B,C,D,E,F,T} --T for terminated
+Grade char   --a constraint should be added later {A,B,C,D,E,F,T, W} --T for terminated --W for withdraw
 
 primary key(App_ID,CourseID,Year_of_Intern)
 

@@ -64,19 +64,19 @@ namespace DBapplication
                         if (dt.Rows[0][2].ToString() == "1")
                         {
                             //Admin
-                            AdminLogin a = new AdminLogin();
+                            AdminLogin a = new AdminLogin(ID, CurrentYear);
                             a.Show();
                         }else if(dt.Rows[0][2].ToString() == "2")
                         {
                             //Instructor
-                            InstructorLogin i = new InstructorLogin(UserName_TextBox.Text);
+                            InstructorLogin i = new InstructorLogin(ID, CurrentYear);
                             i.Show();
 
                         }
                         else if (dt.Rows[0][2].ToString() == "3")
                         {
                             //Intern
-                            InternLogin i = new InternLogin();
+                            InternLogin i = new InternLogin(ID, CurrentYear);
                             i.Show();
                         }
                         else
