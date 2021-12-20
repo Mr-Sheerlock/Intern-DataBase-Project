@@ -109,5 +109,29 @@ namespace DBapplication
 
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
+
+        public DataTable SelectDep_Loc()
+        {
+            string query = "SELECT CONCAT(departmentName,'- ', LocationName) , Branch_ID  " +
+                            "FROM department, Locations " +
+                            "WHERE Branch_ID in " +
+                            "(" +
+                               "Select BranchNo " +
+                               "From Course " +
+                               "where Numberofinterns < Capacity " +
+                               "AND Active_Status='1' "+
+                             ") " +
+                               "AND Locations.Dep_No = department.Department_Number;";
+            return dbMan.ExecuteReader(query);
+        }
+
+        //admin functionalities
+
+        public int Add_Course(int CourseID, string CourseName, bool ActiveStatus, int DepNo)
+        {
+            string query = "Insert into Course Values (" + CourseID + ",'" + CourseName + "'," + ActiveStatus + "," + DepNo + ");";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
     }
 }
