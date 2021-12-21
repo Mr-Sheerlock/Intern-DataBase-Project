@@ -100,6 +100,12 @@
     <Compile Include="Instructor\InternshipGrading.Designer.cs">
       <DependentUpon>InternshipGrading.cs</DependentUpon>
     </Compile>
+    <Compile Include="Intern\Lectures_view.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Intern\Lectures_view.Designer.cs">
+      <DependentUpon>Lectures_view.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registration\ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Instructor\InternshipGrading.resx">
       <DependentUpon>InternshipGrading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Intern\Lectures_view.resx">
+      <DependentUpon>Lectures_view.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registration\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>

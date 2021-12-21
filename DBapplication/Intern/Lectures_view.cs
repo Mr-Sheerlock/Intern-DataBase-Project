@@ -8,19 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DBapplication.Applicant
+namespace DBapplication.Intern
 {
-    public partial class Courses_Instructors : Form
+    public partial class Lectures_view : Form
     {
         DataTable dt;
-        public Courses_Instructors(DataTable Dt)
+        public Lectures_view(DataTable dT)
         {
             InitializeComponent();
+            dt = dT;
 
-            dt = Dt;
-            Courses_InstructorsGrid.DataSource = dt;
+            LecturesGrid.DataSource= dt;
         }
-
-       
     }
 }

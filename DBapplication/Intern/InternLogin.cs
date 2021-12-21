@@ -63,12 +63,20 @@ namespace DBapplication
 
         private void View_Lectures_Button_Click(object sender, EventArgs e)
         {
+            DataTable dt= new DataTable();
 
+
+            dt = controllerObj.SelectLectures(InternId, CurrentYear);
+
+            Intern.Lectures_view l = new Intern.Lectures_view(dt);
+
+            l.Show();
         }
 
         private void View_DepInfo_Button_Click(object sender, EventArgs e)
         {
-
+            Applicant.Departments_Info d = new Applicant.Departments_Info(CurrentYear);
+            d.Show();
         }
 
 

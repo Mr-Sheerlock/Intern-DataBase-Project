@@ -63,6 +63,10 @@ namespace DBapplication.Applicant
         {
             DataTable dt3 = new DataTable();
 
+            //Some query here 
+            dt3 = controllerObj.SelectCourse_Instructor(DepartmentID, BranchID);
+
+
             Courses_Instructors c = new Courses_Instructors(dt3);
             c.Show();
         }

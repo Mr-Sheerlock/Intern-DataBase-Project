@@ -1,24 +1,41 @@
-
+﻿
 --This is just an SQL file to try the queries before writing them
 use Intern_DB
 
 
+Select LectureNo , LectureDay 
+From Lectures
+where Course_ID in 
+				(Select Course_ID 
+				from takes 
+				where App_ID= 2
+				AND Year_of_Intern = 2000)
+AND LocationID in ( Select BranchNo
+					From   Course
+					where CourseID in ( Select Course_ID 
+										from takes 
+										where App_ID= 2
+										AND Year_of_Intern =2000)
+										)
 
-Select departmentName, LocationName, Branch_ID  --Depname and branchname that have the course
-                from department, Locations 
-                where Branch_ID = 
-				(
-				Select BranchNo  --Branch that has the course 
-				From Course 
-				Where  CourseID=
-						(
-						Select CourseID  --Course that has the intern 
-						From Takes 
-						where App_ID = '2' 
-						AND  Year_of_Intern = 2000
-						)
-				)
-				AND Locations.Dep_No = department.Department_Number
+
+
+
+--Select departmentName, LocationName, Branch_ID  --Depname and branchname that have the course
+--                from department, Locations 
+--                where Branch_ID = 
+--				(
+--				Select BranchNo  --Branch that has the course 
+--				From Course 
+--				Where  CourseID=
+--						(
+--						Select CourseID  --Course that has the intern 
+--						From Takes 
+--						where App_ID = '2' 
+--						AND  Year_of_Intern = 2000
+--						)
+--				)
+--				AND Locations.Dep_No = department.Department_Number
 
 --Select F_name, L_name 
 --From Accounts  
@@ -39,8 +56,28 @@ Select departmentName, LocationName, Branch_ID  --Depname and branchname that ha
  --Select F_name, L_name From Accounts Where ID =( Select Instruct_ID From Instructs Where CourseID =( Select CourseID From Takes where App_ID ='2' AND Year_of_Intern = 2000 )); 
 
 
+--Select  CourseName, F_Name,L_Name
+--From  (Course left join instructs on Course.CourseID=Instructs.CourseID ),accounts
+--where Course.CourseID in (
+--					Select CourseID
+--					From	Course
+--					Where DepNo= 2
+--					AND BranchNo = 3
+--					)
+--AND Accounts.ID = Instructs.Instruct_ID
+--AND Instructs.CourseID=Course.CourseID
 
 
+
+--Union  (Select  CourseName
+--		From  Course
+--		where Course.CourseID in (
+--							Select CourseID
+--							From	Course
+--							Where DepNo= 3
+--							AND BranchNo = 5
+--							)
+--		)
 
 
 

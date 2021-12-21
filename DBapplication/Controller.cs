@@ -100,6 +100,25 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(query);
         }
 
+
+
+        public DataTable SelectCourse_Instructor(string DepID, string BranchID)
+        {
+            //left join shows the null values unlike natural join
+            //and that was its syntax...
+
+            string query = "Select CourseName, F_Name, L_Name " +
+                            "From (Course left join instructs on Course.CourseID=Instructs.CourseID ),accounts " +
+                            "where Course.CourseID in ( " +
+                                                "Select CourseID " +
+                                                "From    Course " +
+                                                "Where DepNo= '" + DepID + "' " +
+                                                "AND BranchNo= '" + BranchID + "' " +
+                                                ") " +
+                            "AND Accounts.ID = Instructs.Instruct_ID; ";
+            return dbMan.ExecuteReader(query);
+        }
+
         #endregion
 
 
@@ -318,6 +337,31 @@ namespace DBapplication
 
         #endregion
 
+        #region Lectures
+        public DataTable SelectLectures(string InternID, int CurrentYear)
+        {
+
+            string query = " Select LectureNo, LectureDay " +
+                " From Lectures where Course_ID in " +
+                                            "(Select Course_ID " +
+                                            "from takes " +
+                                            "where App_ID= '" + InternID + "' " +
+                                            "AND Year_of_Intern ='" + CurrentYear + "' " +
+                                            ") " +
+                                "AND LocationID in " +
+                                            "(Select BranchNo " +
+                                            "From   Course " +
+                                            "where CourseID in " +
+                                                        "(Select Course_ID " +
+                                                        "from takes " +
+                                                        "where App_ID= '" + InternID + "' " +
+                                                        "AND Year_of_Intern ='" + CurrentYear + "' " +
+                                                        ") " +
+                                        ");";
+                 return dbMan.ExecuteReader(query);
+        }
+
+        #endregion
 
     }
 }

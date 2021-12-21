@@ -1,6 +1,6 @@
-﻿namespace DBapplication.Applicant
+﻿namespace DBapplication.Intern
 {
-    partial class Courses_Instructors
+    partial class Lectures_view
     {
         /// <summary>
         /// Required designer variable.
@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Courses_InstructorsGrid = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.Courses_InstructorsGrid)).BeginInit();
+            this.LecturesGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.LecturesGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // Courses_InstructorsGrid
+            // LecturesGrid
             // 
-            this.Courses_InstructorsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Courses_InstructorsGrid.Location = new System.Drawing.Point(38, 30);
-            this.Courses_InstructorsGrid.Name = "Courses_InstructorsGrid";
-            this.Courses_InstructorsGrid.Size = new System.Drawing.Size(712, 395);
-            this.Courses_InstructorsGrid.TabIndex = 0;
+            this.LecturesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LecturesGrid.Location = new System.Drawing.Point(44, 28);
+            this.LecturesGrid.Name = "LecturesGrid";
+            this.LecturesGrid.Size = new System.Drawing.Size(712, 395);
+            this.LecturesGrid.TabIndex = 1;
             // 
-            // Courses_Instructors
+            // Lectures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Courses_InstructorsGrid);
-            this.Name = "Courses_Instructors";
-            this.Text = "Courses and Instructors";
-            ((System.ComponentModel.ISupportInitialize)(this.Courses_InstructorsGrid)).EndInit();
+            this.Controls.Add(this.LecturesGrid);
+            this.Name = "Lectures";
+            this.Text = "Lectures";
+            ((System.ComponentModel.ISupportInitialize)(this.LecturesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView Courses_InstructorsGrid;
+        private System.Windows.Forms.DataGridView LecturesGrid;
     }
 }

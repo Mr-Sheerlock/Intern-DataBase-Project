@@ -17,7 +17,7 @@ Job_Code nchar(1), --should be not nulled later  --a constraint should be added 
 Age  TINYINT, --a constraint should be added later (0,140)
 Gender char, --a constraint should be added later {M,F}
 Account_Status nchar(1),  --the status is used for getting confirmation from admin and such --a constraint should be added later {0,1} 0-pending 1-active
-TelephoneNumber varchar(10),
+TelephoneNumber varchar(11),
 Dep_No varchar(3)
 
 Primary key (ID)
@@ -54,6 +54,11 @@ BranchNo Smallint
 Primary key (CourseID)
 )
 
+
+		
+
+
+
 create table Lectures
 ( 
 LectureNo Tinyint,
@@ -62,7 +67,20 @@ Course_ID SMALLINT not null ,
 LocationID SMALLINT  --should be not nulled later
 )
 
-
+select LectureNo,LectureDay 
+From Lectures
+where Course_ID in 
+				(Select Course_ID 
+				from takes 
+				where App_ID= 
+				AND Year_of_Intern = )
+AND LocationID in ( Select BranchNo
+					From   Course
+					where CourseID in (Select Course_ID 
+										from takes 
+										where App_ID= 
+										AND Year_of_Intern =
+					)
 
 create table Instructs
 (
