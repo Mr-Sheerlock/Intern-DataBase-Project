@@ -67,20 +67,7 @@ Course_ID SMALLINT not null ,
 LocationID SMALLINT  --should be not nulled later
 )
 
-select LectureNo,LectureDay 
-From Lectures
-where Course_ID in 
-				(Select Course_ID 
-				from takes 
-				where App_ID= 
-				AND Year_of_Intern = )
-AND LocationID in ( Select BranchNo
-					From   Course
-					where CourseID in (Select Course_ID 
-										from takes 
-										where App_ID= 
-										AND Year_of_Intern =
-					)
+
 
 create table Instructs
 (

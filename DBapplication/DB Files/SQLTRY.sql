@@ -16,7 +16,7 @@ AND LocationID in ( Select BranchNo
 										from takes 
 										where App_ID= 2
 										AND Year_of_Intern =2000)
-										)
+								)
 
 
 
