@@ -64,7 +64,7 @@ namespace DBapplication
                         if (dt.Rows[0][2].ToString() == "1")
                         {
                             //Admin
-                            AdminLogin a = new AdminLogin(ID, CurrentYear);
+                            AdminLogin a = new AdminLogin();// new AdminLogin(ID, CurrentYear);
                             a.Show();
                         }else if(dt.Rows[0][2].ToString() == "2")
                         {

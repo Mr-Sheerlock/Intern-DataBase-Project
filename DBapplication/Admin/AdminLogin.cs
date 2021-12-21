@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBapplication.Admin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,27 +12,35 @@ namespace DBapplication
 {
     public partial class AdminLogin : Form
     {
-        string AdminId;
-        int CurrentYear;
-        Controller controllerObj;
-        public AdminLogin(string Adminid, int year)
+        public AdminLogin()
         {
             InitializeComponent();
-            AdminId = Adminid;
-            CurrentYear = year;
-            controllerObj = new Controller();
         }
 
         
 
         private void Access_Users_Button_Click(object sender, EventArgs e)
         {
+            Users u = new Users();
+                u.Show();
+        }
 
+        private void Access_Courses_Button_Click(object sender, EventArgs e)
+        {
+            Courses s = new Courses();
+                s.Show(); 
+        }
+
+        private void Access_Departments_Button_Click(object sender, EventArgs e)
+        {
+            Departments d = new Departments();
+            d.Show();
         }
 
         private void Access_Statistics_Button_Click(object sender, EventArgs e)
         {
-
+            Statistics sts = new Statistics();
+            sts.Show();
         }
     }
 }
