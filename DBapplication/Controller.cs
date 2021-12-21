@@ -21,6 +21,8 @@ namespace DBapplication
             dbMan.CloseConnection();
         }
 
+
+
         #region Accounts
 
         public int CheckifUserTaken(string UserName)
@@ -85,7 +87,19 @@ namespace DBapplication
 
             return dbMan.ExecuteNonQuery(query);
         }
-        
+
+        public int ChangeFromApptoIntern(string AppID)
+        {
+            string query = "Update Accounts Set Job_Code='3' Where ID = '" +AppID+ "';";
+            return dbMan.ExecuteNonQuery(query);    
+        }
+
+        public int ChangeFromInterntoApp(string InternID)
+        {
+            string query = "Update Accounts Set Job_Code='4' Where ID = '" + InternID + "';";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
         #endregion
 
 
@@ -116,6 +130,33 @@ namespace DBapplication
         }
 
 
+        public DataTable SelectDepHavingCourse(string InterID, int CurrentYear)
+        {
+            string query = "Select departmentName, LocationName, Branch_ID  " +  //Depname and branchname that have the course
+                "From department, Locations " +
+                "Where Branch_ID =" +
+                "( " +
+                "Select BranchNo " +//Branch that has the course
+                 "From Course " +
+                 "Where  CourseID = " +
+                          "( " +
+                              "Select CourseID " +//Course that has the intern
+                              "From Takes " +
+                              "where App_ID ='" + InterID + "' " +
+                              "AND Year_of_Intern = " + CurrentYear  +
+                           ") " +
+                 ") " +
+                 "AND Locations.Dep_No = department.Department_Number;";
+                return dbMan.ExecuteReader(query);
+
+        }
+
+        public DataTable SelectDepartments()
+        {
+            string query = "Select * from department;";
+            return dbMan.ExecuteReader(query);
+        }
+
         #endregion
 
 
@@ -140,6 +181,8 @@ namespace DBapplication
                             "values( '" + AppID + "', '"+CourseID+"', "+CurrentYear + ");";
             return dbMan.ExecuteNonQuery(query);
         }
+
+
 
         #endregion
 
@@ -166,6 +209,12 @@ namespace DBapplication
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
 
+
+        public DataTable SelectLocations(string DepartID)
+        {
+            string query = "Select Branch_ID, LocationName from Locations where Dep_No= '" + DepartID + "';";
+            return dbMan.ExecuteReader(query);
+        }
         #endregion
 
 
@@ -197,6 +246,11 @@ namespace DBapplication
             }
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
+        public DataTable GetGrade(string internID, int currentYear)
+        {
+            string query = "Select Grade from Takes where App_ID= '" + internID+ "' AND Year_of_Intern =" + currentYear+ ";";
+            return dbMan.ExecuteReader(query);
+        }
 
         public int CancelApplication(string AppID, int CurrentYear)
         {
@@ -204,6 +258,14 @@ namespace DBapplication
             string query = "Delete from Takes where App_ID= '" + AppID + "' AND Year_of_Intern ="+ CurrentYear+";";
             return dbMan.ExecuteNonQuery(query);
         }
+
+        public int DropCourse(string AppID)
+        {
+
+            string query = "Update Takes Set Grade = 'W' where App_ID = '" + AppID + "';";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
 
         #endregion
 
@@ -221,14 +283,40 @@ namespace DBapplication
         public int CompleteRegistration(string AppID, string CollegeName, int YearsofXP, string CV)
         {
 
-            string query = "insert into Applicant_Intern (ID, College, Years_of_Experience, CV_Link)" +
-                            "values('" +AppID  +"', '" +CollegeName + "', " + YearsofXP + ", '" + CV + "');";
+            string query = "insert into Applicant_Intern (ID, College, Years_of_Experience, CV_Link, Status_of_application) " +
+                            "values('" +AppID  +"', '" +CollegeName + "', " + YearsofXP + ", '" + CV + "', '0');";
             return dbMan.ExecuteNonQuery(query);
         }
 
-
+        public DataTable GetApplicationStatus(string AppID, int currentYear)
+        {
+            string query = "Select Status_of_application from Applicant_Intern where ID= '" + AppID + "';";
+            return dbMan.ExecuteReader(query);
+        }
         #endregion
 
+        #region Instructs
+
+        public DataTable SelectInstructorName(string InternID , int CurrentYear)
+        {
+            string query = "Select F_name, L_name " +
+                            "From Accounts " +
+                            "Where ID =" +
+                            "( " +
+                            "Select Instruct_ID " +
+                             "From Instructs " +
+                             "Where CourseID ="+
+                             "( " + 
+                              "Select CourseID " +    //Course that has the intern
+                              "From Takes " +
+                              "where App_ID ='" +InternID + "' " +
+                              "AND Year_of_Intern = " + CurrentYear +
+                                " )" + 
+                              "); ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        #endregion
 
 
     }

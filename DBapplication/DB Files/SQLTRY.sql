@@ -2,12 +2,55 @@
 --This is just an SQL file to try the queries before writing them
 use Intern_DB
 
+
+
+Select departmentName, LocationName, Branch_ID  --Depname and branchname that have the course
+                from department, Locations 
+                where Branch_ID = 
+				(
+				Select BranchNo  --Branch that has the course 
+				From Course 
+				Where  CourseID=
+						(
+						Select CourseID  --Course that has the intern 
+						From Takes 
+						where App_ID = '2' 
+						AND  Year_of_Intern = 2000
+						)
+				)
+				AND Locations.Dep_No = department.Department_Number
+
+--Select F_name, L_name 
+--From Accounts  
+--Where ID = 
+--(
+--Select Instruct_ID  
+-- From Instructs  
+-- Where CourseID =
+-- (  
+--  Select CourseID    
+--  From Takes  
+--  where App_ID = 2
+--  AND Year_of_Intern = 2000
+--    ) 
+--  ); 
+
+
+ --Select F_name, L_name From Accounts Where ID =( Select Instruct_ID From Instructs Where CourseID =( Select CourseID From Takes where App_ID ='2' AND Year_of_Intern = 2000 )); 
+
+
+
+
+
+
+
+
 --Update Takes Set CourseID= '1' Where App_ID = '2';
 
 --select count (1) from Applicant_Intern where ID ='2'; 
 
-
-Delete from Takes where ID= '2' AND Year_of_Intern =2000;
+--Select Grade from Takes where App_ID= '2' AND Year_of_Intern =2000;
+--Delete from Takes where App_ID= '2' AND Year_of_Intern =2000;
 --select count (1) 
 
 --from Takes 

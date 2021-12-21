@@ -71,6 +71,7 @@
             this.Branch_Combobox.Name = "Branch_Combobox";
             this.Branch_Combobox.Size = new System.Drawing.Size(153, 21);
             this.Branch_Combobox.TabIndex = 21;
+            this.Branch_Combobox.SelectedIndexChanged += new System.EventHandler(this.Branch_Combobox_SelectedIndexChanged);
             // 
             // Department_Combobox
             // 
@@ -80,12 +81,13 @@
             this.Department_Combobox.Name = "Department_Combobox";
             this.Department_Combobox.Size = new System.Drawing.Size(153, 21);
             this.Department_Combobox.TabIndex = 20;
+            this.Department_Combobox.SelectedIndexChanged += new System.EventHandler(this.Department_Combobox_SelectedIndexChanged);
             // 
             // Departments_Info
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(624, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ViewCandI_Button);

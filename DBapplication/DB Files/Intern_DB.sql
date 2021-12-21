@@ -30,7 +30,9 @@ ID SMALLINT not null,
 Grade_of_Entrance_Exam char,  --a constraint should be added later {A,B,C,D,E,F}
 College Varchar(30),
 Years_of_Experience TINYINT,  --a constraint should be added later 0,40
-Status_of_application binary(1), --should be not nulled later 
+Status_of_application nchar(1), --should be not nulled later  --a constraint should be added later {0,1,2}
+															--0 for ongoing, 1 for rejected, 2 for accepted
+			
 CV_Link varchar(50) 
 )
 
@@ -73,12 +75,12 @@ create table Takes
 App_ID  SMALLINT not null, 
 CourseID SMALLINT, --should be not nulled later
 Year_of_Intern SMALLINT,  --should be not nulled later  --A constraint should be added
-Grade char   --a constraint should be added later {A,B,C,D,E,F,T, W} --T for terminated --W for withdraw
+Grade char   --a constraint should be added later {A,B,C,D,E,F,T,W} --T for terminated --W for withdraw
+												--in the case of T,W the intern should automatically be demoted to applicant
 
 primary key(App_ID,CourseID,Year_of_Intern)
 
 )
-
 
 
 
@@ -163,4 +165,4 @@ insert into Instructs (CourseID,Instruct_ID)
 values ('6','6')
 
 
-insert into takes (App_ID,CourseID,Year_of_Intern) values(2,4,2000)
+--insert into takes (App_ID,CourseID,Year_of_Intern) values(2,4,2000)

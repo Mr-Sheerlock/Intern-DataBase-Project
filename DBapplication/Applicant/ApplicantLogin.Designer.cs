@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Application_Status_label = new System.Windows.Forms.Label();
             this.Apply_ToCourse = new System.Windows.Forms.Button();
             this.View_DepInfo_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -43,14 +43,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Application Progress:";
             // 
-            // label2
+            // Application_Status_label
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(176, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ongoing";
+            this.Application_Status_label.AutoSize = true;
+            this.Application_Status_label.Location = new System.Drawing.Point(176, 46);
+            this.Application_Status_label.Name = "Application_Status_label";
+            this.Application_Status_label.Size = new System.Drawing.Size(78, 13);
+            this.Application_Status_label.TabIndex = 1;
+            this.Application_Status_label.Text = "Not applied yet";
             // 
             // Apply_ToCourse
             // 
@@ -79,7 +79,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.View_DepInfo_Button);
             this.Controls.Add(this.Apply_ToCourse);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Application_Status_label);
             this.Controls.Add(this.label1);
             this.Name = "ApplicantLogin";
             this.Text = "ApplicantLogin";
@@ -91,7 +91,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Application_Status_label;
         private System.Windows.Forms.Button Apply_ToCourse;
         private System.Windows.Forms.Button View_DepInfo_Button;
     }

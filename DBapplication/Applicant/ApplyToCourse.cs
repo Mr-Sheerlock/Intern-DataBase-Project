@@ -72,20 +72,6 @@ namespace DBapplication
         {
 
 
-            //DO NOT FORGET TO UPDATE APPLICANT_INTERN TABLE
-
-            //if first time ask for extra info 
-            if (false)
-            {
-
-                MessageBox.Show("You need to fill in more information before applying to courses");
-                Applicant_ExtraInfo a =new Applicant_ExtraInfo(AppID);
-                a.Show();   
-            }
-
-
-
-
             if (controllerObj.CheckifApplied(AppID,CurrentYear) == 1)
             {
                 DialogResult dialogResult = MessageBox.Show("You have already applied to a course and you can only apply to one course per year. Are you sure you want to change the application?", "Confirmation", MessageBoxButtons.YesNo);

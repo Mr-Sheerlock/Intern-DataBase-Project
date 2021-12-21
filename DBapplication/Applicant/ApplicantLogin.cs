@@ -22,9 +22,53 @@ namespace DBapplication
             CurrentYear = Currentyear;
             InitializeComponent();
             AppId = AppID;
+            DataTable dt = new DataTable();
 
-            //Set the app status : {"Still being reviewed or "Rejected"}
+            //Set the app status : {"Still being reviewed or "Rejected"} 
+            if (controllerObj.CheckifApplied(AppID, Currentyear) == 0) //checks on takes 
+            {
+                
+                
+            }
+            else
+            {
 
+                //Applicant only shows still not applied, Still being reviewd, terminated, withdrawn
+                //Because accepted will be on the intern side
+                //THERE ARE STILL CASES FOR TERMINATED OR WITHDRAWN
+                //only handle if terminated or withdrawn in current year. Otherwise should be not applied yet
+                dt = controllerObj.GetGrade(AppID, Currentyear);
+                if(dt.Rows[0][0].ToString() != "") //if the applicant has a grade this year
+                {
+                    //We should disable the apply button
+                    Apply_ToCourse.Enabled = false;
+                    if (dt.Rows[0][0].ToString() == "T")
+                    {
+                        Application_Status_label.Text = "Terminated";
+                    }
+                    else
+                    {
+                        Application_Status_label.Text = "Withdrawn";
+                    }
+
+                }
+                else
+                {   //if the applicant has no grade this year
+                    dt = controllerObj.GetApplicationStatus(AppID, Currentyear);
+                    if (dt.Rows[0][0].ToString() == "0")
+                    {
+                        Application_Status_label.Text = "Still Being Reviewd";
+                    }
+                    else
+                    {
+
+                        Application_Status_label.Text = "Rejected";
+
+                        //Notice that there won't be a case where applicant has status "2" 
+                    }
+                }
+                
+            }
 
         }
 

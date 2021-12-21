@@ -24,23 +24,48 @@ namespace DBapplication.Applicant
             CurrentYear = currentYear;
 
             controllerObj = new Controller();
-            //dt = controllerObj.SelectDep_Loc();
-            //DepartmentBranch_Combobox.DataSource = dt;
-            //DepartmentBranch_Combobox.DisplayMember = "val";
+            dt = controllerObj.SelectDepartments();
 
-            //DepartmentID = dt.Rows[0][1].ToString();
-            //dt2 = controllerObj.SelectCourse(BranchID);
+            Department_Combobox.DataSource = dt;
+            Department_Combobox.DisplayMember= "DepartmentName";
+
+            
+            
+
+            DepartmentID = dt.Rows[0][0].ToString();
+            
+            dt2 = controllerObj.SelectLocations(DepartmentID);
 
 
-            //Course_Combobox.DataSource = dt2;
-            //Course_Combobox.DisplayMember = "CourseName";
-            //BranchID = dt2.Rows[0][1].ToString();
+            Branch_Combobox.DataSource = dt2;
+            Branch_Combobox.DisplayMember = "LocationName";
+            BranchID = dt2.Rows[0][0].ToString();
 
         }
+
+        
+        private void Department_Combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DepartmentID = dt.Rows[(int)Department_Combobox.SelectedIndex][0].ToString();
+
+            dt2 = controllerObj.SelectLocations(DepartmentID);
+            Branch_Combobox.DisplayMember = "LocationName";
+            BranchID = dt2.Rows[0][0].ToString();
+        }
+
+        private void Branch_Combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BranchID = dt2.Rows[(int)Branch_Combobox.SelectedIndex][0].ToString();
+        }
+
 
         private void ViewCandI_Button_Click(object sender, EventArgs e)
         {
+            DataTable dt3 = new DataTable();
 
+            Courses_Instructors c = new Courses_Instructors(dt3);
+            c.Show();
         }
+
     }
 }
