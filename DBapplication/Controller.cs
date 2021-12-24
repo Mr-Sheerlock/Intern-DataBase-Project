@@ -56,7 +56,7 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(query);
         }
 
-        public int GetLastID()
+        public int GetLastUserID()
         {
             string query = "Select Max(ID) from Accounts" + ";";
 
@@ -176,6 +176,41 @@ namespace DBapplication
 
         #region Department
 
+
+        public int GetLastDepNumber()
+        {
+            string query = "Select Max(Department_Number) from Department" + ";";
+
+            //in case there are no accounts in the DB 
+            if (dbMan.ExecuteScalar(query) == DBNull.Value)
+            {
+                return 0;
+            }
+
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
+        public int insertDepartment(int id, string name)
+        {
+            string query = "Insert into Department Values( " + id + ", '" + name + "');";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int deleteDepartment(int id)
+        {
+            string query = "delete from Department where Department_Number =  " + id + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int updateDepartment(int id ,string name)
+        {
+            string query = "Update Department Set DepartmentName = '" + name +  "' where Department_Number =  " + id + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public int CheckifDepNameTaken(string name)
+        {
+            string query = "Select Count(1) from Department where DepartmentName = '" + name + "';";
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
         public DataTable SelectDepartmentNamesandNos()
         {
             string query = "Select DepartmentName, Department_Number from department;";

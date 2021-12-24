@@ -14,7 +14,9 @@ namespace DBapplication.Admin
     {
 
         //USEFUL FUNCTIONS  ADDED BY OZER 
-
+        Controller controllerObj;
+        bool canRefresh;
+        DataRow currentDepInfo;
         public void HideAllPanels()
         {
             foreach (Panel p in this.Controls.OfType<Panel>())
@@ -43,7 +45,10 @@ namespace DBapplication.Admin
         public Departments()
         {
             InitializeComponent();
+            controllerObj = new Controller();
             HideAllPanels();
+            
+
         }
         private void DepOpMenu_cmbox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -59,42 +64,89 @@ namespace DBapplication.Admin
                 HideAllPanels();
                 Delete_Department_Panel.Visible = true;
                 Delete_Department_Panel.Dock = DockStyle.Left;
-                 
+                DelDep_cmbox.DataSource = controllerObj.SelectDepartmentNamesandNos();
+                DelDep_cmbox.DisplayMember = "DepartmentName";
+                DelDep_cmbox.SelectedIndex = -1;
+
+            }
+            else
+            {
+                HideAllPanels();
+                Edit_Department_Panel.Visible = true;
+                Edit_Department_Panel.Dock = DockStyle.Left;
+                canRefresh = false;
+                EditDep_cmbox.DataSource = controllerObj.SelectDepartmentNamesandNos();
+                EditDep_cmbox.DisplayMember = "DepartmentName";
+                EditDep_cmbox.SelectedIndex = -1;
+                canRefresh = true;
             }
         }
         private void AddDepartment_BTN_Click(object sender, EventArgs e)
         {
-            short parsed;
             if (string.IsNullOrEmpty(dname_txtbox.Text))
             {
                 MessageBox.Show("Department Name Cannot be Empty");
                 return;
             }
-            if (string.IsNullOrEmpty(did_txtbox.Text))
+            if (controllerObj.CheckifDepNameTaken(dname_txtbox.Text) == 1)
             {
-                MessageBox.Show("Department ID Cannot be Empty");
+                MessageBox.Show("A department with that name already exists");
                 return;
             }
-            if (!Int16.TryParse(did_txtbox.Text, out parsed) || parsed<0)
-            {
-                MessageBox.Show("Department ID Cannot be Letters or negative numbers ");
-                return;
-            }
-            //TODO : IMPLEMENT THE ADD DEPARTMENT FUNCTION 
+            int id = controllerObj.GetLastDepNumber() + 1;
+            controllerObj.insertDepartment(id, dname_txtbox.Text);
+
             dname_txtbox.Clear();
-            did_txtbox.Clear();
+
         }
 
         private void DeleteDepartment_BTN_Click(object sender, EventArgs e)
         {
-            if (DelDep_cmbox.SelectedIndex < 0)
+            if (DelDep_cmbox.SelectedIndex == -1)
             {
-                MessageBox.Show("Choose a valid Department to be Deleted ");
+                MessageBox.Show("Choose a Department to be Deleted ");
                 return;
             }
 
-            //TODO : IMPLEMENT DEPARTMENT DELETION 
+            controllerObj.deleteDepartment(Int32.Parse((((DataTable)DelDep_cmbox.DataSource).Rows[DelDep_cmbox.SelectedIndex][1].ToString())));
+
+            DelDep_cmbox.DataSource = controllerObj.SelectDepartmentNamesandNos();
+            DelDep_cmbox.DisplayMember = "DepartmentName";
             DelDep_cmbox.SelectedIndex = -1;
+        }
+
+        private void EditDepartment_BTN_Click(object sender, EventArgs e)
+        {
+            if (controllerObj.CheckifDepNameTaken(EditDep_cmbox.Text) == 1)
+            {
+                MessageBox.Show("A department with that name already exists");
+                return;
+            }
+
+            controllerObj.updateDepartment(Int32.Parse(currentDepInfo[1].ToString()), EditDep_cmbox.Text);
+
+
+
+            canRefresh = false;
+            EditDep_cmbox.DataSource = controllerObj.SelectDepartmentNamesandNos();
+            EditDep_cmbox.DisplayMember = "DepartmentName";
+            EditDep_cmbox.SelectedIndex = -1;
+            canRefresh = true;
+            EditDepartment_BTN.Visible = false;
+        }
+
+        private void DelDep_cmbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void EditDep_cmbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (canRefresh && EditDep_cmbox.SelectedIndex != -1)
+            {
+                EditDepartment_BTN.Visible = true;
+                currentDepInfo = controllerObj.SelectDepartmentNamesandNos().Rows[EditDep_cmbox.SelectedIndex];
+            }
         }
     }
 }

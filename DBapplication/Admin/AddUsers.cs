@@ -189,7 +189,7 @@ namespace DBapplication.Admin
             if (TelephoneNum_textbox.Text.Length != 11 || !TelephoneNum_textbox.Text.StartsWith("01")) { MessageBox.Show("Invalid Telephone Number"); return; }
             if (controllerObj.CheckifUserTaken(userName_textBox.Text) == 1){ MessageBox.Show("User Name Already Taken!"); return; }
 
-            int lastID = controllerObj.GetLastID();
+            int lastID = controllerObj.GetLastUserID();
             string key = "b14ca5898a4e4133bbce2ea2315a1916";
             string pas = EncryptionClass.EncryptString(key, Pass_textBox.Text.ToString());
             string depnum = "";

@@ -22,7 +22,7 @@ namespace DBapplication
             InitializeComponent();
             controllerObj = new Controller();
 
-            lastID = controllerObj.GetLastID();
+            lastID = controllerObj.GetLastUserID();
         }
 
 

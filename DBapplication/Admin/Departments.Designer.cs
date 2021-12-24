@@ -37,31 +37,36 @@ namespace DBapplication.Admin
             this.DepOpMenu_cmbox = new System.Windows.Forms.ComboBox();
             this.Add_Department_Panel = new System.Windows.Forms.Panel();
             this.AddDepartment_BTN = new System.Windows.Forms.Button();
-            this.did_txtbox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dname_txtbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.Edit_Department_Panel = new System.Windows.Forms.Panel();
+            this.EditDepartment_BTN = new System.Windows.Forms.Button();
+            this.EditDep_cmbox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.Delete_Department_Panel.SuspendLayout();
             this.Add_Department_Panel.SuspendLayout();
+            this.Edit_Department_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 19);
+            this.label6.Location = new System.Drawing.Point(2, 15);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 17);
+            this.label6.Size = new System.Drawing.Size(99, 13);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Department ID : ";
+            this.label6.Text = "Department Name: ";
             // 
             // DeleteDepartment_BTN
             // 
             this.DeleteDepartment_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.DeleteDepartment_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteDepartment_BTN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DeleteDepartment_BTN.Location = new System.Drawing.Point(53, 110);
+            this.DeleteDepartment_BTN.Location = new System.Drawing.Point(20, 48);
+            this.DeleteDepartment_BTN.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteDepartment_BTN.Name = "DeleteDepartment_BTN";
-            this.DeleteDepartment_BTN.Size = new System.Drawing.Size(223, 49);
+            this.DeleteDepartment_BTN.Size = new System.Drawing.Size(167, 40);
             this.DeleteDepartment_BTN.TabIndex = 10;
             this.DeleteDepartment_BTN.Text = "Delete";
             this.DeleteDepartment_BTN.UseVisualStyleBackColor = true;
@@ -72,9 +77,10 @@ namespace DBapplication.Admin
             this.Delete_Department_Panel.Controls.Add(this.DeleteDepartment_BTN);
             this.Delete_Department_Panel.Controls.Add(this.DelDep_cmbox);
             this.Delete_Department_Panel.Controls.Add(this.label6);
-            this.Delete_Department_Panel.Location = new System.Drawing.Point(12, 287);
+            this.Delete_Department_Panel.Location = new System.Drawing.Point(11, 183);
+            this.Delete_Department_Panel.Margin = new System.Windows.Forms.Padding(2);
             this.Delete_Department_Panel.Name = "Delete_Department_Panel";
-            this.Delete_Department_Panel.Size = new System.Drawing.Size(287, 162);
+            this.Delete_Department_Panel.Size = new System.Drawing.Size(215, 111);
             this.Delete_Department_Panel.TabIndex = 7;
             // 
             // DelDep_cmbox
@@ -85,17 +91,20 @@ namespace DBapplication.Admin
             "2",
             "3",
             "4"});
-            this.DelDep_cmbox.Location = new System.Drawing.Point(112, 16);
+            this.DelDep_cmbox.Location = new System.Drawing.Point(105, 12);
+            this.DelDep_cmbox.Margin = new System.Windows.Forms.Padding(2);
             this.DelDep_cmbox.Name = "DelDep_cmbox";
-            this.DelDep_cmbox.Size = new System.Drawing.Size(65, 24);
+            this.DelDep_cmbox.Size = new System.Drawing.Size(82, 21);
             this.DelDep_cmbox.TabIndex = 1;
+            this.DelDep_cmbox.SelectedIndexChanged += new System.EventHandler(this.DelDep_cmbox_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(334, 15);
+            this.label1.Location = new System.Drawing.Point(228, 38);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 17);
+            this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Choose an operation: ";
             // 
@@ -104,23 +113,24 @@ namespace DBapplication.Admin
             this.DepOpMenu_cmbox.FormattingEnabled = true;
             this.DepOpMenu_cmbox.Items.AddRange(new object[] {
             "Add Department ",
-            "Delete Department "});
-            this.DepOpMenu_cmbox.Location = new System.Drawing.Point(488, 12);
+            "Delete Department",
+            "Edit Department"});
+            this.DepOpMenu_cmbox.Location = new System.Drawing.Point(344, 36);
+            this.DepOpMenu_cmbox.Margin = new System.Windows.Forms.Padding(2);
             this.DepOpMenu_cmbox.Name = "DepOpMenu_cmbox";
-            this.DepOpMenu_cmbox.Size = new System.Drawing.Size(197, 24);
+            this.DepOpMenu_cmbox.Size = new System.Drawing.Size(149, 21);
             this.DepOpMenu_cmbox.TabIndex = 4;
             this.DepOpMenu_cmbox.SelectedIndexChanged += new System.EventHandler(this.DepOpMenu_cmbox_SelectedIndexChanged);
             // 
             // Add_Department_Panel
             // 
             this.Add_Department_Panel.Controls.Add(this.AddDepartment_BTN);
-            this.Add_Department_Panel.Controls.Add(this.did_txtbox);
-            this.Add_Department_Panel.Controls.Add(this.label3);
             this.Add_Department_Panel.Controls.Add(this.dname_txtbox);
             this.Add_Department_Panel.Controls.Add(this.label2);
-            this.Add_Department_Panel.Location = new System.Drawing.Point(12, 90);
+            this.Add_Department_Panel.Location = new System.Drawing.Point(11, 23);
+            this.Add_Department_Panel.Margin = new System.Windows.Forms.Padding(2);
             this.Add_Department_Panel.Name = "Add_Department_Panel";
-            this.Add_Department_Panel.Size = new System.Drawing.Size(284, 177);
+            this.Add_Department_Panel.Size = new System.Drawing.Size(213, 112);
             this.Add_Department_Panel.TabIndex = 8;
             // 
             // AddDepartment_BTN
@@ -128,61 +138,103 @@ namespace DBapplication.Admin
             this.AddDepartment_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddDepartment_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddDepartment_BTN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AddDepartment_BTN.Location = new System.Drawing.Point(21, 113);
+            this.AddDepartment_BTN.Location = new System.Drawing.Point(21, 54);
+            this.AddDepartment_BTN.Margin = new System.Windows.Forms.Padding(2);
             this.AddDepartment_BTN.Name = "AddDepartment_BTN";
-            this.AddDepartment_BTN.Size = new System.Drawing.Size(222, 49);
+            this.AddDepartment_BTN.Size = new System.Drawing.Size(166, 40);
             this.AddDepartment_BTN.TabIndex = 9;
             this.AddDepartment_BTN.Text = "Add";
             this.AddDepartment_BTN.UseVisualStyleBackColor = true;
             this.AddDepartment_BTN.Click += new System.EventHandler(this.AddDepartment_BTN_Click);
             // 
-            // did_txtbox
-            // 
-            this.did_txtbox.Location = new System.Drawing.Point(144, 38);
-            this.did_txtbox.Name = "did_txtbox";
-            this.did_txtbox.Size = new System.Drawing.Size(46, 22);
-            this.did_txtbox.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Department ID:";
-            // 
             // dname_txtbox
             // 
-            this.dname_txtbox.Location = new System.Drawing.Point(144, 10);
+            this.dname_txtbox.Location = new System.Drawing.Point(108, 8);
+            this.dname_txtbox.Margin = new System.Windows.Forms.Padding(2);
             this.dname_txtbox.Name = "dname_txtbox";
-            this.dname_txtbox.Size = new System.Drawing.Size(127, 22);
+            this.dname_txtbox.Size = new System.Drawing.Size(96, 20);
             this.dname_txtbox.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 13);
+            this.label2.Location = new System.Drawing.Point(2, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 17);
+            this.label2.Size = new System.Drawing.Size(102, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Department Name : ";
             // 
+            // Edit_Department_Panel
+            // 
+            this.Edit_Department_Panel.Controls.Add(this.EditDepartment_BTN);
+            this.Edit_Department_Panel.Controls.Add(this.EditDep_cmbox);
+            this.Edit_Department_Panel.Controls.Add(this.label3);
+            this.Edit_Department_Panel.Location = new System.Drawing.Point(249, 183);
+            this.Edit_Department_Panel.Margin = new System.Windows.Forms.Padding(2);
+            this.Edit_Department_Panel.Name = "Edit_Department_Panel";
+            this.Edit_Department_Panel.Size = new System.Drawing.Size(215, 111);
+            this.Edit_Department_Panel.TabIndex = 9;
+            // 
+            // EditDepartment_BTN
+            // 
+            this.EditDepartment_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EditDepartment_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditDepartment_BTN.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.EditDepartment_BTN.Location = new System.Drawing.Point(20, 48);
+            this.EditDepartment_BTN.Margin = new System.Windows.Forms.Padding(2);
+            this.EditDepartment_BTN.Name = "EditDepartment_BTN";
+            this.EditDepartment_BTN.Size = new System.Drawing.Size(167, 40);
+            this.EditDepartment_BTN.TabIndex = 10;
+            this.EditDepartment_BTN.Text = "Edit";
+            this.EditDepartment_BTN.UseVisualStyleBackColor = true;
+            this.EditDepartment_BTN.Visible = false;
+            this.EditDepartment_BTN.Click += new System.EventHandler(this.EditDepartment_BTN_Click);
+            // 
+            // EditDep_cmbox
+            // 
+            this.EditDep_cmbox.FormattingEnabled = true;
+            this.EditDep_cmbox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.EditDep_cmbox.Location = new System.Drawing.Point(105, 12);
+            this.EditDep_cmbox.Margin = new System.Windows.Forms.Padding(2);
+            this.EditDep_cmbox.Name = "EditDep_cmbox";
+            this.EditDep_cmbox.Size = new System.Drawing.Size(82, 21);
+            this.EditDep_cmbox.TabIndex = 1;
+            this.EditDep_cmbox.SelectedIndexChanged += new System.EventHandler(this.EditDep_cmbox_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(2, 15);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Department Name: ";
+            // 
             // Departments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1021, 566);
+            this.ClientSize = new System.Drawing.Size(504, 143);
+            this.Controls.Add(this.Edit_Department_Panel);
             this.Controls.Add(this.Add_Department_Panel);
             this.Controls.Add(this.Delete_Department_Panel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DepOpMenu_cmbox);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Departments";
             this.Text = "Departments";
             this.Delete_Department_Panel.ResumeLayout(false);
             this.Delete_Department_Panel.PerformLayout();
             this.Add_Department_Panel.ResumeLayout(false);
             this.Add_Department_Panel.PerformLayout();
+            this.Edit_Department_Panel.ResumeLayout(false);
+            this.Edit_Department_Panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,9 +249,11 @@ namespace DBapplication.Admin
         private System.Windows.Forms.ComboBox DepOpMenu_cmbox;
         private System.Windows.Forms.Panel Add_Department_Panel;
         private System.Windows.Forms.Button AddDepartment_BTN;
-        private System.Windows.Forms.TextBox did_txtbox;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox dname_txtbox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel Edit_Department_Panel;
+        private System.Windows.Forms.Button EditDepartment_BTN;
+        private System.Windows.Forms.ComboBox EditDep_cmbox;
+        private System.Windows.Forms.Label label3;
     }
 }
