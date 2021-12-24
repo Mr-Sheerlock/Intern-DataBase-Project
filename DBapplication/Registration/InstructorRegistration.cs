@@ -13,8 +13,12 @@ namespace DBapplication
     public partial class InstructorRegistration : Form
     {
         Controller controllerObj;
+        DataTable dt;
         int lastID;  //Represents the last ID in the DB
         bool bypass = false;
+
+        string DepNo;
+
         public InstructorRegistration()
         {
             lastID = 0;  //General Initialization
@@ -23,14 +27,18 @@ namespace DBapplication
 
             lastID = controllerObj.GetLastID();
 
-            DataTable dt = controllerObj.SelectDepNos();
+            dt = controllerObj.SelectDep();
             Departments_Combobox.DataSource = dt;
-            Departments_Combobox.DisplayMember= "Department_Number";
+            Departments_Combobox.DisplayMember= "departmentName";
             if (dt == null)
             {
                 bypass= true;
             }
-
+            if (dt != null)
+            {
+                DepNo = dt.Rows[0][1].ToString();
+            }
+            else { DepNo = ""; }
         }
 
         private void Register_Button_Click(object sender, EventArgs e)
@@ -96,7 +104,7 @@ namespace DBapplication
                                     //Encrypted Version
                                     string key = "b14ca5898a4e4133bbce2ea2315a1916";
                                     string pas = EncryptionClass.EncryptString(key, Password_Textbox.Text.ToString());
-                                    int ret = controllerObj.InsertAccount(lastID + 1, User_Name_Textbox.Text, pas, Fname_Textbox.Text, Lname_Textbox.Text, (char)(Job), Convert.ToInt16(Age_Textbox.Text), Gender, Telephone_Number_Textbox.Text, Departments_Combobox.Text);
+                                    int ret = controllerObj.InsertAccount(lastID + 1, User_Name_Textbox.Text, pas, Fname_Textbox.Text, Lname_Textbox.Text, (char)(Job), Convert.ToInt16(Age_Textbox.Text), Gender, Telephone_Number_Textbox.Text, DepNo);
 
                                     if (ret != 0)
                                     {
@@ -111,6 +119,11 @@ namespace DBapplication
                     }
                 }
             }
+        }
+
+        private void Departments_Combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DepNo = dt.Rows[Departments_Combobox.SelectedIndex][1].ToString();
         }
     }
 }

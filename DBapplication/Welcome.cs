@@ -99,7 +99,6 @@ namespace DBapplication
 
         private void Register_Button_Click(object sender, EventArgs e)
         {
-            //Here we need to decide how to make other users register and if we will redirect them to a tab each
             RegistrationChoice r= new RegistrationChoice();
             r.Show();
         }

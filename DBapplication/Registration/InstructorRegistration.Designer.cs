@@ -175,6 +175,7 @@
             this.Departments_Combobox.Name = "Departments_Combobox";
             this.Departments_Combobox.Size = new System.Drawing.Size(100, 21);
             this.Departments_Combobox.TabIndex = 32;
+            this.Departments_Combobox.SelectedIndexChanged += new System.EventHandler(this.Departments_Combobox_SelectedIndexChanged);
             // 
             // label8
             // 
