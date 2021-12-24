@@ -55,7 +55,7 @@ namespace DBapplication
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
        
-        public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, string TelephoneNumber ,string Dep_no="")
+        public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, char status ,string TelephoneNumber ,string Dep_no="")
         {
             string query;
             if (Dep_no == "") {
@@ -65,14 +65,14 @@ namespace DBapplication
                     query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,TelephoneNumber)" +
                                       "Values ('" + ID + "','" + UserName + "','" + Password +
                                       "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                      ",'" + Gender + "'," + '0' + ",'" + TelephoneNumber + "');";
+                                      ",'" + Gender + "','" + status + "','" + TelephoneNumber + "');";
                 }
                 else
-                { //Applicant
+                { //Applicant or Admin
                     query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,TelephoneNumber)" +
                                 "Values ('" + ID + "','" + UserName + "','" + Password +
                                 "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                ",'" + Gender + "'," + '1' + ",'" + TelephoneNumber + "');";
+                                ",'" + Gender + "','" + status + "','" + TelephoneNumber + "');";
 
                 }
 
@@ -82,7 +82,7 @@ namespace DBapplication
                 query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,Dep_No,TelephoneNumber)" +
                                 "Values ('" + ID + "','" + UserName + "','" + Password +
                                 "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                ",'" + Gender + "'," + '0' + ",'" + Dep_no + "','" + TelephoneNumber + "');";
+                                ",'" + Gender + "','" + status + "','" + Dep_no + "','" + TelephoneNumber + "');";
             }
 
             return dbMan.ExecuteNonQuery(query);
@@ -124,9 +124,15 @@ namespace DBapplication
 
 
         #region Department
+
         public DataTable SelectDepNos()
         {
-            string query = "Select Department_Number from department;";
+            string query = "Select Department_Number,Dep from department;";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable SelectDepartmentNamesandNos()
+        {
+            string query = "Select DepartmentName, Department_Number from department;";
             return dbMan.ExecuteReader(query);
         }
         public DataTable SelectDep_Loc()
@@ -363,5 +369,92 @@ namespace DBapplication
 
         #endregion
 
+
+        #region Statistics
+        //OZER'S PART BEGINS HERE 
+        //PRIVATE PROPERTY 
+        // GET DEPARTMENT NAMES 
+        public DataTable SelectDepartmentNames()
+        {
+            string query = "select DepartmentName from Department";
+            return dbMan.ExecuteReader(query);
+        }
+        //GET LOCATION NAMES 
+        public DataTable SelectLocationNames()
+        {
+            string query = "select Distinct LocationName from Locations";
+            return dbMan.ExecuteReader(query);
+        }
+        //GET COURSES NAMES 
+        public DataTable SelectCourseID()
+        {
+
+            string query = "select CourseID from Course WHERE Active_Status=1";
+            return dbMan.ExecuteReader(query);
+        }
+        //GET BRANCH IDS
+        public DataTable SelectBranchIDs()
+        {
+            string query = "Select Branch_ID from Locations";
+            return dbMan.ExecuteReader(query);
+        }
+        //Number of Applicants For Each Department
+        public DataTable STATS_APPLICANTS_DEPARTMENTS()
+        {
+            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 4 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
+            return dbMan.ExecuteReader(query);
+        }
+        //Number of Interns for each Department
+        public DataTable STATS_INTERNS_DEPARTMENTS()
+        {
+            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 3 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
+            return dbMan.ExecuteReader(query);
+        }
+        //Number of Instructors for each Department
+        public DataTable STATS_INSTRUCTS_DEPARTMENTS()
+        {
+            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 2 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
+            return dbMan.ExecuteReader(query);
+        }
+        //Number of Dropped Applicants in All Courses year Y
+        public DataTable STATS_DROPPED_COURSES(int year)
+        {
+            string query = "Select CourseName , Count(Grade) from Takes , Course Where Takes.CourseID = Course.CourseID AND  Year_of_Intern= " + year + "AND Grade='W' Group By CourseName";
+            return dbMan.ExecuteReader(query);
+        }
+        //Number of Grades in Courses in Year Y in a given department D
+        public DataTable STATS_GRADES_PER_DEPARTMENT_COURSES(string Departmentname, int year)
+        {
+            string query = "Select CourseName , Grade , Count(Grade) From Course,Takes , department Where Course.CourseID = Takes.CourseID AND Year_of_Intern =" + year + " AND Course.DepNo =Department_Number AND DepartmentName = '" + Departmentname + " ' Group By CourseName , Grade Having Grade<>'W' Order By CourseName";
+            return dbMan.ExecuteReader(query);
+        }
+        //Available Courses X For Department D and Their Location L
+        public DataTable STATS_COURSES_PER_DEPARTMENT(string Departmentname)
+        {
+            string query = "Select CourseName , LocationName  From Course , Locations ,department Where  Active_Status=1 AND DepNo = Department_Number AND BranchNo = Branch_ID AND DepartmentName='" + Departmentname + "'";
+            return dbMan.ExecuteReader(query);
+        }
+        //Search for locations L for Course C 
+        public DataTable STATS_LOCATION_PER_COURSE(int cid)
+        {
+            string query = "Select CourseName , LocationName From Course , Locations Where CourseID=" + cid + "AND Active_Status=1 AND BranchNo=Branch_ID";
+            return dbMan.ExecuteReader(query);
+        }
+        public DataTable STATS_COURSE_LECTURES_DATEANDTIMES(int cid)
+        {
+            string query = "Select LectureNo , LectureDay , LocationName From Lectures,Locations,Course WHERE  Course.CourseID =" + cid + " AND LocationID=Branch_ID AND Lectures.Course_ID=Course.CourseID AND Active_Status=1";
+            return dbMan.ExecuteReader(query);
+        }
+
+        //Courses and Their Instructors Data 
+
+
+        //Count For Grade G  in Course C in Year Y 
+        public DataTable STATS_COURSE_YEAR_GRADE(int cid, int year, string grade)
+        {
+            string query = "Select Count(Grade) From Takes, Course Where Course.CourseID=" + cid + " AND Year_of_Intern=" + year + " AND Takes.CourseID=Course.CourseID AND Grade='" + grade + "'";
+            return dbMan.ExecuteReader(query);
+        }
+        #endregion
     }
 }

@@ -16,6 +16,8 @@ namespace DBapplication.Admin
     {
 
         //USEFUL FUNCTIONS  ADDED BY OZER 
+        int jobCode;
+        Controller controllerObj;
 
         public void HideAllPanels()
         {
@@ -42,18 +44,25 @@ namespace DBapplication.Admin
             // which will throw if Value isn't actually a string object.
             //return Value == null || Value == DBNull.Value ? "" : (string)Value;
         }
-        public AddRemoveUsers(int usertype,string operation)
+        public AddRemoveUsers(int jobCode,string operation)
         {
             InitializeComponent();
-            
+
+            this.jobCode = jobCode;
+            controllerObj = new Controller();
+            DepName_textbox.DataSource = controllerObj.SelectDepartmentNamesandNos();
+            DepName_textbox.DisplayMember = "DepartmentName";
+
             HideAllPanels();
             BacktoUsers_BTN.Dock = (DockStyle.Right & DockStyle.Bottom);
-            if (usertype==1 && operation == "add" || usertype == 2 && operation == "add" || usertype == 3 && operation == "add") { HideAllPanels(); AddUsers_panel.Visible = true; AddUsers_panel.Dock = DockStyle.Left; }
-            if (usertype==4 && operation == "add") { HideAllPanels(); AddApplicant_panel.Visible = true; AddApplicant_panel.Dock = DockStyle.Left; }
-            if (usertype==1 && operation == "remove") { HideAllPanels(); RemoveAdmin_panel.Visible = true; RemoveAdmin_panel.Dock = DockStyle.Left; }
-            if (usertype==2 && operation == "remove") { HideAllPanels(); RemoveInstructor_panel.Visible = true; RemoveInstructor_panel.Dock = DockStyle.Left; }
-            if (usertype==3 && operation == "remove") { HideAllPanels(); RemoveIntern_panel.Visible = true; RemoveIntern_panel.Dock = DockStyle.Left; }
-            if (usertype==4 && operation == "remove") { HideAllPanels(); RemoveApplicant_panel.Visible = true; RemoveApplicant_panel.Dock = DockStyle.Left; }
+            if (jobCode == 1 && operation == "add") { HideAllPanels(); AddUsers_panel.Visible = true; AddUsers_panel.Dock = DockStyle.Left; groupBox2.Enabled = groupBox2.Visible = label15.Visible = label17.Visible = DepName_textbox.Visible = DepName_textbox.Enabled = false;   }
+            if (jobCode == 2 && operation == "add") { HideAllPanels(); AddUsers_panel.Visible = true; AddUsers_panel.Dock = DockStyle.Left; groupBox2.Enabled = groupBox2.Visible = label15.Visible = false; }
+            if (jobCode == 3 && operation == "add") { HideAllPanels(); AddUsers_panel.Visible = true; AddUsers_panel.Dock = DockStyle.Left; }
+            if (jobCode == 4 && operation == "add") { HideAllPanels(); AddApplicant_panel.Visible = true; AddApplicant_panel.Dock = DockStyle.Left; }
+            if (jobCode == 1 && operation == "remove") { HideAllPanels(); RemoveAdmin_panel.Visible = true; RemoveAdmin_panel.Dock = DockStyle.Left; }
+            if (jobCode == 2 && operation == "remove") { HideAllPanels(); RemoveInstructor_panel.Visible = true; RemoveInstructor_panel.Dock = DockStyle.Left; }
+            if (jobCode == 3 && operation == "remove") { HideAllPanels(); RemoveIntern_panel.Visible = true; RemoveIntern_panel.Dock = DockStyle.Left; }
+            if (jobCode == 4 && operation == "remove") { HideAllPanels(); RemoveApplicant_panel.Visible = true; RemoveApplicant_panel.Dock = DockStyle.Left; }
             //TODO : FILL REMOVE COMBOBOXES WITH DATA FROM DATABASE 
         }
 
@@ -153,7 +162,8 @@ namespace DBapplication.Admin
         private void AddUsers_BTN_Click(object sender, EventArgs e)
         {
             //BEHOLD THE TON OF VERIFICATIONS AND FUNCTIONS DEPENDING ON THEM 
-            //OZER's and John's assumption : NO NULLS 
+            //OZER's and John's assumption : NO NULLS
+            char gender, status = '1';
             foreach (var control in AddUsers_panel.Controls.OfType<TextBox>())
             {
                 if (string.IsNullOrEmpty(control.Text))
@@ -170,16 +180,23 @@ namespace DBapplication.Admin
                     return;
                 }
             }
-            if (Male_rbtn.Checked==false && Female_rbtn.Checked == false) { MessageBox.Show("Choose Gender"); return; }
-            if (Active_rbtn.Checked==false && pending_rbtn.Checked == false) { MessageBox.Show("Choose Status"); return; }
+            if (Male_rbtn.Checked == false && Female_rbtn.Checked == false) { MessageBox.Show("Choose Gender"); return; }
+            else { gender = (Male_rbtn.Checked == true ?'M' : 'F'); }
+            if (groupBox2.Enabled && Active_rbtn.Checked == false && pending_rbtn.Checked == false) { MessageBox.Show("Choose Status"); return; }
+            else if (groupBox2.Enabled) { status = (Active_rbtn.Checked == true ? '1' : '0'); }
             short parsed;
             long telephonenumbercheck;
-            if (Int16.TryParse(userName_textBox.Text,out parsed) || Int16.TryParse(Minit_textBox.Text, out parsed) || Int16.TryParse(Lname_textBox.Text, out parsed) || Int16.TryParse(Fname_textBox.Text, out parsed)) { MessageBox.Show("Username cannot be Numebrs allowed in username"); return; }
-            if (!Int16.TryParse(userID_textBox.Text,out parsed) || parsed < 0) { MessageBox.Show("No Negative Numebrs or letters allowed in ID"); return; }
+            if (Int16.TryParse(userName_textBox.Text,out parsed) || Int16.TryParse(Lname_textBox.Text, out parsed) || Int16.TryParse(Fname_textBox.Text, out parsed)) { MessageBox.Show("Username cannot be Numebrs allowed in username"); return; }
             if (!Int16.TryParse(Age_textbox.Text,out parsed) || parsed < 0 || parsed < 19 || parsed > 70 ) { MessageBox.Show("Age value is not an accepted value"); return; }
             if (!Int64.TryParse(TelephoneNum_textbox.Text,out telephonenumbercheck) || telephonenumbercheck < 0) { MessageBox.Show("No Negative Numebrs or letters allowed in Telephone Number"); return; }
             if (TelephoneNum_textbox.Text.Length != 11 || !TelephoneNum_textbox.Text.StartsWith("01")) { MessageBox.Show("Invalid Telephone Number"); return; }
-            //TODO IMPLEMENT THE FUNCTION OF ADDITION 
+
+            int lastID = controllerObj.GetLastID();
+            string key = "b14ca5898a4e4133bbce2ea2315a1916";
+            string pas = EncryptionClass.EncryptString(key, Pass_textBox.Text.ToString());
+
+            controllerObj.InsertAccount(lastID+1, userName_textBox.Text, pas, Fname_textBox.Text,Lname_textBox.Text, Char.Parse(jobCode.ToString()),Int16.Parse(Age_textbox.Text),gender, status,TelephoneNum_textbox.Text,((DataTable)DepName_textbox.DataSource).Rows[DepName_textbox.SelectedIndex][1].ToString());
+
             foreach (var control in AddUsers_panel.Controls.OfType<TextBox>())
             {
                 control.Clear();
@@ -207,6 +224,39 @@ namespace DBapplication.Admin
             {
                 //EXECUTE ACCEPT 
             }
+        }
+
+        private void JBcode_cmbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+                
+
+
+        }
+
+        private void Active_rbtn_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DepNum_textbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pass_textBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
