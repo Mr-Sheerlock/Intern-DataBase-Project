@@ -172,13 +172,10 @@ namespace DBapplication.Admin
                     return;
                 }
             }
-            foreach (var control in AddUsers_panel.Controls.OfType<ComboBox>())
+            if (DepName_textbox.SelectedIndex == -1 && jobCode != 1) 
             {
-                if (control.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Please Fill in all fields from comboboxes");
-                    return;
-                }
+                 MessageBox.Show("Please choose a department");
+                 return;
             }
             if (Male_rbtn.Checked == false && Female_rbtn.Checked == false) { MessageBox.Show("Choose Gender"); return; }
             else { gender = (Male_rbtn.Checked == true ?'M' : 'F'); }
@@ -190,12 +187,18 @@ namespace DBapplication.Admin
             if (!Int16.TryParse(Age_textbox.Text,out parsed) || parsed < 0 || parsed < 19 || parsed > 70 ) { MessageBox.Show("Age value is not an accepted value"); return; }
             if (!Int64.TryParse(TelephoneNum_textbox.Text,out telephonenumbercheck) || telephonenumbercheck < 0) { MessageBox.Show("No Negative Numebrs or letters allowed in Telephone Number"); return; }
             if (TelephoneNum_textbox.Text.Length != 11 || !TelephoneNum_textbox.Text.StartsWith("01")) { MessageBox.Show("Invalid Telephone Number"); return; }
+            if (controllerObj.CheckifUserTaken(userName_textBox.Text) == 1){ MessageBox.Show("User Name Already Taken!"); return; }
 
             int lastID = controllerObj.GetLastID();
             string key = "b14ca5898a4e4133bbce2ea2315a1916";
             string pas = EncryptionClass.EncryptString(key, Pass_textBox.Text.ToString());
+            string depnum = "";
+            if (jobCode != 1)
+            {
+                depnum = ((DataTable)DepName_textbox.DataSource).Rows[DepName_textbox.SelectedIndex][1].ToString();
+            }
 
-            controllerObj.InsertAccount(lastID + 1, userName_textBox.Text, pas, Fname_textBox.Text, Lname_textBox.Text, Char.Parse(jobCode.ToString()), Int16.Parse(Age_textbox.Text), gender, status, TelephoneNum_textbox.Text, ((DataTable)DepName_textbox.DataSource).Rows[DepName_textbox.SelectedIndex][1].ToString());
+            controllerObj.InsertAccount(lastID + 1, userName_textBox.Text, pas, Fname_textBox.Text, Lname_textBox.Text, Char.Parse(jobCode.ToString()), Int16.Parse(Age_textbox.Text), gender, status, TelephoneNum_textbox.Text, depnum);
 
             foreach (var control in AddUsers_panel.Controls.OfType<TextBox>())
             {

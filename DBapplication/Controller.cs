@@ -31,6 +31,14 @@ namespace DBapplication
             string query = "Select * from Accounts;";
             return dbMan.ExecuteReader(query);
         }
+
+        public string SelectUsername(int id)
+        {
+            string query = "Select UserName from Accounts where ID =  " + id + ";";
+            return (dbMan.ExecuteReader(query)).Rows[0][0].ToString();
+        }
+
+
         public int CheckifUserTaken(string UserName)
         {
             string query = "Select Count(1) from Accounts where UserName = '" + UserName + "';";
