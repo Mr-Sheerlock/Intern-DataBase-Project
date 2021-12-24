@@ -185,7 +185,7 @@ namespace DBapplication.Admin
                 HideAllPanels();
                 depid_panel.Visible = true;
                 depid_panel.Dock = DockStyle.Left;
-                DepID_cmbox.DataSource = ctrlobj.SelectDepNos();
+                DepID_cmbox.DataSource = ctrlobj.SelectDepartmentNamesandNos();
                 DepID_cmbox.DisplayMember = "Department_Number";
                 BranchID_cmbox.DataSource = ctrlobj.SelectBranchIDs();
                 BranchID_cmbox.DisplayMember = "Branch_ID";

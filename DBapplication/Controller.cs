@@ -125,11 +125,6 @@ namespace DBapplication
 
         #region Department
 
-        public DataTable SelectDepNos()
-        {
-            string query = "Select Department_Number,Dep from department;";
-            return dbMan.ExecuteReader(query);
-        }
         public DataTable SelectDepartmentNamesandNos()
         {
             string query = "Select DepartmentName, Department_Number from department;";

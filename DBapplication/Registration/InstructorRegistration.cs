@@ -15,6 +15,10 @@ namespace DBapplication
         Controller controllerObj;
         int lastID;  //Represents the last ID in the DB
         bool bypass = false;
+        DataTable dt;
+
+        string Depno;
+
         public InstructorRegistration()
         {
             lastID = 0;  //General Initialization
@@ -23,12 +27,17 @@ namespace DBapplication
 
             lastID = controllerObj.GetLastID();
 
-            DataTable dt = controllerObj.SelectDepNos();
+            dt = controllerObj.SelectDepartmentNamesandNos();
             Departments_Combobox.DataSource = dt;
-            Departments_Combobox.DisplayMember= "Department_Number";
+            Departments_Combobox.DisplayMember= "DepartmentName";
             if (dt == null)
             {
                 bypass= true;
+                Depno = "";
+            }
+            else
+            {
+                Depno= dt.Rows[0][1].ToString();
             }
 
         }
@@ -96,7 +105,7 @@ namespace DBapplication
                                     //Encrypted Version
                                     string key = "b14ca5898a4e4133bbce2ea2315a1916";
                                     string pas = EncryptionClass.EncryptString(key, Password_Textbox.Text.ToString());
-                                    int ret = controllerObj.InsertAccount(lastID + 1, User_Name_Textbox.Text, pas, Fname_Textbox.Text, Lname_Textbox.Text, (char)(Job), Convert.ToInt16(Age_Textbox.Text), Gender, '0', Telephone_Number_Textbox.Text, Departments_Combobox.Text);
+                                    int ret = controllerObj.InsertAccount(lastID + 1, User_Name_Textbox.Text, pas, Fname_Textbox.Text, Lname_Textbox.Text, (char)(Job), Convert.ToInt16(Age_Textbox.Text), Gender, '0', Telephone_Number_Textbox.Text, Depno);
 
                                     if (ret != 0)
                                     {
@@ -111,6 +120,11 @@ namespace DBapplication
                     }
                 }
             }
+        }
+
+        private void Departments_Combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Depno = dt.Rows[Departments_Combobox.SelectedIndex][1].ToString();
         }
     }
 }
