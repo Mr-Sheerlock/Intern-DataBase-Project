@@ -19,12 +19,17 @@ namespace DBapplication
 
         
 
-        private void Access_Users_Button_Click(object sender, EventArgs e)
+        private void Add_Users_Button_Click(object sender, EventArgs e)
         {
-            Users u = new Users();
+            AddUsers u = new AddUsers();
             u.Show();
         }
 
+        private void Edit_Users_button_Click(object sender, EventArgs e)
+        {
+            Edit_Users edit = new Edit_Users();
+            edit.Show();
+        }
         private void Access_Courses_Button_Click(object sender, EventArgs e)
         {
             Courses s = new Courses();
@@ -42,5 +47,7 @@ namespace DBapplication
             Statistics sts = new Statistics();
             sts.Show();
         }
+
+        
     }
 }

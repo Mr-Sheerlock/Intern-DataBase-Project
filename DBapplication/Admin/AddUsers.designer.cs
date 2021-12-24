@@ -610,7 +610,7 @@ namespace DBapplication.Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 437);
+            this.ClientSize = new System.Drawing.Size(680, 437);
             this.Controls.Add(this.RemoveInstructor_panel);
             this.Controls.Add(this.AddApplicant_panel);
             this.Controls.Add(this.RemoveApplicant_panel);

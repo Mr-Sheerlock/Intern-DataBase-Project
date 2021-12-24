@@ -52,6 +52,7 @@ namespace DBapplication.Admin
             controllerObj = new Controller();
             DepName_textbox.DataSource = controllerObj.SelectDepartmentNamesandNos();
             DepName_textbox.DisplayMember = "DepartmentName";
+            DepName_textbox.SelectedIndex = -1;
 
             HideAllPanels();
             BacktoUsers_BTN.Dock = (DockStyle.Right & DockStyle.Bottom);
@@ -70,14 +71,14 @@ namespace DBapplication.Admin
         {
             //IT WON'T OPEN ANOTHER FORM IF THE FIRST IS ALREADY ACTIVE 
 
-            var form = Application.OpenForms.OfType<Users>().FirstOrDefault();
+            var form = Application.OpenForms.OfType<AddUsers>().FirstOrDefault();
             if (form != null)
             {
                 form.Activate();
             }
             else
             {
-                new Users().Show();
+                new AddUsers().Show();
             }
 
             this.Close();
@@ -162,7 +163,6 @@ namespace DBapplication.Admin
         private void AddUsers_BTN_Click(object sender, EventArgs e)
         {
             //BEHOLD THE TON OF VERIFICATIONS AND FUNCTIONS DEPENDING ON THEM 
-            //OZER's and John's assumption : NO NULLS
             char gender, status = '1';
             foreach (var control in AddUsers_panel.Controls.OfType<TextBox>())
             {
@@ -174,7 +174,7 @@ namespace DBapplication.Admin
             }
             foreach (var control in AddUsers_panel.Controls.OfType<ComboBox>())
             {
-                if (control.SelectedIndex == 0)
+                if (control.SelectedIndex == -1)
                 {
                     MessageBox.Show("Please Fill in all fields from comboboxes");
                     return;
@@ -195,7 +195,7 @@ namespace DBapplication.Admin
             string key = "b14ca5898a4e4133bbce2ea2315a1916";
             string pas = EncryptionClass.EncryptString(key, Pass_textBox.Text.ToString());
 
-            controllerObj.InsertAccount(lastID+1, userName_textBox.Text, pas, Fname_textBox.Text,Lname_textBox.Text, Char.Parse(jobCode.ToString()),Int16.Parse(Age_textbox.Text),gender, status,TelephoneNum_textbox.Text,((DataTable)DepName_textbox.DataSource).Rows[DepName_textbox.SelectedIndex][1].ToString());
+            controllerObj.InsertAccount(lastID + 1, userName_textBox.Text, pas, Fname_textBox.Text, Lname_textBox.Text, Char.Parse(jobCode.ToString()), Int16.Parse(Age_textbox.Text), gender, status, TelephoneNum_textbox.Text, ((DataTable)DepName_textbox.DataSource).Rows[DepName_textbox.SelectedIndex][1].ToString());
 
             foreach (var control in AddUsers_panel.Controls.OfType<TextBox>())
             {

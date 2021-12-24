@@ -1,7 +1,7 @@
 ﻿
 namespace DBapplication.Admin
 {
-    partial class Users
+    partial class AddUsers
     {
         /// <summary>
         /// Required designer variable.
@@ -44,9 +44,10 @@ namespace DBapplication.Admin
             this.UserIntern_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.UserIntern_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserIntern_BTN.ForeColor = System.Drawing.Color.Goldenrod;
-            this.UserIntern_BTN.Location = new System.Drawing.Point(419, 173);
+            this.UserIntern_BTN.Location = new System.Drawing.Point(29, 19);
+            this.UserIntern_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UserIntern_BTN.Name = "UserIntern_BTN";
-            this.UserIntern_BTN.Size = new System.Drawing.Size(157, 45);
+            this.UserIntern_BTN.Size = new System.Drawing.Size(118, 37);
             this.UserIntern_BTN.TabIndex = 8;
             this.UserIntern_BTN.Text = "Interns";
             this.UserIntern_BTN.UseVisualStyleBackColor = true;
@@ -57,9 +58,10 @@ namespace DBapplication.Admin
             this.UserAdmin_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.UserAdmin_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserAdmin_BTN.ForeColor = System.Drawing.Color.Goldenrod;
-            this.UserAdmin_BTN.Location = new System.Drawing.Point(419, 23);
+            this.UserAdmin_BTN.Location = new System.Drawing.Point(314, 19);
+            this.UserAdmin_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UserAdmin_BTN.Name = "UserAdmin_BTN";
-            this.UserAdmin_BTN.Size = new System.Drawing.Size(157, 45);
+            this.UserAdmin_BTN.Size = new System.Drawing.Size(118, 37);
             this.UserAdmin_BTN.TabIndex = 12;
             this.UserAdmin_BTN.Text = "Admins";
             this.UserAdmin_BTN.UseVisualStyleBackColor = true;
@@ -70,9 +72,10 @@ namespace DBapplication.Admin
             this.UserInstructor_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.UserInstructor_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserInstructor_BTN.ForeColor = System.Drawing.Color.Goldenrod;
-            this.UserInstructor_BTN.Location = new System.Drawing.Point(419, 95);
+            this.UserInstructor_BTN.Location = new System.Drawing.Point(314, 77);
+            this.UserInstructor_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UserInstructor_BTN.Name = "UserInstructor_BTN";
-            this.UserInstructor_BTN.Size = new System.Drawing.Size(157, 45);
+            this.UserInstructor_BTN.Size = new System.Drawing.Size(118, 37);
             this.UserInstructor_BTN.TabIndex = 13;
             this.UserInstructor_BTN.Text = "Instructors";
             this.UserInstructor_BTN.UseVisualStyleBackColor = true;
@@ -83,9 +86,10 @@ namespace DBapplication.Admin
             this.UserApplicants_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.UserApplicants_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserApplicants_BTN.ForeColor = System.Drawing.Color.Goldenrod;
-            this.UserApplicants_BTN.Location = new System.Drawing.Point(419, 249);
+            this.UserApplicants_BTN.Location = new System.Drawing.Point(29, 80);
+            this.UserApplicants_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UserApplicants_BTN.Name = "UserApplicants_BTN";
-            this.UserApplicants_BTN.Size = new System.Drawing.Size(157, 45);
+            this.UserApplicants_BTN.Size = new System.Drawing.Size(118, 37);
             this.UserApplicants_BTN.TabIndex = 14;
             this.UserApplicants_BTN.Text = "Applicants";
             this.UserApplicants_BTN.UseVisualStyleBackColor = true;
@@ -96,9 +100,10 @@ namespace DBapplication.Admin
             this.AddUser_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AddUser_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddUser_BTN.ForeColor = System.Drawing.Color.LimeGreen;
-            this.AddUser_BTN.Location = new System.Drawing.Point(272, 410);
+            this.AddUser_BTN.Location = new System.Drawing.Point(202, 159);
+            this.AddUser_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddUser_BTN.Name = "AddUser_BTN";
-            this.AddUser_BTN.Size = new System.Drawing.Size(157, 45);
+            this.AddUser_BTN.Size = new System.Drawing.Size(118, 37);
             this.AddUser_BTN.TabIndex = 15;
             this.AddUser_BTN.Text = "Add";
             this.AddUser_BTN.UseVisualStyleBackColor = true;
@@ -109,9 +114,10 @@ namespace DBapplication.Admin
             this.RemoveUser_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.RemoveUser_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RemoveUser_BTN.ForeColor = System.Drawing.Color.Red;
-            this.RemoveUser_BTN.Location = new System.Drawing.Point(548, 410);
+            this.RemoveUser_BTN.Location = new System.Drawing.Point(409, 159);
+            this.RemoveUser_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RemoveUser_BTN.Name = "RemoveUser_BTN";
-            this.RemoveUser_BTN.Size = new System.Drawing.Size(157, 45);
+            this.RemoveUser_BTN.Size = new System.Drawing.Size(118, 37);
             this.RemoveUser_BTN.TabIndex = 16;
             this.RemoveUser_BTN.Text = "Remove";
             this.RemoveUser_BTN.UseVisualStyleBackColor = true;
@@ -121,9 +127,10 @@ namespace DBapplication.Admin
             // 
             this.Add_remove_lbl.BackColor = System.Drawing.SystemColors.Control;
             this.Add_remove_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Add_remove_lbl.Location = new System.Drawing.Point(268, 357);
+            this.Add_remove_lbl.Location = new System.Drawing.Point(199, 116);
+            this.Add_remove_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Add_remove_lbl.Name = "Add_remove_lbl";
-            this.Add_remove_lbl.Size = new System.Drawing.Size(481, 29);
+            this.Add_remove_lbl.Size = new System.Drawing.Size(361, 24);
             this.Add_remove_lbl.TabIndex = 17;
             this.Add_remove_lbl.Text = "Do you want to Add or Remove Selected User ? ";
             // 
@@ -132,9 +139,10 @@ namespace DBapplication.Admin
             this.BacktoUsers_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BacktoUsers_BTN.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BacktoUsers_BTN.ForeColor = System.Drawing.Color.Black;
-            this.BacktoUsers_BTN.Location = new System.Drawing.Point(808, 497);
+            this.BacktoUsers_BTN.Location = new System.Drawing.Point(507, 210);
+            this.BacktoUsers_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BacktoUsers_BTN.Name = "BacktoUsers_BTN";
-            this.BacktoUsers_BTN.Size = new System.Drawing.Size(157, 45);
+            this.BacktoUsers_BTN.Size = new System.Drawing.Size(118, 37);
             this.BacktoUsers_BTN.TabIndex = 18;
             this.BacktoUsers_BTN.Text = "Back";
             this.BacktoUsers_BTN.UseVisualStyleBackColor = true;
@@ -142,9 +150,9 @@ namespace DBapplication.Admin
             // 
             // Users
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(967, 543);
+            this.ClientSize = new System.Drawing.Size(725, 258);
             this.Controls.Add(this.BacktoUsers_BTN);
             this.Controls.Add(this.Add_remove_lbl);
             this.Controls.Add(this.RemoveUser_BTN);
@@ -153,6 +161,7 @@ namespace DBapplication.Admin
             this.Controls.Add(this.UserInstructor_BTN);
             this.Controls.Add(this.UserAdmin_BTN);
             this.Controls.Add(this.UserIntern_BTN);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Users";
             this.Text = "AccessUsersForm";
             this.ResumeLayout(false);

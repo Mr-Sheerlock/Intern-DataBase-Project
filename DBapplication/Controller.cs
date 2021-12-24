@@ -25,6 +25,12 @@ namespace DBapplication
 
         #region Accounts
 
+
+        public DataTable SelectAllUsers()
+        {
+            string query = "Select * from Accounts;";
+            return dbMan.ExecuteReader(query);
+        }
         public int CheckifUserTaken(string UserName)
         {
             string query = "Select Count(1) from Accounts where UserName = '" + UserName + "';";
@@ -54,7 +60,44 @@ namespace DBapplication
 
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
-       
+
+        public int updateAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, char status, string TelephoneNumber, string Dep_no = "")
+        {
+            string query;
+            if (Dep_no == "")
+            {
+                query = "Update Accounts Set"
+                               + " UserName = '" + UserName + "',"
+                               + " Pass = '" + Password + "',"
+                               + " F_Name = '" + FName + "',"
+                               + " L_Name = '" + Lname + "',"
+                               + " Job_Code = '" + JobCode + "',"
+                               + " Age = " + Age + ","
+                               + " Gender = '" + Gender + "',"
+                               + " Account_Status = '" + status + "',"
+                               + " TelephoneNumber = '" + TelephoneNumber + "'"
+                               + " Where ID = " + ID + ";";
+            }
+            else
+            {
+                query = "Update Accounts Set"
+                   + " UserName = '" + UserName + "',"
+                   + " Pass = '" + Password + "',"
+                   + " F_Name = '" + FName + "',"
+                   + " L_Name = '" + Lname + "',"
+                   + " Job_Code = '" + JobCode + "',"
+                   + " Age = " + Age + ","
+                   + " Gender = '" + Gender + "',"
+                   + " Account_Status = '" + status + "',"
+                   + " TelephoneNumber = '" + TelephoneNumber + "',"
+                   + " Dep_No = '" + Dep_no + "'"
+                   + " Where ID = " + ID + ";";
+            }
+            
+            
+
+            return dbMan.ExecuteNonQuery(query);
+        }
         public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, char status ,string TelephoneNumber ,string Dep_no="")
         {
             string query;

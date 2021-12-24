@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DBapplication.Admin
 {
-    public partial class Users : Form
+    public partial class AddUsers : Form
     {
         //USEFUL FUNCTIONS  ADDED BY OZER 
         int jobCode = -1;
@@ -41,14 +41,19 @@ namespace DBapplication.Admin
             // which will throw if Value isn't actually a string object.
             //return Value == null || Value == DBNull.Value ? "" : (string)Value;
         }
-        public Users()
+        public AddUsers()
         {
-           
+
             InitializeComponent();
+
             AddUser_BTN.Visible = false;
             BacktoUsers_BTN.Visible = false;
             RemoveUser_BTN.Visible = false;
             Add_remove_lbl.Visible = false;
+
+            //
+            UserIntern_BTN.Visible = false;
+            UserApplicants_BTN.Visible = false;
         }
 
         
@@ -57,50 +62,59 @@ namespace DBapplication.Admin
         private void UserAdmin_BTN_Click(object sender, EventArgs e)
         {
             HideAllButtons();
-            AddUser_BTN.Visible = true;
-            RemoveUser_BTN.Visible = true;
-            BacktoUsers_BTN.Visible = true;
-            Add_remove_lbl.Visible = true;
+            //AddUser_BTN.Visible = true;
+            //RemoveUser_BTN.Visible = true;
+            //BacktoUsers_BTN.Visible = true;
+            //Add_remove_lbl.Visible = true;
             jobCode = 1;
+            this.Close();
+            AddRemoveUsers addUser = new AddRemoveUsers(jobCode, "add");
+            addUser.Show();
         }
 
        
         private void UserInstructor_BTN_Click(object sender, EventArgs e)
         {
             HideAllButtons();
-            AddUser_BTN.Visible = true;
-            RemoveUser_BTN.Visible = true;
-            Add_remove_lbl.Visible = true;
-            BacktoUsers_BTN.Visible = true;
+            //AddUser_BTN.Visible = true;
+            //RemoveUser_BTN.Visible = true;
+            //Add_remove_lbl.Visible = true;
+            //BacktoUsers_BTN.Visible = true;
             jobCode = 2;
+            this.Close();
+            AddRemoveUsers addUser = new AddRemoveUsers(jobCode, "add");
+            addUser.Show();
         }
 
         private void UserIntern_BTN_Click(object sender, EventArgs e)
         {
             HideAllButtons();
-            AddUser_BTN.Visible = true;
-            RemoveUser_BTN.Visible = true;
-            BacktoUsers_BTN.Visible = true;
-            Add_remove_lbl.Visible = true;
+            //AddUser_BTN.Visible = true;
+            //RemoveUser_BTN.Visible = true;
+            //BacktoUsers_BTN.Visible = true;
+            //Add_remove_lbl.Visible = true;
             jobCode = 3;
+            AddRemoveUsers addUser = new AddRemoveUsers(jobCode, "add");
+            addUser.Show();
         }
 
         private void UserApplicants_BTN_Click(object sender, EventArgs e)
         {
             HideAllButtons();
-            AddUser_BTN.Visible = true;
-            RemoveUser_BTN.Visible = true;
-            Add_remove_lbl.Visible = true;
-            BacktoUsers_BTN.Visible = true;
+            //AddUser_BTN.Visible = true;
+            //RemoveUser_BTN.Visible = true;
+            //Add_remove_lbl.Visible = true;
+            //BacktoUsers_BTN.Visible = true;
             jobCode = 4;
+            AddRemoveUsers addUser = new AddRemoveUsers(jobCode, "add");
+            addUser.Show();
         }
 
         private void AddUser_BTN_Click(object sender, EventArgs e)
         {
-
             AddRemoveUsers addUser = new AddRemoveUsers(jobCode, "add");
             addUser.Show();
-            
+
         }
 
         private void RemoveUser_BTN_Click(object sender, EventArgs e)

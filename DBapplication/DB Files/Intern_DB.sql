@@ -15,8 +15,8 @@ F_Name varchar(15),
 L_Name varchar(15),
 Job_Code nchar(1), --should be not nulled later  --a constraint should be added later {1,2,3,4} 1-admin 2-instructor 3-intern 4-applicant
 Age  TINYINT, --a constraint should be added later (0,140)
-Gender char, --a constraint should be added later {M,F}
-Account_Status nchar(1),  --the status is used for getting confirmation from admin and such --a constraint should be added later {0,1} 0-pending 1-active
+Gender char not null, --a constraint should be added later {M,F}
+Account_Status nchar(1) not null,  --the status is used for getting confirmation from admin and such --a constraint should be added later {0,1} 0-pending 1-active
 TelephoneNumber varchar(11),
 Dep_No varchar(3)
 
@@ -106,32 +106,32 @@ Primary key (Branch_ID)
 -----------------Inserting values into Accounts----------------
 
 --Applicant1
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
 values
-(1 , 'a4IW3jR1u0XoSAL9kgIXew==','Lol','1','4')
+(1 , 'a4IW3jR1u0XoSAL9kgIXew==','Lol','1','4','M')
 --pass is lol 
 --Applicant2
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
 values
-(2 , 'a4IW3jR1u0XoSAL9kgIXew==','Loler','1','4')
+(2 , 'a4IW3jR1u0XoSAL9kgIXew==','Loler','1','4','M')
 
 --pass is lol 
 --Instructor1
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
 values
-(3 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr','1','2')
+(3 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr','1','2','F')
 --Instructor2
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
 values
-(4 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr2','1','2')
+(4 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr2','1','2','M')
 --instructor3
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
 values
-(5 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr3','1','2')
+(5 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr3','1','2','F')
 --instructor4
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code)
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
 values
-(6 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr4','1','2')
+(6 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr4','1','2','M')
 
 insert into department values (1,'R&D')
 insert into department values (2,'ML')
