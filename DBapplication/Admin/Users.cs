@@ -13,7 +13,7 @@ namespace DBapplication.Admin
     public partial class Users : Form
     {
         //USEFUL FUNCTIONS  ADDED BY OZER 
-        int usertype = -1;
+        int jobCode = -1;
         //1 : Admin , 2:Instructor , 3:Intern , 4:Applicant 
         //Pass it to the next form 
         public void HideAllButtons()
@@ -61,7 +61,7 @@ namespace DBapplication.Admin
             RemoveUser_BTN.Visible = true;
             BacktoUsers_BTN.Visible = true;
             Add_remove_lbl.Visible = true;
-            usertype = 1;
+            jobCode = 1;
         }
 
        
@@ -72,7 +72,7 @@ namespace DBapplication.Admin
             RemoveUser_BTN.Visible = true;
             Add_remove_lbl.Visible = true;
             BacktoUsers_BTN.Visible = true;
-            usertype = 2;
+            jobCode = 2;
         }
 
         private void UserIntern_BTN_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace DBapplication.Admin
             RemoveUser_BTN.Visible = true;
             BacktoUsers_BTN.Visible = true;
             Add_remove_lbl.Visible = true;
-            usertype = 3;
+            jobCode = 3;
         }
 
         private void UserApplicants_BTN_Click(object sender, EventArgs e)
@@ -92,55 +92,22 @@ namespace DBapplication.Admin
             RemoveUser_BTN.Visible = true;
             Add_remove_lbl.Visible = true;
             BacktoUsers_BTN.Visible = true;
-            usertype = 4;
+            jobCode = 4;
         }
 
         private void AddUser_BTN_Click(object sender, EventArgs e)
         {
-            if (usertype == 1)
-            {
-                AddRemoveUsers addadmin = new AddRemoveUsers(1, "add");
-                addadmin.Show();
-            }
-            else if (usertype == 2)
-            {
-                AddRemoveUsers addinstructor = new AddRemoveUsers(2, "add");
-                addinstructor.Show();
-            }
-            else if (usertype == 3)
-            {
-                AddRemoveUsers addintern = new AddRemoveUsers(3, "add");
-                addintern.Show();
-            }
-            else if (usertype == 4)
-            {
-                AddRemoveUsers addapplicant = new AddRemoveUsers(4, "add");
-                addapplicant.Show();
-            }
+
+            AddRemoveUsers addUser = new AddRemoveUsers(jobCode, "add");
+            addUser.Show();
+            
         }
 
         private void RemoveUser_BTN_Click(object sender, EventArgs e)
         {
-            if (usertype == 1)
-            {
-                AddRemoveUsers removeadmin = new AddRemoveUsers(1, "remove");
-                removeadmin.Show();
-            }
-            else if (usertype == 2)
-            {
-                AddRemoveUsers removeinstructor = new AddRemoveUsers(2, "remove");
-                removeinstructor.Show();
-            }
-            else if (usertype == 3)
-            {
-                AddRemoveUsers removeintern = new AddRemoveUsers(3, "remove");
-                removeintern.Show();
-            }
-            else if (usertype == 4)
-            {
-                AddRemoveUsers removeapplicant = new AddRemoveUsers(4, "remove");
-                removeapplicant.Show();
-            }
+            AddRemoveUsers removeUser = new AddRemoveUsers(jobCode, "remove");
+            removeUser.Show();
+            
         }
 
         private void BacktoUsersMainMenu_BTN_Click(object sender, EventArgs e)

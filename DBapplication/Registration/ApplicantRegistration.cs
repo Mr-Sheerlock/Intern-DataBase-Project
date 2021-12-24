@@ -23,7 +23,6 @@ namespace DBapplication
             controllerObj = new Controller();
 
             lastID = controllerObj.GetLastID();
-    
         }
 
 
@@ -91,7 +90,7 @@ namespace DBapplication
                                     //Encrypted Version
                                     string key = "b14ca5898a4e4133bbce2ea2315a1916";
                                     string pas = EncryptionClass.EncryptString(key, Password_Textbox.Text.ToString());
-                                    int ret = controllerObj.InsertAccount(lastID + 1, User_Name_Textbox.Text, pas, Fname_Textbox.Text, Lname_Textbox.Text, (char)(Job), Convert.ToInt16(Age_Textbox.Text), Gender,Telephone_Number_Textbox.Text);
+                                    int ret = controllerObj.InsertAccount(lastID + 1, User_Name_Textbox.Text, pas, Fname_Textbox.Text, Lname_Textbox.Text, (char)(Job), Convert.ToInt16(Age_Textbox.Text), Gender, '1',Telephone_Number_Textbox.Text);
 
                                     if (ret != 0)
                                     {

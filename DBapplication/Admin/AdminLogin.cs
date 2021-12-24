@@ -22,13 +22,13 @@ namespace DBapplication
         private void Access_Users_Button_Click(object sender, EventArgs e)
         {
             Users u = new Users();
-                u.Show();
+            u.Show();
         }
 
         private void Access_Courses_Button_Click(object sender, EventArgs e)
         {
             Courses s = new Courses();
-                s.Show(); 
+            s.Show(); 
         }
 
         private void Access_Departments_Button_Click(object sender, EventArgs e)
