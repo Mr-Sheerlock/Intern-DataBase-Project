@@ -103,5 +103,11 @@ namespace DBapplication
             RegistrationChoice r= new RegistrationChoice();
             r.Show();
         }
+
+        private void Change_Password_Button_Click(object sender, EventArgs e)
+        {
+            Change_Password c = new Change_Password();
+            c.Show();
+        }
     }
 }

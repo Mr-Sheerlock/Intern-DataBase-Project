@@ -31,7 +31,6 @@
             this.Applicant_Reg_Button = new System.Windows.Forms.Button();
             this.Instructor_Reg_Button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.Change_Password_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Applicant_Reg_Button
@@ -63,22 +62,11 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Select the Type of Registration";
             // 
-            // Change_Password_Button
-            // 
-            this.Change_Password_Button.Location = new System.Drawing.Point(260, 185);
-            this.Change_Password_Button.Name = "Change_Password_Button";
-            this.Change_Password_Button.Size = new System.Drawing.Size(118, 23);
-            this.Change_Password_Button.TabIndex = 3;
-            this.Change_Password_Button.Text = "Change Password";
-            this.Change_Password_Button.UseVisualStyleBackColor = true;
-            this.Change_Password_Button.Click += new System.EventHandler(this.Change_Password_Button_Click);
-            // 
             // RegistrationChoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 220);
-            this.Controls.Add(this.Change_Password_Button);
+            this.ClientSize = new System.Drawing.Size(460, 183);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Instructor_Reg_Button);
             this.Controls.Add(this.Applicant_Reg_Button);
@@ -94,6 +82,5 @@
         private System.Windows.Forms.Button Applicant_Reg_Button;
         private System.Windows.Forms.Button Instructor_Reg_Button;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button Change_Password_Button;
     }
 }

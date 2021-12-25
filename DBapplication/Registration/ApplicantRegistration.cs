@@ -70,33 +70,41 @@ namespace DBapplication
                                 }
                                 else
                                 {
-
-                                    char Gender = ' ';
-
-
-                                    int Job = 4 + 48;   //48=30h it's used for the later casting
-
-
-                                    if (Gender_Combobox.Text == "Male")
+                                    if (Telephone_Number_Textbox.Text.ToString().Length != 11)
                                     {
-                                        Gender = 'M';
+                                        MessageBox.Show("Telephone Number must be 11 numbers!");
+
                                     }
                                     else
                                     {
-                                        Gender = 'F';
-                                    }
+
+                                        char Gender = ' ';
 
 
-                                    //Encrypted Version
-                                    string key = "b14ca5898a4e4133bbce2ea2315a1916";
-                                    string pas = EncryptionClass.EncryptString(key, Password_Textbox.Text.ToString());
-                                    int ret = controllerObj.InsertAccount(lastID + 1, User_Name_Textbox.Text, pas, Fname_Textbox.Text, Lname_Textbox.Text, (char)(Job), Convert.ToInt16(Age_Textbox.Text), Gender, '1',Telephone_Number_Textbox.Text);
+                                        int Job = 4 + 48;   //48=30h it's used for the later casting
 
-                                    if (ret != 0)
-                                    {
-                                        lastID++;
-                                        MessageBox.Show("Registration Successful.");
-                                        //this.Close();  //used to prevent the user from multiple clicking and spamming the db
+
+                                        if (Gender_Combobox.Text == "Male")
+                                        {
+                                            Gender = 'M';
+                                        }
+                                        else
+                                        {
+                                            Gender = 'F';
+                                        }
+
+
+                                        //Encrypted Version
+                                        string key = "b14ca5898a4e4133bbce2ea2315a1916";
+                                        string pas = EncryptionClass.EncryptString(key, Password_Textbox.Text.ToString());
+                                        int ret = controllerObj.InsertAccount(lastID + 1, User_Name_Textbox.Text, pas, Fname_Textbox.Text, Lname_Textbox.Text, (char)(Job), Convert.ToInt16(Age_Textbox.Text), Gender, '1', Telephone_Number_Textbox.Text);
+
+                                        if (ret != 0)
+                                        {
+                                            lastID++;
+                                            MessageBox.Show("Registration Successful.");
+                                            //this.Close();  //used to prevent the user from multiple clicking and spamming the db
+                                        }
                                     }
                                 }
                             }

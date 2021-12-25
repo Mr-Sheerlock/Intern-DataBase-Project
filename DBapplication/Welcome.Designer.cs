@@ -34,6 +34,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Login_Button = new System.Windows.Forms.Button();
             this.Register_Button = new System.Windows.Forms.Button();
+            this.Change_Password_Button = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UserName_TextBox
@@ -81,7 +83,7 @@
             // 
             // Register_Button
             // 
-            this.Register_Button.Location = new System.Drawing.Point(283, 219);
+            this.Register_Button.Location = new System.Drawing.Point(417, 127);
             this.Register_Button.Name = "Register_Button";
             this.Register_Button.Size = new System.Drawing.Size(75, 23);
             this.Register_Button.TabIndex = 7;
@@ -89,11 +91,32 @@
             this.Register_Button.UseVisualStyleBackColor = true;
             this.Register_Button.Click += new System.EventHandler(this.Register_Button_Click);
             // 
+            // Change_Password_Button
+            // 
+            this.Change_Password_Button.Location = new System.Drawing.Point(180, 286);
+            this.Change_Password_Button.Name = "Change_Password_Button";
+            this.Change_Password_Button.Size = new System.Drawing.Size(118, 23);
+            this.Change_Password_Button.TabIndex = 8;
+            this.Change_Password_Button.Text = "Change Password";
+            this.Change_Password_Button.UseVisualStyleBackColor = true;
+            this.Change_Password_Button.Click += new System.EventHandler(this.Change_Password_Button_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(40, 291);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Forgot your password?";
+            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 316);
+            this.ClientSize = new System.Drawing.Size(519, 349);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Change_Password_Button);
             this.Controls.Add(this.Register_Button);
             this.Controls.Add(this.Login_Button);
             this.Controls.Add(this.label2);
@@ -115,5 +138,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Login_Button;
         private System.Windows.Forms.Button Register_Button;
+        private System.Windows.Forms.Button Change_Password_Button;
+        private System.Windows.Forms.Label label3;
     }
 }
