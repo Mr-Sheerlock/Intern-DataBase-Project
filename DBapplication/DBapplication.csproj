@@ -61,6 +61,12 @@
     <Compile Include="Admin\AdminLogin.designer.cs">
       <DependentUpon>AdminLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Approve Instructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Approve Instructor.Designer.cs">
+      <DependentUpon>Approve Instructor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Courses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\AdminLogin.resx">
       <DependentUpon>AdminLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Approve Instructor.resx">
+      <DependentUpon>Approve Instructor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Courses.resx">
       <DependentUpon>Courses.cs</DependentUpon>

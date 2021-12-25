@@ -422,6 +422,18 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
+        public DataTable SelectPendingInstructors()
+        {
+            string query = " Select ID, UserName, F_Name, L_Name, Job_Code, Age, Gender, Account_Status, TelephoneNumber, Dep_No From Accounts Where Account_Status = 0 AND Job_Code = 2";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable approveInstructor(int id)
+        {
+            string query = "Update Accounts Set Account_Status = 1 Where ID = " + id + ";";
+            return dbMan.ExecuteReader(query);
+        }
+
         #endregion
 
         #region Lectures

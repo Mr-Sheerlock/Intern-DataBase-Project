@@ -42,6 +42,13 @@ namespace DBapplication
             d.Show();
         }
 
+        private void Approve_Instructor_BTN_Click(object sender, EventArgs e)
+        {
+            Approve_Instructor instr = new Approve_Instructor();
+            instr.Show();
+
+        }
+
         private void Access_Statistics_Button_Click(object sender, EventArgs e)
         {
             Statistics sts = new Statistics();

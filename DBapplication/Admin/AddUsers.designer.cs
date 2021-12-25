@@ -331,6 +331,7 @@ namespace DBapplication.Admin
             this.Pass_textBox.Location = new System.Drawing.Point(65, 41);
             this.Pass_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Pass_textBox.Name = "Pass_textBox";
+            this.Pass_textBox.PasswordChar = '*';
             this.Pass_textBox.Size = new System.Drawing.Size(116, 20);
             this.Pass_textBox.TabIndex = 18;
             this.Pass_textBox.TextChanged += new System.EventHandler(this.Pass_textBox_TextChanged);
