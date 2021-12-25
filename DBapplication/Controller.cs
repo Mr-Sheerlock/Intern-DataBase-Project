@@ -109,27 +109,19 @@ namespace DBapplication
         public int InsertAccount(int ID, string UserName, string Password, string FName, string Lname, char JobCode, int Age, char Gender, char status ,string TelephoneNumber ,string Dep_no="")
         {
             string query;
+            //we didn't need to check on job code because we don't allow instructors to have no dep number
             if (Dep_no == "") {
-                if (JobCode == 50)
-                { //50 =2+48 
-                  //Instructor
-                    query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,TelephoneNumber)" +
-                                      "Values ('" + ID + "','" + UserName + "','" + Password +
-                                      "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                      ",'" + Gender + "','" + status + "','" + TelephoneNumber + "');";
-                }
-                else
-                { //Applicant or Admin
-                    query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,TelephoneNumber)" +
-                                "Values ('" + ID + "','" + UserName + "','" + Password +
-                                "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
-                                ",'" + Gender + "','" + status + "','" + TelephoneNumber + "');";
-
-                }
-
+                
+            //Applicant
+            query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,TelephoneNumber)" +
+                        "Values ('" + ID + "','" + UserName + "','" + Password +
+                        "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +
+                        ",'" + Gender + "','" + status + "','" + TelephoneNumber + "');";
             }
             else
             {
+                //instructor
+
                 query = "INSERT INTO Accounts (ID, UserName, Pass, F_Name, L_Name, Job_Code, Age, Gender,Account_Status,Dep_No,TelephoneNumber)" +
                                 "Values ('" + ID + "','" + UserName + "','" + Password +
                                 "','" + FName + "','" + Lname + "','" + JobCode + "'," + Age +

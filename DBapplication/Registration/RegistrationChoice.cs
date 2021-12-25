@@ -12,9 +12,12 @@ namespace DBapplication
 {
     public partial class RegistrationChoice : Form
     {
+
+        Controller controllerObj;
         public RegistrationChoice()
         {
             InitializeComponent();
+            controllerObj = new Controller();
         }
 
         private void Applicant_Reg_Button_Click(object sender, EventArgs e)
@@ -26,9 +29,21 @@ namespace DBapplication
 
         private void Instructor_Reg_Button_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            InstructorRegistration r = new InstructorRegistration();
-            r.Show();
+
+            if(controllerObj.SelectDepartments() == null)
+            {
+
+                MessageBox.Show("There are no departments available.");
+                Instructor_Reg_Button.Enabled = false;  
+            }
+            else
+            {
+                InitializeComponent();
+                InstructorRegistration r = new InstructorRegistration();
+                r.Show();
+
+            }
+           
         }
 
    
