@@ -65,15 +65,18 @@ namespace DBapplication.Admin
             DepName_textbox.DataSource = deps;
             DepName_textbox.DisplayMember = "DepartmentName";
             DepName_textbox.SelectedIndex = -1;
-
-            for (int i = 0; i < deps.Rows.Count; i++)
+            if (deps != null)
             {
-               if( deps.Rows[i][1].ToString() == currentuserInfo[10].ToString())
+                for (int i = 0; i < deps.Rows.Count; i++)
                 {
-                    DepName_textbox.SelectedIndex = i;
-                    break;
+                    if (deps.Rows[i][1].ToString() == currentuserInfo[10].ToString())
+                    {
+                        DepName_textbox.SelectedIndex = i;
+                        break;
+                    }
                 }
             }
+
 
             if (Char.Parse((currentuserInfo[8].ToString()))== '1')
             {

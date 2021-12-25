@@ -420,10 +420,16 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable approveInstructor(int id)
+        public int approveInstructor(int id)
         {
             string query = "Update Accounts Set Account_Status = 1 Where ID = " + id + ";";
-            return dbMan.ExecuteReader(query);
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int deleteInstructor(int id)
+        {
+            string query = "Delete Accounts Where ID = " + id + ";";
+            return dbMan.ExecuteNonQuery(query);
         }
 
         #endregion

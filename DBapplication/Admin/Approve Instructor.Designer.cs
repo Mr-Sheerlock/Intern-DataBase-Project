@@ -30,6 +30,7 @@
         {
             this.PendingInstructorsGrid = new System.Windows.Forms.DataGridView();
             this.ApproveButton = new System.Windows.Forms.Button();
+            this.RejectButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PendingInstructorsGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             // 
             // ApproveButton
             // 
-            this.ApproveButton.Location = new System.Drawing.Point(378, 279);
+            this.ApproveButton.Location = new System.Drawing.Point(315, 275);
             this.ApproveButton.Name = "ApproveButton";
             this.ApproveButton.Size = new System.Drawing.Size(107, 34);
             this.ApproveButton.TabIndex = 1;
@@ -54,15 +55,26 @@
             this.ApproveButton.UseVisualStyleBackColor = true;
             this.ApproveButton.Click += new System.EventHandler(this.ApproveButton_Click);
             // 
+            // RejectButton
+            // 
+            this.RejectButton.Location = new System.Drawing.Point(438, 275);
+            this.RejectButton.Name = "RejectButton";
+            this.RejectButton.Size = new System.Drawing.Size(107, 34);
+            this.RejectButton.TabIndex = 2;
+            this.RejectButton.Text = "Reject Selected Instructor";
+            this.RejectButton.UseVisualStyleBackColor = true;
+            this.RejectButton.Click += new System.EventHandler(this.RejectButton_Click);
+            // 
             // Approve_Instructor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 369);
+            this.Controls.Add(this.RejectButton);
             this.Controls.Add(this.ApproveButton);
             this.Controls.Add(this.PendingInstructorsGrid);
             this.Name = "Approve_Instructor";
-            this.Text = "Approve_Instructor";
+            this.Text = "Instructor Requests";
             ((System.ComponentModel.ISupportInitialize)(this.PendingInstructorsGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.DataGridView PendingInstructorsGrid;
         private System.Windows.Forms.Button ApproveButton;
+        private System.Windows.Forms.Button RejectButton;
     }
 }
