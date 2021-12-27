@@ -6,6 +6,10 @@ Go
 use Intern_DB
 
 ------------Table Creation-----------------
+
+--CREATE DOMAIN D_NUM AS INTEGER
+--CHECK (D_NUM > 0 AND D_NUM < 21);
+
 create table Accounts
 (
 ID SMALLINT not null,
@@ -22,6 +26,10 @@ Dep_No varchar(3)
 
 Primary key (ID)
 
+--FOREIGN KEY (Dep_No) REFERENCES Department (Department_Number) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
 )
 
 create table Applicant_Intern
@@ -31,15 +39,20 @@ Grade_of_Entrance_Exam char,  --a constraint should be added later {A,B,C,D,E,F}
 College Varchar(30),
 Years_of_Experience TINYINT,  --a constraint should be added later 0,40
 Status_of_application nchar(1), --should be not nulled later  --a constraint should be added later {0,1,2}
-															--0 for ongoing, 1 for rejected, 2 for accepted
-			
+															--0 for ongoing, 1 for rejected, 2 for accepted		
 CV_Link varchar(50) 
+
+--FOREIGN KEY (ID) REFERENCES Accounts (ID) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
 )
 
 create table department
 ( 
 Department_Number SMALLINT not null,
 DepartmentName varchar(30) not null,
+
+Primary Key( Department_Number)
 )
 
 create table Course
@@ -52,6 +65,15 @@ DepNo SMALLINT, --should be not nulled later
 BranchNo Smallint
 
 Primary key (CourseID)
+
+--FOREIGN KEY (DepNo) REFERENCES department (Department_Number) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
+--FOREIGN KEY (BranchNo) REFERENCES Locations (Branch_ID) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
 )
 
 
@@ -65,6 +87,17 @@ LectureNo Tinyint,
 LectureDay varchar(10), 
 Course_ID SMALLINT not null ,  
 LocationID SMALLINT  --should be not nulled later
+
+Primary key (Course_ID,LocationID)
+
+--FOREIGN KEY (LocationID) REFERENCES Locations (Branch_ID) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
+--FOREIGN KEY (Course_ID) REFERENCES Courses (CourseID) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
 )
 
 
@@ -73,7 +106,18 @@ create table Instructs
 (
 Instruct_ID  SMALLINT not null,    
 CourseID SMALLINT not null
-)
+
+Primary Key (Instruct_ID , CourseID )
+
+--FOREIGN KEY (Instruct_ID) REFERENCES Accounts (ID) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
+--FOREIGN KEY (CourseID) REFERENCES Courses (CourseID) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
+)			 
 
 create table Takes
 (
@@ -84,6 +128,14 @@ Grade char   --a constraint should be added later {A,B,C,D,E,F,T,W} --T for term
 												--in the case of T,W the intern should automatically be demoted to applicant
 
 primary key(App_ID,CourseID,Year_of_Intern)
+
+--FOREIGN KEY (App_ID) REFERENCES Takes (ID) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
+--FOREIGN KEY (CourseID) REFERENCES Courses (CourseID) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
 
 )
 
@@ -99,6 +151,11 @@ LocationName varchar(30) ,
 Dep_No Smallint --should be not nulled later
 
 Primary key (Branch_ID)
+
+--FOREIGN KEY (Dep_No) REFERENCES Department (Department_Number) 
+--ON DELETE SET NULL 
+--ON UPDATE CASCADE);
+
 )
 
 
