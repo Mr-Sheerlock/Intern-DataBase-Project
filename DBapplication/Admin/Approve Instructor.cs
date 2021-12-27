@@ -43,7 +43,7 @@ namespace DBapplication.Admin
         {
             if (PendingInstructorsGrid.DataSource == null)
             {
-                MessageBox.Show("There are no pending instructors requests");
+                MessageBox.Show("There are no pending instructor requests");
                 return;
             }
             if (idSelected == -1)
@@ -61,6 +61,28 @@ namespace DBapplication.Admin
                 idSelected = -1;
 
             
+        }
+
+        private void RejectButton_Click(object sender, EventArgs e)
+        {
+            if (PendingInstructorsGrid.DataSource == null)
+            {
+                MessageBox.Show("There are no pending instructor requests");
+                return;
+            }
+            if (idSelected == -1)
+            {
+                MessageBox.Show("Select an instructor first");
+                PendingInstructorsGrid.ClearSelection();
+                return;
+            }
+            controllerObj.deleteInstructor(idSelected);
+            PendingInstructorsGrid.DataSource = controllerObj.SelectPendingInstructors();
+            PendingInstructorsGrid.Refresh();
+
+            PendingInstructorsGrid.ClearSelection();
+
+            idSelected = -1;
         }
     }
 }
