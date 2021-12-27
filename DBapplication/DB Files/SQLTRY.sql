@@ -3,21 +3,89 @@
 use Intern_DB
 
 
-Select LectureNo , LectureDay 
-From Lectures
-where Course_ID in 
-				(Select Course_ID 
-				from takes 
-				where App_ID= 2
-				AND Year_of_Intern = 2000)
-AND LocationID in ( Select BranchNo
-					From   Course
-					where CourseID in ( Select Course_ID 
-										from takes 
-										where App_ID= 2
-										AND Year_of_Intern =2000)
-								)
+--Select LectureNo , LectureDay 
+--From Lectures
+--where Course_ID in 
+--				(Select Course_ID 
+--				from takes 
+--				where App_ID= 2
+--				AND Year_of_Intern = 2000)
+--AND LocationID in ( Select BranchNo
+--					From   Course
+--					where CourseID in ( Select Course_ID 
+--										from takes 
+--										where App_ID= 2
+--										AND Year_of_Intern =2000)
+--								)
 
+
+--Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID 
+--from department,Locations
+--where Branch_ID in 
+--			(
+--			Select BranchNo
+			
+--			From Course	
+			
+--			where Enrolled<Capacity
+--			AND Course.CourseID in (
+--				Select CourseID
+--				From Instructs
+--			)
+--			--AND  Course.CourseID not  in(
+--			--	Select CourseID
+--			--	From Takes
+--			--	Where App_ID ='2'
+--			--)
+--			)
+--			AND Locations.Dep_No= department.Department_Number
+
+Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID 
+from department, Locations 
+where Branch_ID in  --123
+                (
+                Select BranchNo    --BranchID having available courses
+                From Course  
+                where Enrolled < Capacity 
+                AND Course.CourseID in ( --Courses that have instructors
+										Select CourseID 
+										From Instructs  
+										) 
+				AND  Course.CourseID not  in( 
+										Select CourseID
+										From Takes
+										Where App_ID ='2'
+										AND Grade != 'W'     --if withdrawn or terminated of failed he should be able to apply
+										AND Grade != 'T'
+										AND Grade != 'F'
+										
+											)
+				AND Course.CourseID not in (
+										Select CourseID
+										From Takes
+										Where App_ID ='2'
+										AND  Grade IS NULL
+										)
+                ) 
+                AND Locations.Dep_No = department.Department_Number;
+
+
+							
+--Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID 
+--from department,Locations
+--where Branch_ID in 
+--			(
+--			Select BranchNo
+			
+--			From Course	
+			
+--			where Enrolled<Capacity
+--			AND Course.CourseID in (
+--								Select CourseID
+--								From Instructs
+--									)
+--			)
+--			AND Locations.Dep_No= department.Department_Number
 
 
 
@@ -122,21 +190,7 @@ AND LocationID in ( Select BranchNo
 --(6 , 'a4IW3jR1u0XoSAL9kgIXew==','Loler','0')
 
 
---Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID 
---from department,Locations
---where Branch_ID in 
---			(
---			Select BranchNo
-			
---			From Course	
-			
---			where Enrolled<Capacity
---			AND Course.CourseID in (
---				Select CourseID
---				From Instructs
---			)
---			)
---			AND Locations.Dep_No= department.Department_Number
+
 
 --Select CourseName, CourseID
 

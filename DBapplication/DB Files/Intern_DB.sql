@@ -211,8 +211,7 @@ values (4,'R&D1',5,0,1,2)
 insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
 values (5,'Sales1',5,0,3,5)
 insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
-values (6,'MLone',5,0,2,3)
---8alebn handtr n-associate el course bl mkan m4 bl department
+values (6,'MLtwo',5,0,2,3)
 
 
 --Insert in instructs 

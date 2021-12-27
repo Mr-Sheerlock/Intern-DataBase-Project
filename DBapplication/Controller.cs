@@ -208,20 +208,33 @@ namespace DBapplication
             string query = "Select DepartmentName, Department_Number from department;";
             return dbMan.ExecuteReader(query);
         }
-        public DataTable SelectDep_Loc()
+        public DataTable SelectDep_Loc(string appID)
         {
             string query= "Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID "+
                 "from department, Locations "+
                 "where Branch_ID in "+
                             "("+
-                            "Select BranchNo " +   //BranchID having available courses
-                            "From Course " +
-                            "where Enrolled < Capacity "+
-                            "AND Course.CourseID in "+
-                            "("+
-                                    "Select CourseID "+
-                                    "From Instructs "+
-			                        ") "+
+                                "Select BranchNo " +   //BranchID having available courses
+                                "From Course " +
+                                "where Enrolled < Capacity "+
+                                "AND Course.CourseID in "+
+                                "("+
+                                        "Select CourseID "+ //Courses having instructors
+                                        "From Instructs "+
+			                            ") "+
+                                "AND Course.CourseID not in ( " +
+                                                            "Select CourseID From Takes " +
+                                                            "Where App_ID ='" + appID +"' " +    //if withdrawn or terminated of failed he should be able to apply
+                                                            "AND Grade != 'W' " +
+                                                            "AND Grade != 'T' " +
+                                                            "AND Grade != 'F' " +
+                                                            ") "+
+
+                                "AND Course.CourseID not in (" +
+                                                            "Select CourseID From Takes " +     //if Grade = NULL that means that he has already applied or he is taking the course
+                                                            "Where App_ID ='" + appID + "' " +
+                                                            "AND  Grade IS NULL " +
+                                                            ") " +
                             ") " +
                             "AND Locations.Dep_No = department.Department_Number";
             return dbMan.ExecuteReader(query);

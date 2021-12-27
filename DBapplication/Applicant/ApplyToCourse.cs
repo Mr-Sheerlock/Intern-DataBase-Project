@@ -27,7 +27,11 @@ namespace DBapplication
 
             InitializeComponent();
             controllerObj = new Controller();
-            dt = controllerObj.SelectDep_Loc();
+
+
+            // Add a check on the courses the applicant had already taken
+
+            dt = controllerObj.SelectDep_Loc(Appid);  //you can change it 
             DepartmentBranch_Combobox.DataSource = dt;
             DepartmentBranch_Combobox.DisplayMember = "val";
             
