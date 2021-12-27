@@ -492,8 +492,8 @@ namespace DBapplication
         //GET COURSES NAMES 
         public DataTable SelectCourseID()
         {
-
-            string query = "select CourseID from Course WHERE Active_Status=1";
+            //EDITED 27/12 by ozer to get active courses by instructors
+            string query = "select Distinct CourseID from Instructs"  ; 
             return dbMan.ExecuteReader(query);
         }
         //GET BRANCH IDS
@@ -505,25 +505,30 @@ namespace DBapplication
         //Number of Applicants For Each Department
         public DataTable STATS_APPLICANTS_DEPARTMENTS()
         {
-            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 4 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
+            //EDITED BY OZER AT 27/12 
+            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 4 AND Account_Status = 1 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
             return dbMan.ExecuteReader(query);
         }
         //Number of Interns for each Department
         public DataTable STATS_INTERNS_DEPARTMENTS()
         {
-            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 3 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
+            //EDITED BY OZER AT 27/12 to get them by their account status 
+            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 3 AND Account_Status = 1 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
             return dbMan.ExecuteReader(query);
         }
         //Number of Instructors for each Department
         public DataTable STATS_INSTRUCTS_DEPARTMENTS()
         {
-            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 2 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
+            //EDITE BY OZER AT 27/12 to get them by their account status 
+            string query = "Select Dep_No, DepartmentName , Count(*) From Accounts , department Where Job_Code = 2 AND Account_Status = 1 AND Dep_No = Department_Number Group By Dep_No, DepartmentName  ORDER by Dep_No";
             return dbMan.ExecuteReader(query);
         }
         //Number of Dropped Applicants in All Courses year Y
         public DataTable STATS_DROPPED_COURSES(int year)
         {
-            string query = "Select CourseName , Count(Grade) from Takes , Course Where Takes.CourseID = Course.CourseID AND  Year_of_Intern= " + year + "AND Grade='W' Group By CourseName";
+              // EDITED 27/12 by ozer to get which course , which ID and what number of drops in that course 
+            string query = "Select CourseName , Course.CourseID ,count(*) from Course, Takes where Takes.CourseID = Course.CourseID AND Grade='W' AND Year_of_Intern=" + year + " group by CourseName , Course.CourseID";
+
             return dbMan.ExecuteReader(query);
         }
         //Number of Grades in Courses in Year Y in a given department D
@@ -546,7 +551,8 @@ namespace DBapplication
         }
         public DataTable STATS_COURSE_LECTURES_DATEANDTIMES(int cid)
         {
-            string query = "Select LectureNo , LectureDay , LocationName From Lectures,Locations,Course WHERE  Course.CourseID =" + cid + " AND LocationID=Branch_ID AND Lectures.Course_ID=Course.CourseID AND Active_Status=1";
+            //EDITED BY OZER on 27/12 
+            string query = "Select LectureNo , LectureDay , LocationName From Lectures,Locations,Instructs WHERE Course_ID = " + cid + "AND LocationID=Branch_ID AND Lectures.Course_ID=Instructs.CourseID ";
             return dbMan.ExecuteReader(query);
         }
 
