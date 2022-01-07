@@ -93,7 +93,7 @@
             // 
             // Change_Password_Button
             // 
-            this.Change_Password_Button.Location = new System.Drawing.Point(180, 286);
+            this.Change_Password_Button.Location = new System.Drawing.Point(61, 291);
             this.Change_Password_Button.Name = "Change_Password_Button";
             this.Change_Password_Button.Size = new System.Drawing.Size(118, 23);
             this.Change_Password_Button.TabIndex = 8;
@@ -104,11 +104,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 291);
+            this.label3.Location = new System.Drawing.Point(40, 264);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.Size = new System.Drawing.Size(161, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Forgot your password?";
+            this.label3.Text = "Want to change your password?";
             // 
             // Welcome
             // 
