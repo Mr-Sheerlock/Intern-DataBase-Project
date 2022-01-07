@@ -208,38 +208,48 @@ namespace DBapplication
             string query = "Select DepartmentName, Department_Number from department;";
             return dbMan.ExecuteReader(query);
         }
+
+        //public DataTable SelectDep_Loc(string appID)
+        //{
+        //    string query= "Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID "+
+        //        "from department, Locations "+
+        //        "where Branch_ID in "+
+        //                    "("+
+        //                        "Select BranchNo " +   //BranchID having available courses
+        //                        "From Course " +
+        //                        "where Enrolled < Capacity "+
+        //                        "AND Course.CourseID in "+
+        //                        "("+
+        //                                "Select CourseID "+ //Courses having instructors
+        //                                "From Instructs "+
+        //                       ") "+
+        //                        "AND Course.CourseID not in ( " +
+        //                                                    "Select CourseID From Takes " +
+        //                                                    "Where App_ID ='" + appID +"' " +    //if withdrawn or terminated of failed he should be able to apply
+        //                                                    "AND Grade != 'W' " +
+        //                                                    "AND Grade != 'T' " +
+        //                                                    "AND Grade != 'F' " +
+        //                                                    ") "+
+
+        //                        "AND Course.CourseID not in (" +
+        //                                                    "Select CourseID From Takes " +     //if Grade = NULL that means that he has already applied or he is taking the course
+        //                                                    "Where App_ID ='" + appID + "' " +
+        //                                                    "AND  Grade IS NULL " +
+        //                                                    ") " +
+        //                    ") " +
+        //                    "AND Locations.Dep_No = department.Department_Number";
+        //    return dbMan.ExecuteReader(query);
+        //}
+
+        //STORED PROC 5
         public DataTable SelectDep_Loc(string appID)
         {
-            string query= "Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID "+
-                "from department, Locations "+
-                "where Branch_ID in "+
-                            "("+
-                                "Select BranchNo " +   //BranchID having available courses
-                                "From Course " +
-                                "where Enrolled < Capacity "+
-                                "AND Course.CourseID in "+
-                                "("+
-                                        "Select CourseID "+ //Courses having instructors
-                                        "From Instructs "+
-			                            ") "+
-                                "AND Course.CourseID not in ( " +
-                                                            "Select CourseID From Takes " +
-                                                            "Where App_ID ='" + appID +"' " +    //if withdrawn or terminated of failed he should be able to apply
-                                                            "AND Grade != 'W' " +
-                                                            "AND Grade != 'T' " +
-                                                            "AND Grade != 'F' " +
-                                                            ") "+
-
-                                "AND Course.CourseID not in (" +
-                                                            "Select CourseID From Takes " +     //if Grade = NULL that means that he has already applied or he is taking the course
-                                                            "Where App_ID ='" + appID + "' " +
-                                                            "AND  Grade IS NULL " +
-                                                            ") " +
-                            ") " +
-                            "AND Locations.Dep_No = department.Department_Number";
+            string query = "EXECUTE SelectDep_Loc @appid= '" +appID +"';";
             return dbMan.ExecuteReader(query);
         }
 
+         
+     
 
         public DataTable SelectDepHavingCourse(string InterID, int CurrentYear)
         {
@@ -301,24 +311,39 @@ namespace DBapplication
         #region Locations
 
         //THIS CHECKS USING BRANCH THOUGH!!
+        //public int CheckAvailableCourse() //Checks if there are available courses to apply
+        //{
+        //    string query = "Select Count(Branch_ID) " +
+        //        "from department, Locations " +
+        //        "where Branch_ID in " +
+        //                    "(" +
+        //                    "Select BranchNo " +   //BranchID having available courses
+        //                    "From Course " +
+        //                    "where Enrolled < Capacity " +
+        //                    "AND Course.CourseID in " +
+        //                    "(" +
+        //                            "Select CourseID " +
+        //                            "From Instructs " +
+        //                            ") " +
+        //                    ") " +
+        //                    "AND Locations.Dep_No = department.Department_Number";
+        //    return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        //}
+
+        //Stored Proc 4
         public int CheckAvailableCourse() //Checks if there are available courses to apply
         {
-            string query = "Select Count(Branch_ID) " +
-                "from department, Locations " +
-                "where Branch_ID in " +
-                            "(" +
-                            "Select BranchNo " +   //BranchID having available courses
-                            "From Course " +
-                            "where Enrolled < Capacity " +
-                            "AND Course.CourseID in " +
-                            "(" +
-                                    "Select CourseID " +
-                                    "From Instructs " +
-                                    ") " +
-                            ") " +
-                            "AND Locations.Dep_No = department.Department_Number";
+            string query = "EXECUTE CheckAvailableCourse;";
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
+
+        //public DataTable STATS_DROPPED_COURSES(int year)
+        //{
+        //     / / EDITED 27 / 12 by ozer to get which course, which ID and what number of drops in that course
+        //    string query = "EXECUTE GET_DROPPED_COURSES @year=" + year;
+
+        //    return dbMan.ExecuteReader(query);
+        //}
 
 
         public DataTable SelectLocations(string DepartID)
@@ -531,19 +556,39 @@ namespace DBapplication
             return dbMan.ExecuteReader(query);
         }
         //Number of Dropped Applicants in All Courses year Y
+
+        //Stored Proc 1
         public DataTable STATS_DROPPED_COURSES(int year)
         {
-            // EDITED 27/12 by ozer to get which course , which ID and what number of drops in that course 
-            string query = "Select CourseName , Course.CourseID ,count(*) from Course, Takes where Takes.CourseID = Course.CourseID AND Grade='W' AND Year_of_Intern=" + year + " group by CourseName , Course.CourseID";
+             // EDITED 27 / 12 by ozer to get which course, which ID and what number of drops in that course
+            string query = "EXECUTE GET_DROPPED_COURSES @year=" + year;
 
             return dbMan.ExecuteReader(query);
         }
+
+        //public DataTable STATS_DROPPED_COURSES(int year)
+        //{
+        //    // EDITED 27/12 by ozer to get which course , which ID and what number of drops in that course 
+        //    string query = "Select CourseName , Course.CourseID ,count(*) from Course, Takes where Takes.CourseID = Course.CourseID AND Grade='W' AND Year_of_Intern=" + year + " group by CourseName , Course.CourseID";
+
+        //    return dbMan.ExecuteReader(query);
+        //}
+
+
         //Number of Grades in Courses in Year Y in a given department D
+
+        //Stored Proc 2
         public DataTable STATS_GRADES_PER_DEPARTMENT_COURSES(string Departmentname, int year)
         {
-            string query = "Select CourseName , Grade , Count(Grade) From Course,Takes , department Where Course.CourseID = Takes.CourseID AND Year_of_Intern =" + year + " AND Course.DepNo =Department_Number AND DepartmentName = '" + Departmentname + " ' Group By CourseName , Grade Having Grade<>'W' Order By CourseName";
+            string query = "EXECUTE STATS_GRADES_PER_DEPARTMENT_COURSES @year=" + year + ",@Dname='" + Departmentname + "'";
             return dbMan.ExecuteReader(query);
         }
+
+        //public DataTable STATS_GRADES_PER_DEPARTMENT_COURSES(string Departmentname, int year)
+        //{
+        //    string query = "Select CourseName , Grade , Count(Grade) From Course,Takes , department Where Course.CourseID = Takes.CourseID AND Year_of_Intern =" + year + " AND Course.DepNo =Department_Number AND DepartmentName = '" + Departmentname + " ' Group By CourseName , Grade Having Grade<>'W' Order By CourseName";
+        //    return dbMan.ExecuteReader(query);
+        //}
         //Available Courses X For Department D and Their Location L
         public DataTable STATS_COURSES_PER_DEPARTMENT(string Departmentname)
         {
@@ -568,13 +613,22 @@ namespace DBapplication
         //Courses and Their Instructors Data 
 
 
+        //Stored Proc 3
+
         //Count For Grade G  in Course C in Year Y 
         public DataTable STATS_COURSE_YEAR_GRADE(int cid, int year, string grade)
         {
             //updated on 6/1
-            string query = "select CourseName , count(Grade) from Course,Takes where Takes.CourseID=" + cid + "AND Takes.CourseID= Course.CourseID AND Year_of_Intern=" + year + "AND Grade='" + grade + "' group by CourseName";
+            string query = "EXEC STATS_COURSE_YEAR_GRADE @year=" + year + " ,@cid=" + cid + ", @grade='" + grade + "'";
             return dbMan.ExecuteReader(query);
         }
+
+        //public DataTable STATS_COURSE_YEAR_GRADE(int cid, int year, string grade)
+        //{
+        //    //updated on 6/1
+        //    string query = "select CourseName , count(Grade) from Course,Takes where Takes.CourseID=" + cid + "AND Takes.CourseID= Course.CourseID AND Year_of_Intern=" + year + "AND Grade='" + grade + "' group by CourseName";
+        //    return dbMan.ExecuteReader(query);
+        //}
         #endregion
 
     }

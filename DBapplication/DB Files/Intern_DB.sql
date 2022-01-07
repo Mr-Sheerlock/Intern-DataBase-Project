@@ -10,6 +10,8 @@ use Intern_DB
 --CREATE DOMAIN D_NUM AS INTEGER
 --CHECK (D_NUM > 0 AND D_NUM < 21);
 
+
+
 create table Accounts
 (
 ID SMALLINT not null,
@@ -157,6 +159,9 @@ Primary key (Branch_ID)
 --ON UPDATE CASCADE);
 
 )
+
+
+
 
 
 
