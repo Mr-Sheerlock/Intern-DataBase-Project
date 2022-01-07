@@ -110,6 +110,7 @@ namespace DBapplication.Admin
             // 
             // DepOpMenu_cmbox
             // 
+            this.DepOpMenu_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepOpMenu_cmbox.FormattingEnabled = true;
             this.DepOpMenu_cmbox.Items.AddRange(new object[] {
             "Add Department ",

@@ -120,6 +120,7 @@ namespace DBapplication.Admin
             // 
             // RemoveAdmin_cmbox
             // 
+            this.RemoveAdmin_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RemoveAdmin_cmbox.FormattingEnabled = true;
             this.RemoveAdmin_cmbox.Items.AddRange(new object[] {
             "1",
@@ -169,6 +170,7 @@ namespace DBapplication.Admin
             // 
             // RemoveIntern_cmbox
             // 
+            this.RemoveIntern_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RemoveIntern_cmbox.FormattingEnabled = true;
             this.RemoveIntern_cmbox.Items.AddRange(new object[] {
             "1",
@@ -346,6 +348,7 @@ namespace DBapplication.Admin
             // 
             // DepName_textbox
             // 
+            this.DepName_textbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepName_textbox.FormattingEnabled = true;
             this.DepName_textbox.Location = new System.Drawing.Point(109, 266);
             this.DepName_textbox.Margin = new System.Windows.Forms.Padding(2);
@@ -482,6 +485,7 @@ namespace DBapplication.Admin
             // 
             // RemoveApplicant_cmbox
             // 
+            this.RemoveApplicant_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RemoveApplicant_cmbox.FormattingEnabled = true;
             this.RemoveApplicant_cmbox.Items.AddRange(new object[] {
             "1",
@@ -531,6 +535,7 @@ namespace DBapplication.Admin
             // 
             // RemoveInstructor_cmbox
             // 
+            this.RemoveInstructor_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RemoveInstructor_cmbox.FormattingEnabled = true;
             this.RemoveInstructor_cmbox.Items.AddRange(new object[] {
             "1",
@@ -572,6 +577,7 @@ namespace DBapplication.Admin
             // 
             // AddApplicant_cmbox
             // 
+            this.AddApplicant_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddApplicant_cmbox.FormattingEnabled = true;
             this.AddApplicant_cmbox.Items.AddRange(new object[] {
             "1",

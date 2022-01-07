@@ -175,6 +175,7 @@
             // 
             // DepName_textbox
             // 
+            this.DepName_textbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepName_textbox.FormattingEnabled = true;
             this.DepName_textbox.Location = new System.Drawing.Point(127, 266);
             this.DepName_textbox.Margin = new System.Windows.Forms.Padding(2);

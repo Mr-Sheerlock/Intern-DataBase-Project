@@ -65,14 +65,16 @@ namespace DBapplication.Admin
             // operations_LBL
             // 
             this.operations_LBL.AutoSize = true;
-            this.operations_LBL.Location = new System.Drawing.Point(321, 15);
+            this.operations_LBL.Location = new System.Drawing.Point(241, 12);
+            this.operations_LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.operations_LBL.Name = "operations_LBL";
-            this.operations_LBL.Size = new System.Drawing.Size(148, 17);
+            this.operations_LBL.Size = new System.Drawing.Size(111, 13);
             this.operations_LBL.TabIndex = 7;
             this.operations_LBL.Text = "Choose an operation: ";
             // 
             // StatOpMenu_cmbox
             // 
+            this.StatOpMenu_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StatOpMenu_cmbox.FormattingEnabled = true;
             this.StatOpMenu_cmbox.Items.AddRange(new object[] {
             "Number of Applicants For Each Department",
@@ -85,81 +87,90 @@ namespace DBapplication.Admin
             "Course X and its Lecture Dates and Time",
             "Courses and Their Instructors Data",
             "Count For Grade G  in Course C in Year Y "});
-            this.StatOpMenu_cmbox.Location = new System.Drawing.Point(475, 12);
+            this.StatOpMenu_cmbox.Location = new System.Drawing.Point(356, 10);
+            this.StatOpMenu_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StatOpMenu_cmbox.Name = "StatOpMenu_cmbox";
-            this.StatOpMenu_cmbox.Size = new System.Drawing.Size(424, 24);
+            this.StatOpMenu_cmbox.Size = new System.Drawing.Size(319, 21);
             this.StatOpMenu_cmbox.TabIndex = 6;
             this.StatOpMenu_cmbox.SelectedIndexChanged += new System.EventHandler(this.StatOpMenu_cmbox_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(368, 522);
+            this.dataGridView1.Location = new System.Drawing.Point(276, 424);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(758, 437);
+            this.dataGridView1.Size = new System.Drawing.Size(568, 355);
             this.dataGridView1.TabIndex = 8;
             // 
             // Year_LBL
             // 
             this.Year_LBL.AutoSize = true;
-            this.Year_LBL.Location = new System.Drawing.Point(3, 19);
+            this.Year_LBL.Location = new System.Drawing.Point(2, 15);
+            this.Year_LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Year_LBL.Name = "Year_LBL";
-            this.Year_LBL.Size = new System.Drawing.Size(42, 17);
+            this.Year_LBL.Size = new System.Drawing.Size(32, 13);
             this.Year_LBL.TabIndex = 9;
             this.Year_LBL.Text = "Year:";
             // 
             // Grade_LBL
             // 
             this.Grade_LBL.AutoSize = true;
-            this.Grade_LBL.Location = new System.Drawing.Point(3, 11);
+            this.Grade_LBL.Location = new System.Drawing.Point(2, 9);
+            this.Grade_LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Grade_LBL.Name = "Grade_LBL";
-            this.Grade_LBL.Size = new System.Drawing.Size(56, 17);
+            this.Grade_LBL.Size = new System.Drawing.Size(42, 13);
             this.Grade_LBL.TabIndex = 10;
             this.Grade_LBL.Text = "Grade: ";
             // 
             // DEPART_LBL
             // 
             this.DEPART_LBL.AutoSize = true;
-            this.DEPART_LBL.Location = new System.Drawing.Point(9, 10);
+            this.DEPART_LBL.Location = new System.Drawing.Point(7, 8);
+            this.DEPART_LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DEPART_LBL.Name = "DEPART_LBL";
-            this.DEPART_LBL.Size = new System.Drawing.Size(131, 17);
+            this.DEPART_LBL.Size = new System.Drawing.Size(99, 13);
             this.DEPART_LBL.TabIndex = 11;
             this.DEPART_LBL.Text = "Department Name: ";
             // 
             // Course_LBL
             // 
             this.Course_LBL.AutoSize = true;
-            this.Course_LBL.Location = new System.Drawing.Point(2, 6);
+            this.Course_LBL.Location = new System.Drawing.Point(2, 5);
+            this.Course_LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Course_LBL.Name = "Course_LBL";
-            this.Course_LBL.Size = new System.Drawing.Size(61, 17);
+            this.Course_LBL.Size = new System.Drawing.Size(46, 13);
             this.Course_LBL.TabIndex = 12;
             this.Course_LBL.Text = "Course: ";
             // 
             // Location_LBL
             // 
             this.Location_LBL.AutoSize = true;
-            this.Location_LBL.Location = new System.Drawing.Point(9, 7);
+            this.Location_LBL.Location = new System.Drawing.Point(7, 6);
+            this.Location_LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Location_LBL.Name = "Location_LBL";
-            this.Location_LBL.Size = new System.Drawing.Size(66, 17);
+            this.Location_LBL.Size = new System.Drawing.Size(51, 13);
             this.Location_LBL.TabIndex = 13;
             this.Location_LBL.Text = "Location:";
             // 
             // Year_textbox
             // 
-            this.Year_textbox.Location = new System.Drawing.Point(51, 16);
+            this.Year_textbox.Location = new System.Drawing.Point(38, 13);
+            this.Year_textbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Year_textbox.Name = "Year_textbox";
-            this.Year_textbox.Size = new System.Drawing.Size(100, 22);
+            this.Year_textbox.Size = new System.Drawing.Size(76, 20);
             this.Year_textbox.TabIndex = 14;
             // 
             // SHOWSTAT_BTN
             // 
             this.SHOWSTAT_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SHOWSTAT_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SHOWSTAT_BTN.Location = new System.Drawing.Point(912, 472);
+            this.SHOWSTAT_BTN.Location = new System.Drawing.Point(684, 384);
+            this.SHOWSTAT_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.SHOWSTAT_BTN.Name = "SHOWSTAT_BTN";
-            this.SHOWSTAT_BTN.Size = new System.Drawing.Size(214, 44);
+            this.SHOWSTAT_BTN.Size = new System.Drawing.Size(160, 36);
             this.SHOWSTAT_BTN.TabIndex = 15;
             this.SHOWSTAT_BTN.Text = "Show Statistics";
             this.SHOWSTAT_BTN.UseVisualStyleBackColor = true;
@@ -175,67 +186,75 @@ namespace DBapplication.Admin
             "D",
             "F",
             "W"});
-            this.Grade_cmbox.Location = new System.Drawing.Point(65, 8);
+            this.Grade_cmbox.Location = new System.Drawing.Point(49, 6);
+            this.Grade_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Grade_cmbox.Name = "Grade_cmbox";
-            this.Grade_cmbox.Size = new System.Drawing.Size(51, 24);
+            this.Grade_cmbox.Size = new System.Drawing.Size(39, 21);
             this.Grade_cmbox.TabIndex = 16;
             // 
             // loc_combox
             // 
             this.loc_combox.FormattingEnabled = true;
-            this.loc_combox.Location = new System.Drawing.Point(81, 7);
+            this.loc_combox.Location = new System.Drawing.Point(61, 6);
+            this.loc_combox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loc_combox.Name = "loc_combox";
-            this.loc_combox.Size = new System.Drawing.Size(100, 24);
+            this.loc_combox.Size = new System.Drawing.Size(76, 21);
             this.loc_combox.TabIndex = 17;
             // 
             // course_cmbox
             // 
             this.course_cmbox.FormattingEnabled = true;
-            this.course_cmbox.Location = new System.Drawing.Point(65, 3);
+            this.course_cmbox.Location = new System.Drawing.Point(49, 2);
+            this.course_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.course_cmbox.Name = "course_cmbox";
-            this.course_cmbox.Size = new System.Drawing.Size(62, 24);
+            this.course_cmbox.Size = new System.Drawing.Size(48, 21);
             this.course_cmbox.TabIndex = 18;
             // 
             // Dep_cmbox
             // 
             this.Dep_cmbox.FormattingEnabled = true;
-            this.Dep_cmbox.Location = new System.Drawing.Point(139, 7);
+            this.Dep_cmbox.Location = new System.Drawing.Point(104, 6);
+            this.Dep_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Dep_cmbox.Name = "Dep_cmbox";
-            this.Dep_cmbox.Size = new System.Drawing.Size(95, 24);
+            this.Dep_cmbox.Size = new System.Drawing.Size(72, 21);
             this.Dep_cmbox.TabIndex = 19;
             // 
             // DEPID_LBL
             // 
             this.DEPID_LBL.AutoSize = true;
-            this.DEPID_LBL.Location = new System.Drawing.Point(3, 3);
+            this.DEPID_LBL.Location = new System.Drawing.Point(2, 2);
+            this.DEPID_LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DEPID_LBL.Name = "DEPID_LBL";
-            this.DEPID_LBL.Size = new System.Drawing.Size(103, 17);
+            this.DEPID_LBL.Size = new System.Drawing.Size(79, 13);
             this.DEPID_LBL.TabIndex = 20;
             this.DEPID_LBL.Text = "Department ID:";
             // 
             // DepID_cmbox
             // 
             this.DepID_cmbox.FormattingEnabled = true;
-            this.DepID_cmbox.Location = new System.Drawing.Point(112, 3);
+            this.DepID_cmbox.Location = new System.Drawing.Point(84, 2);
+            this.DepID_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DepID_cmbox.Name = "DepID_cmbox";
-            this.DepID_cmbox.Size = new System.Drawing.Size(53, 24);
+            this.DepID_cmbox.Size = new System.Drawing.Size(41, 21);
             this.DepID_cmbox.TabIndex = 21;
             // 
             // BRANCHID_LBL
             // 
             this.BRANCHID_LBL.AutoSize = true;
-            this.BRANCHID_LBL.Location = new System.Drawing.Point(5, 37);
+            this.BRANCHID_LBL.Location = new System.Drawing.Point(4, 30);
+            this.BRANCHID_LBL.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.BRANCHID_LBL.Name = "BRANCHID_LBL";
-            this.BRANCHID_LBL.Size = new System.Drawing.Size(74, 17);
+            this.BRANCHID_LBL.Size = new System.Drawing.Size(58, 13);
             this.BRANCHID_LBL.TabIndex = 22;
             this.BRANCHID_LBL.Text = "Branch ID:";
             // 
             // BranchID_cmbox
             // 
             this.BranchID_cmbox.FormattingEnabled = true;
-            this.BranchID_cmbox.Location = new System.Drawing.Point(108, 33);
+            this.BranchID_cmbox.Location = new System.Drawing.Point(81, 27);
+            this.BranchID_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BranchID_cmbox.Name = "BranchID_cmbox";
-            this.BranchID_cmbox.Size = new System.Drawing.Size(46, 24);
+            this.BranchID_cmbox.Size = new System.Drawing.Size(36, 21);
             this.BranchID_cmbox.TabIndex = 23;
             // 
             // depid_panel
@@ -244,61 +263,67 @@ namespace DBapplication.Admin
             this.depid_panel.Controls.Add(this.DepID_cmbox);
             this.depid_panel.Controls.Add(this.BRANCHID_LBL);
             this.depid_panel.Controls.Add(this.DEPID_LBL);
-            this.depid_panel.Location = new System.Drawing.Point(8, 219);
+            this.depid_panel.Location = new System.Drawing.Point(6, 178);
+            this.depid_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.depid_panel.Name = "depid_panel";
-            this.depid_panel.Size = new System.Drawing.Size(184, 68);
+            this.depid_panel.Size = new System.Drawing.Size(138, 55);
             this.depid_panel.TabIndex = 24;
             // 
             // coursepanel
             // 
             this.coursepanel.Controls.Add(this.course_cmbox);
             this.coursepanel.Controls.Add(this.Course_LBL);
-            this.coursepanel.Location = new System.Drawing.Point(8, 66);
+            this.coursepanel.Location = new System.Drawing.Point(6, 54);
+            this.coursepanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.coursepanel.Name = "coursepanel";
-            this.coursepanel.Size = new System.Drawing.Size(200, 48);
+            this.coursepanel.Size = new System.Drawing.Size(150, 39);
             this.coursepanel.TabIndex = 25;
             // 
             // locationpanel
             // 
             this.locationpanel.Controls.Add(this.loc_combox);
             this.locationpanel.Controls.Add(this.Location_LBL);
-            this.locationpanel.Location = new System.Drawing.Point(8, 173);
+            this.locationpanel.Location = new System.Drawing.Point(6, 141);
+            this.locationpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.locationpanel.Name = "locationpanel";
-            this.locationpanel.Size = new System.Drawing.Size(200, 40);
+            this.locationpanel.Size = new System.Drawing.Size(150, 32);
             this.locationpanel.TabIndex = 25;
             // 
             // gradepanel
             // 
             this.gradepanel.Controls.Add(this.Grade_LBL);
             this.gradepanel.Controls.Add(this.Grade_cmbox);
-            this.gradepanel.Location = new System.Drawing.Point(8, 120);
+            this.gradepanel.Location = new System.Drawing.Point(6, 98);
+            this.gradepanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gradepanel.Name = "gradepanel";
-            this.gradepanel.Size = new System.Drawing.Size(130, 47);
+            this.gradepanel.Size = new System.Drawing.Size(98, 38);
             this.gradepanel.TabIndex = 25;
             // 
             // departmentname_panel
             // 
             this.departmentname_panel.Controls.Add(this.Dep_cmbox);
             this.departmentname_panel.Controls.Add(this.DEPART_LBL);
-            this.departmentname_panel.Location = new System.Drawing.Point(8, 66);
+            this.departmentname_panel.Location = new System.Drawing.Point(6, 54);
+            this.departmentname_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.departmentname_panel.Name = "departmentname_panel";
-            this.departmentname_panel.Size = new System.Drawing.Size(237, 34);
+            this.departmentname_panel.Size = new System.Drawing.Size(178, 28);
             this.departmentname_panel.TabIndex = 25;
             // 
             // yearpanel
             // 
             this.yearpanel.Controls.Add(this.Year_textbox);
             this.yearpanel.Controls.Add(this.Year_LBL);
-            this.yearpanel.Location = new System.Drawing.Point(8, 12);
+            this.yearpanel.Location = new System.Drawing.Point(6, 10);
+            this.yearpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.yearpanel.Name = "yearpanel";
-            this.yearpanel.Size = new System.Drawing.Size(178, 48);
+            this.yearpanel.Size = new System.Drawing.Size(134, 39);
             this.yearpanel.TabIndex = 27;
             // 
             // Statistics
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 971);
+            this.ClientSize = new System.Drawing.Size(846, 789);
             this.Controls.Add(this.yearpanel);
             this.Controls.Add(this.locationpanel);
             this.Controls.Add(this.coursepanel);
@@ -309,6 +334,7 @@ namespace DBapplication.Admin
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.operations_LBL);
             this.Controls.Add(this.StatOpMenu_cmbox);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Statistics";
             this.Text = "Statistics";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
