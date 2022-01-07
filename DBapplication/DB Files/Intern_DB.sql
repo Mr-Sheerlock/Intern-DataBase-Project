@@ -88,7 +88,7 @@ LectureDay varchar(10),
 Course_ID SMALLINT not null ,  
 LocationID SMALLINT  --should be not nulled later
 
-Primary key (Course_ID,LocationID)
+Primary key (LectureDay,Course_ID,LocationID)
 
 --FOREIGN KEY (LocationID) REFERENCES Locations (Branch_ID) 
 --ON DELETE SET NULL 
@@ -190,6 +190,9 @@ insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
 values
 (6 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr4','1','2','M')
 
+insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
+values (7,'x1D5YVXi+aeWnsNMO5Wh6w==','JeJo','1','1','M')
+
 insert into department values (1,'R&D')
 insert into department values (2,'ML')
 insert into department values (3,'Sales')
@@ -211,7 +214,8 @@ values (4,'R&D1',5,0,1,2)
 insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
 values (5,'Sales1',5,0,3,5)
 insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
-values (6,'MLtwo',5,0,2,3)
+values (6,'MLone',5,0,2,3)
+--8alebn handtr n-associate el course bl mkan m4 bl department
 
 
 --Insert in instructs 
@@ -224,6 +228,38 @@ values ('4','4')
 
 insert into Instructs (CourseID,Instruct_ID)
 values ('6','6')
+
+INSERT INTO Instructs Values (5,5)
+INSERT INTO Instructs Values (3,2)
+
+INSERT INTO Lectures Values (1,'Sunday',1,3)
+INSERT INTO Lectures Values (2,'Monday',2,4)
+INSERT INTO Lectures Values (3,'Tuesday',2,1)
+INSERT INTO Lectures Values (4,'Wednesday',2,1)
+INSERT INTO Lectures Values (5,'Saturday',3,1)
+INSERT INTO Lectures Values (6,'Thursday',3,1)
+INSERT INTO Lectures Values (7,'Wednesday',4,2)
+INSERT INTO Lectures Values (8,'Saturday',4,2)
+INSERT INTO Lectures Values (9,'Monday',3,1)
+INSERT INTO Lectures Values (10,'Sunday',4,2)
+INSERT INTO Lectures Values (11,'Sunday',2,4)
+
+INSERT INTO Takes Values (1,1,2020,'A')
+INSERT INTO Takes Values (1,3,2020,'W')
+INSERT INTO Takes Values (1,5,2020,'B')
+INSERT INTO Takes Values (2,1,2020,'B')
+INSERT INTO Takes Values (2,2,2020,'W')
+INSERT INTO Takes Values (2,3,2020,'A')
+INSERT INTO Takes Values (3,1,2020,'C')
+INSERT INTO Takes Values (3,2,2020,'D')
+INSERT INTO Takes Values (3,4,2020,'W')
+INSERT INTO Takes Values (4,2,2020,'A')
+INSERT INTO Takes Values (4,3,2020,'A')
+INSERT INTO Takes Values (4,5,2020,'A')
+INSERT INTO Takes Values (5,1,2020,'C')
+INSERT INTO Takes Values (5,2,2020,'B')
+INSERT INTO Takes Values (5,3,2020,'A')
+INSERT INTO Takes Values (5,4,2020,'A')
 
 
 --insert into takes (App_ID,CourseID,Year_of_Intern) values(2,4,2000)

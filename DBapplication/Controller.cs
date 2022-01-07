@@ -493,7 +493,14 @@ namespace DBapplication
         public DataTable SelectCourseID()
         {
             //EDITED 27/12 by ozer to get active courses by instructors
-            string query = "select Distinct CourseID from Instructs"  ; 
+            string query = "select Distinct CourseID from Instructs";
+            return dbMan.ExecuteReader(query);
+        }
+        //GET COURSE NAME 
+        public DataTable SelectCourseBranch()
+        {
+            //EDITED 27/12 by ozer to get active courses by instructors
+            string query = "select CourseName, from Course,Instructs where Course.CourseID = Instructs.CourseID Order By Instructs.CourseID";
             return dbMan.ExecuteReader(query);
         }
         //GET BRANCH IDS
@@ -526,7 +533,7 @@ namespace DBapplication
         //Number of Dropped Applicants in All Courses year Y
         public DataTable STATS_DROPPED_COURSES(int year)
         {
-              // EDITED 27/12 by ozer to get which course , which ID and what number of drops in that course 
+            // EDITED 27/12 by ozer to get which course , which ID and what number of drops in that course 
             string query = "Select CourseName , Course.CourseID ,count(*) from Course, Takes where Takes.CourseID = Course.CourseID AND Grade='W' AND Year_of_Intern=" + year + " group by CourseName , Course.CourseID";
 
             return dbMan.ExecuteReader(query);
@@ -540,19 +547,21 @@ namespace DBapplication
         //Available Courses X For Department D and Their Location L
         public DataTable STATS_COURSES_PER_DEPARTMENT(string Departmentname)
         {
-            string query = "Select CourseName , LocationName  From Course , Locations ,department Where  Active_Status=1 AND DepNo = Department_Number AND BranchNo = Branch_ID AND DepartmentName='" + Departmentname + "'";
+            //updated 6/1
+            string query = "Select CourseName , LocationName  From Course ,Instructs, Locations ,department Where Instructs.CourseID=Course.CourseID AND BranchNo=Branch_ID AND DepNo=Department_Number AND DepartmentName='" + Departmentname + "'";
             return dbMan.ExecuteReader(query);
         }
         //Search for locations L for Course C 
         public DataTable STATS_LOCATION_PER_COURSE(int cid)
+        //updated on 6/1
         {
-            string query = "Select CourseName , LocationName From Course , Locations Where CourseID=" + cid + "AND Active_Status=1 AND BranchNo=Branch_ID";
+            string query = "Select CourseName , LocationName From Course , Locations Where CourseID=" + cid + " AND BranchNo=Branch_ID";
             return dbMan.ExecuteReader(query);
         }
         public DataTable STATS_COURSE_LECTURES_DATEANDTIMES(int cid)
         {
-            //EDITED BY OZER on 27/12 
-            string query = "Select LectureNo , LectureDay , LocationName From Lectures,Locations,Instructs WHERE Course_ID = " + cid + "AND LocationID=Branch_ID AND Lectures.Course_ID=Instructs.CourseID ";
+            //EDITED BY OZER on 6/1 
+            string query = "Select CourseName , LectureNo , LectureDay , LocationName From Course, Lectures,Locations,Instructs WHERE LocationID=Branch_ID AND Course_ID=Instructs.CourseID AND Instructs.CourseID=Course.CourseID AND Course_ID=" + cid;
             return dbMan.ExecuteReader(query);
         }
 
@@ -562,9 +571,11 @@ namespace DBapplication
         //Count For Grade G  in Course C in Year Y 
         public DataTable STATS_COURSE_YEAR_GRADE(int cid, int year, string grade)
         {
-            string query = "Select Count(Grade) From Takes, Course Where Course.CourseID=" + cid + " AND Year_of_Intern=" + year + " AND Takes.CourseID=Course.CourseID AND Grade='" + grade + "'";
+            //updated on 6/1
+            string query = "select CourseName , count(Grade) from Course,Takes where Takes.CourseID=" + cid + "AND Takes.CourseID= Course.CourseID AND Year_of_Intern=" + year + "AND Grade='" + grade + "' group by CourseName";
             return dbMan.ExecuteReader(query);
         }
         #endregion
+
     }
 }

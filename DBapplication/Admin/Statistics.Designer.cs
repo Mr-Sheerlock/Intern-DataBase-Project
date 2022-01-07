@@ -173,7 +173,6 @@ namespace DBapplication.Admin
             "B",
             "C",
             "D",
-            "E",
             "F",
             "W"});
             this.Grade_cmbox.Location = new System.Drawing.Point(65, 8);
@@ -245,7 +244,7 @@ namespace DBapplication.Admin
             this.depid_panel.Controls.Add(this.DepID_cmbox);
             this.depid_panel.Controls.Add(this.BRANCHID_LBL);
             this.depid_panel.Controls.Add(this.DEPID_LBL);
-            this.depid_panel.Location = new System.Drawing.Point(5, 259);
+            this.depid_panel.Location = new System.Drawing.Point(8, 219);
             this.depid_panel.Name = "depid_panel";
             this.depid_panel.Size = new System.Drawing.Size(184, 68);
             this.depid_panel.TabIndex = 24;
@@ -254,7 +253,7 @@ namespace DBapplication.Admin
             // 
             this.coursepanel.Controls.Add(this.course_cmbox);
             this.coursepanel.Controls.Add(this.Course_LBL);
-            this.coursepanel.Location = new System.Drawing.Point(8, 106);
+            this.coursepanel.Location = new System.Drawing.Point(8, 66);
             this.coursepanel.Name = "coursepanel";
             this.coursepanel.Size = new System.Drawing.Size(200, 48);
             this.coursepanel.TabIndex = 25;
@@ -263,7 +262,7 @@ namespace DBapplication.Admin
             // 
             this.locationpanel.Controls.Add(this.loc_combox);
             this.locationpanel.Controls.Add(this.Location_LBL);
-            this.locationpanel.Location = new System.Drawing.Point(8, 213);
+            this.locationpanel.Location = new System.Drawing.Point(8, 173);
             this.locationpanel.Name = "locationpanel";
             this.locationpanel.Size = new System.Drawing.Size(200, 40);
             this.locationpanel.TabIndex = 25;
@@ -272,7 +271,7 @@ namespace DBapplication.Admin
             // 
             this.gradepanel.Controls.Add(this.Grade_LBL);
             this.gradepanel.Controls.Add(this.Grade_cmbox);
-            this.gradepanel.Location = new System.Drawing.Point(8, 160);
+            this.gradepanel.Location = new System.Drawing.Point(8, 120);
             this.gradepanel.Name = "gradepanel";
             this.gradepanel.Size = new System.Drawing.Size(130, 47);
             this.gradepanel.TabIndex = 25;
@@ -302,9 +301,9 @@ namespace DBapplication.Admin
             this.ClientSize = new System.Drawing.Size(1128, 971);
             this.Controls.Add(this.yearpanel);
             this.Controls.Add(this.locationpanel);
+            this.Controls.Add(this.coursepanel);
             this.Controls.Add(this.gradepanel);
             this.Controls.Add(this.departmentname_panel);
-            this.Controls.Add(this.coursepanel);
             this.Controls.Add(this.depid_panel);
             this.Controls.Add(this.SHOWSTAT_BTN);
             this.Controls.Add(this.dataGridView1);

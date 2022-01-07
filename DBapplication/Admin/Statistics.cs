@@ -21,10 +21,13 @@ namespace DBapplication.Admin
             {
                 p.Visible = false;
             }
+
         }
         
 
-        static string NullToString(object Value)
+
+
+            static string NullToString(object Value)
         {
 
             // Value.ToString() allows for Value being DBNull, but will also convert int, double, etc.
@@ -114,13 +117,21 @@ namespace DBapplication.Admin
             } 
             if (StatOpMenu_cmbox.SelectedIndex== 8)
             {
+                
                 DataTable dt = ctrlobj.SelectCourse_Instructor(DepID_cmbox.Text, BranchID_cmbox.Text);
                 dataGridView1.DataSource = dt;
                 dataGridView1.Refresh();
             } 
             if (StatOpMenu_cmbox.SelectedIndex== 9)
             {
-                
+                //updated on 6/1
+                short parsed;
+                if (string.IsNullOrEmpty(Year_textbox.Text) || !Int16.TryParse(Year_textbox.Text, out parsed) || parsed < 0)
+                {
+                    MessageBox.Show("Invalid Input for year");
+                    return;
+                }
+                if (Grade_cmbox.SelectedIndex == -1) { MessageBox.Show("Invalid Input for grade"); }
                 DataTable dt = ctrlobj.STATS_COURSE_YEAR_GRADE(int.Parse(course_cmbox.Text), int.Parse(Year_textbox.Text), Grade_cmbox.Text);
                 dataGridView1.DataSource = dt;
                 dataGridView1.Refresh();
@@ -137,51 +148,55 @@ namespace DBapplication.Admin
             {
                 SHOWSTAT_BTN.Enabled = false;
             }
-            if(StatOpMenu_cmbox.SelectedIndex==0 || StatOpMenu_cmbox.SelectedIndex == 1 || StatOpMenu_cmbox.SelectedIndex == 2) { HideAllPanels(); }
-            if (StatOpMenu_cmbox.SelectedIndex == 3)
+            if(StatOpMenu_cmbox.SelectedIndex==0 || StatOpMenu_cmbox.SelectedIndex == 1 || StatOpMenu_cmbox.SelectedIndex == 2) {   HideAllPanels(); }
+            else if (StatOpMenu_cmbox.SelectedIndex == 3)
             {
+                
                 HideAllPanels();
+                
                 yearpanel.Visible = true;
             } 
-            if (StatOpMenu_cmbox.SelectedIndex == 4)
+            else if (StatOpMenu_cmbox.SelectedIndex == 4)
             {
+                
                 HideAllPanels();
+               
                 departmentname_panel.Visible = true;
                 yearpanel.Visible = true;
             
                 Dep_cmbox.DataSource = ctrlobj.SelectDepartmentNames();
                 Dep_cmbox.DisplayMember = "DepartmentName";
             }
-            if (StatOpMenu_cmbox.SelectedIndex == 5)
+            else if (StatOpMenu_cmbox.SelectedIndex == 5)
             {
-
+                
                 HideAllPanels();
                 departmentname_panel.Visible = true;
                 departmentname_panel.Dock = DockStyle.Left;
                 Dep_cmbox.DataSource = ctrlobj.SelectDepartmentNames();
                 Dep_cmbox.DisplayMember = "DepartmentName";
             } 
-            if (StatOpMenu_cmbox.SelectedIndex == 6)
+            else if (StatOpMenu_cmbox.SelectedIndex == 6)
             {
-
+                
                 HideAllPanels();
                 coursepanel.Visible = true;
-                coursepanel.Dock = DockStyle.Left;
+               // coursepanel.Dock = DockStyle.Left ;
                 course_cmbox.DataSource = ctrlobj.SelectCourseID();
                 course_cmbox.DisplayMember = "CourseID";
             }
-            if (StatOpMenu_cmbox.SelectedIndex == 7)
+            else if (StatOpMenu_cmbox.SelectedIndex == 7)
             {
-
+                
                 HideAllPanels();
                 coursepanel.Visible = true;
-                coursepanel.Dock = DockStyle.Left;
+                //coursepanel.Dock = DockStyle.Left;
                 course_cmbox.DataSource = ctrlobj.SelectCourseID();
                 course_cmbox.DisplayMember = "CourseID";
             } 
-            if (StatOpMenu_cmbox.SelectedIndex == 8)
+            else if (StatOpMenu_cmbox.SelectedIndex == 8)
             {
-
+                
                 HideAllPanels();
                 depid_panel.Visible = true;
                 depid_panel.Dock = DockStyle.Left;
@@ -190,15 +205,17 @@ namespace DBapplication.Admin
                 BranchID_cmbox.DataSource = ctrlobj.SelectBranchIDs();
                 BranchID_cmbox.DisplayMember = "Branch_ID";
             } 
-            if (StatOpMenu_cmbox.SelectedIndex == 9)
+            else if (StatOpMenu_cmbox.SelectedIndex == 9)
             {
-
+                //EDITED 27/12 By ozer 
+                
                 HideAllPanels();
                 coursepanel.Visible = true;
                 yearpanel.Visible = true;
                 gradepanel.Visible = true;
                 course_cmbox.DataSource = ctrlobj.SelectCourseID();
                 course_cmbox.DisplayMember = "CourseID";
+
             }
 
         }
