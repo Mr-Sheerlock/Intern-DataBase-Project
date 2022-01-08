@@ -109,7 +109,7 @@ create table Instructs
 Instruct_ID  SMALLINT not null,    
 CourseID SMALLINT not null
 
-Primary Key (Instruct_ID , CourseID )
+Primary Key (Instruct_ID )
 
 --FOREIGN KEY (Instruct_ID) REFERENCES Accounts (ID) 
 --ON DELETE SET NULL 
