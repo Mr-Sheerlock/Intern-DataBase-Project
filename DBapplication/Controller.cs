@@ -39,6 +39,7 @@ namespace DBapplication
         }
 
 
+       
         public int CheckifUserTaken(string UserName)
         {
             string query = "Select Count(1) from Accounts where UserName = '" + UserName + "';";
@@ -355,6 +356,15 @@ namespace DBapplication
 
 
         #region Takes
+
+        public int CheckCurrentYear()
+        {
+            string query = "select count(App_ID) "
+                            + "from takes "
+                            + "where Grade is NULL ';";
+            return Convert.ToInt16(dbMan.ExecuteScalar(query));
+        }
+
         public int CheckifApplied(string AppID, int CurrentYear)
         {
 
@@ -379,6 +389,10 @@ namespace DBapplication
             if (dbMan.ExecuteScalar(query) == DBNull.Value)
             {
                 return 2000;  //Base Assumption
+            }
+            if (CheckCurrentYear() == 0)
+            {
+                return Convert.ToInt16(dbMan.ExecuteScalar(query))+1; //there are no active courses = we are in the next year
             }
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }

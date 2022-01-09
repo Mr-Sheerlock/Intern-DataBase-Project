@@ -40,34 +40,34 @@ use Intern_DB
 --			)
 --			AND Locations.Dep_No= department.Department_Number
 
-Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID 
-from department, Locations 
-where Branch_ID in  --123
-                (
-                Select BranchNo    --BranchID having available courses
-                From Course  
-                where Enrolled < Capacity 
-                AND Course.CourseID in ( --Courses that have instructors
-										Select CourseID 
-										From Instructs  
-										) 
-				AND  Course.CourseID not  in( 
-										Select CourseID
-										From Takes
-										Where App_ID ='2'
-										AND Grade != 'W'     --if withdrawn or terminated of failed he should be able to apply
-										AND Grade != 'T'
-										AND Grade != 'F'
+--Select val =CONCAT(departmentName,'- ', LocationName), Branch_ID 
+--from department, Locations 
+--where Branch_ID in  --123
+--                (
+--                Select BranchNo    --BranchID having available courses
+--                From Course  
+--                where Enrolled < Capacity 
+--                AND Course.CourseID in ( --Courses that have instructors
+--										Select CourseID 
+--										From Instructs  
+--										) 
+--				AND  Course.CourseID not  in( 
+--										Select CourseID
+--										From Takes
+--										Where App_ID ='2'
+--										AND Grade != 'W'     --if withdrawn or terminated of failed he should be able to apply
+--										AND Grade != 'T'
+--										AND Grade != 'F'
 										
-											)
-				AND Course.CourseID not in (
-										Select CourseID
-										From Takes
-										Where App_ID ='2'
-										AND  Grade IS NULL
-										)
-                ) 
-                AND Locations.Dep_No = department.Department_Number;
+--											)
+--				AND Course.CourseID not in (
+--										Select CourseID
+--										From Takes
+--										Where App_ID ='2'
+--										AND  Grade IS NULL
+--										)
+--                ) 
+--                AND Locations.Dep_No = department.Department_Number;
 
 
 							
@@ -276,3 +276,7 @@ where Branch_ID in  --123
 --insert into Accounts (ID,Pass,UserName)
 --values
 --('2','2','Loler2')
+
+select count(App_ID) 
+from takes 
+where Grade is NULL 
