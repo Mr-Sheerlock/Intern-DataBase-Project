@@ -59,16 +59,16 @@ namespace DBapplication.Admin
                 Add_Department_Panel.Dock = DockStyle.Left;
                  
             }
-            else if (DepOpMenu_cmbox.SelectedIndex == 1)
-            {
-                HideAllPanels();
-                Delete_Department_Panel.Visible = true;
-                Delete_Department_Panel.Dock = DockStyle.Left;
-                DelDep_cmbox.DataSource = controllerObj.SelectDepartmentNamesandNos();
-                DelDep_cmbox.DisplayMember = "DepartmentName";
-                DelDep_cmbox.SelectedIndex = -1;
+            //else if (DepOpMenu_cmbox.SelectedIndex == 1)
+            //{
+            //    HideAllPanels();
+            //    Delete_Department_Panel.Visible = true;
+            //    Delete_Department_Panel.Dock = DockStyle.Left;
+            //    DelDep_cmbox.DataSource = controllerObj.SelectDepartmentNamesandNos();
+            //    DelDep_cmbox.DisplayMember = "DepartmentName";
+            //    DelDep_cmbox.SelectedIndex = -1;
 
-            }
+            //}
             else
             {
                 HideAllPanels();

@@ -11,8 +11,8 @@ namespace DBapplication
     public class DBManager
     {
         //static string DB_Connection_String = @"Data Source=DESKTOP-69T7GLK;Initial Catalog=Intern_DB;Integrated Security=True;MultipleActiveResultSets=true";
-        //static string DB_Connection_String = @"Data Source=JOHN-PC\SQLEXPRESS;Initial Catalog=Intern_DB;Integrated Security=True;MultipleActiveResultSets=true";
-        static string DB_Connection_String = @"Data Source=localhost;Initial Catalog=Intern_DB;Integrated Security=True;MultipleActiveResultSets=true";
+        static string DB_Connection_String = @"Data Source=JOHN-PC\SQLEXPRESS;Initial Catalog=Intern_DB;Integrated Security=True;MultipleActiveResultSets=true";
+        //static string DB_Connection_String = @"Data Source=localhost;Initial Catalog=Intern_DB;Integrated Security=True;MultipleActiveResultSets=true";
         SqlConnection myConnection;
 
         

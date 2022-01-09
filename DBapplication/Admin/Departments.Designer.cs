@@ -114,7 +114,6 @@ namespace DBapplication.Admin
             this.DepOpMenu_cmbox.FormattingEnabled = true;
             this.DepOpMenu_cmbox.Items.AddRange(new object[] {
             "Add Department ",
-            "Delete Department",
             "Edit Department"});
             this.DepOpMenu_cmbox.Location = new System.Drawing.Point(344, 36);
             this.DepOpMenu_cmbox.Margin = new System.Windows.Forms.Padding(2);
