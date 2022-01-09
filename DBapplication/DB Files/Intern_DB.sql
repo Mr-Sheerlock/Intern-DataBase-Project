@@ -10,7 +10,13 @@ use Intern_DB
 --CREATE DOMAIN D_NUM AS INTEGER
 --CHECK (D_NUM > 0 AND D_NUM < 21);
 
+create table department
+( 
+Department_Number SMALLINT not null,
+DepartmentName varchar(30) not null,
 
+Primary Key( Department_Number)
+)
 
 create table Accounts
 (
@@ -24,14 +30,13 @@ Age  TINYINT, --a constraint should be added later (0,140)
 Gender char not null, --a constraint should be added later {M,F}
 Account_Status nchar(1) not null,  --the status is used for getting confirmation from admin and such --a constraint should be added later {0,1} 0-pending 1-active
 TelephoneNumber varchar(11),
-Dep_No varchar(3)
+Dep_No SMALLINT,
 
-Primary key (ID)
+Primary key (ID),
 
---FOREIGN KEY (Dep_No) REFERENCES Department (Department_Number) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
-
+FOREIGN KEY (Dep_No) REFERENCES Department (Department_Number) 
+ON DELETE SET NULL 
+ON UPDATE CASCADE
 )
 
 create table Applicant_Intern
@@ -48,16 +53,8 @@ Primary Key(ID),
 
 FOREIGN KEY (ID) REFERENCES Accounts (ID) 
 ON DELETE CASCADE 
-ON UPDATE CASCADE
 )
 
-create table department
-( 
-Department_Number SMALLINT not null,
-DepartmentName varchar(30) not null,
-
-Primary Key( Department_Number),
-)
 
 create table Locations
 (
@@ -103,8 +100,8 @@ LocationID SMALLINT,  --should be not nulled later
 Primary key (LectureDay,Course_ID,LocationID),
 
 FOREIGN KEY (LocationID) REFERENCES Locations (Branch_ID) 
-ON DELETE No Action
-ON UPDATE No Action,
+ON DELETE no action
+ON UPDATE no action,
 
 FOREIGN KEY (Course_ID) REFERENCES Course (CourseID) 
 ON DELETE CASCADE 
@@ -120,13 +117,13 @@ CourseID SMALLINT not null,
 
 Primary Key (Instruct_ID),
 
-FOREIGN KEY (Instruct_ID) REFERENCES Accounts (ID) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE,
+FOREIGN KEY (Instruct_ID) REFERENCES Accounts (ID),
+--ON DELETE no Action 
+--ON UPDATE no Action,
 
 FOREIGN KEY (CourseID) REFERENCES Course (CourseID) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE
+ON DELETE CASCADE
+ON UPDATE no Action
 )			 
 
 create table Takes
