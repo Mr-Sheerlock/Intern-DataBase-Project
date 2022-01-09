@@ -40,13 +40,15 @@ ID SMALLINT not null,
 Grade_of_Entrance_Exam char,  --a constraint should be added later {A,B,C,D,E,F}
 College Varchar(30),
 Years_of_Experience TINYINT,  --a constraint should be added later 0,40
-Status_of_application nchar(1), --should be not nulled later  --a constraint should be added later {0,1,2}
-															--0 for ongoing, 1 for rejected, 2 for accepted		
-CV_Link varchar(50) 
+Status_of_application nchar(1), --should be not nulled later  --a constraint should be added later {0,1,2,3}
+															--0 for ongoing, 1 for rejected, 2 for accepted, 3 for ended		
+CV_Link varchar(50), 
 
---FOREIGN KEY (ID) REFERENCES Accounts (ID) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
+Primary Key(ID),
+
+FOREIGN KEY (ID) REFERENCES Accounts (ID) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE
 )
 
 create table department
@@ -54,7 +56,20 @@ create table department
 Department_Number SMALLINT not null,
 DepartmentName varchar(30) not null,
 
-Primary Key( Department_Number)
+Primary Key( Department_Number),
+)
+
+create table Locations
+(
+Branch_ID  Smallint not null, 
+LocationName varchar(30) ,
+Dep_No Smallint, --should be not nulled later
+
+Primary key (Branch_ID),
+
+FOREIGN KEY (Dep_No) REFERENCES Department (Department_Number) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE
 )
 
 create table Course
@@ -64,23 +79,18 @@ CourseName varchar(30),
 Capacity smallint,
 Enrolled smallint, --No. of Enrolled People --we should put a constraint here to make the number never exceed the capacity 
 DepNo SMALLINT, --should be not nulled later
-BranchNo Smallint
+BranchNo Smallint,
 
-Primary key (CourseID)
+Primary key (CourseID),
 
---FOREIGN KEY (DepNo) REFERENCES department (Department_Number) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
+FOREIGN KEY (DepNo) REFERENCES department (Department_Number)
+ON DELETE CASCADE
+ON UPDATE CASCADE,
 
---FOREIGN KEY (BranchNo) REFERENCES Locations (Branch_ID) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
-
+FOREIGN KEY (BranchNo) REFERENCES Locations (Branch_ID)
+ON DELETE No Action
+ON UPDATE No Action
 )
-
-
-		
-
 
 
 create table Lectures
@@ -88,37 +98,35 @@ create table Lectures
 LectureNo Tinyint,
 LectureDay varchar(10), 
 Course_ID SMALLINT not null ,  
-LocationID SMALLINT  --should be not nulled later
+LocationID SMALLINT,  --should be not nulled later
 
-Primary key (LectureDay,Course_ID,LocationID)
+Primary key (LectureDay,Course_ID,LocationID),
 
---FOREIGN KEY (LocationID) REFERENCES Locations (Branch_ID) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
+FOREIGN KEY (LocationID) REFERENCES Locations (Branch_ID) 
+ON DELETE No Action
+ON UPDATE No Action,
 
---FOREIGN KEY (Course_ID) REFERENCES Courses (CourseID) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
+FOREIGN KEY (Course_ID) REFERENCES Course (CourseID) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE
 
 )
-
 
 
 create table Instructs
 (
 Instruct_ID  SMALLINT not null,    
-CourseID SMALLINT not null
+CourseID SMALLINT not null,
 
-Primary Key (Instruct_ID )
+Primary Key (Instruct_ID),
 
---FOREIGN KEY (Instruct_ID) REFERENCES Accounts (ID) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
+FOREIGN KEY (Instruct_ID) REFERENCES Accounts (ID) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE,
 
---FOREIGN KEY (CourseID) REFERENCES Courses (CourseID) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
-
+FOREIGN KEY (CourseID) REFERENCES Course (CourseID) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE
 )			 
 
 create table Takes
@@ -126,43 +134,19 @@ create table Takes
 App_ID  SMALLINT not null, 
 CourseID SMALLINT, --should be not nulled later
 Year_of_Intern SMALLINT,  --should be not nulled later  --A constraint should be added
-Grade char   --a constraint should be added later {A,B,C,D,E,F,T,W} --T for terminated --W for withdraw
+Grade char,   --a constraint should be added later {A,B,C,D,E,F,T,W} --T for terminated --W for withdraw
 												--in the case of T,W the intern should automatically be demoted to applicant
 
-primary key(App_ID,CourseID,Year_of_Intern)
+primary key(App_ID,CourseID,Year_of_Intern),
 
---FOREIGN KEY (App_ID) REFERENCES Takes (ID) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
+FOREIGN KEY (App_ID) REFERENCES Applicant_Intern (ID) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE,
 
---FOREIGN KEY (CourseID) REFERENCES Courses (CourseID) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
-
+FOREIGN KEY (CourseID) REFERENCES Course (CourseID) 
+ON DELETE CASCADE 
+ON UPDATE CASCADE
 )
-
-
-
-
-	
-
-create table Locations
-(
-Branch_ID  Smallint not null, 
-LocationName varchar(30) ,
-Dep_No Smallint --should be not nulled later
-
-Primary key (Branch_ID)
-
---FOREIGN KEY (Dep_No) REFERENCES Department (Department_Number) 
---ON DELETE SET NULL 
---ON UPDATE CASCADE);
-
-)
-
-
-
-
 
 
 -----------------Inserting values into Accounts----------------
@@ -235,7 +219,7 @@ insert into Instructs (CourseID,Instruct_ID)
 values ('6','6')
 
 INSERT INTO Instructs Values (5,5)
-INSERT INTO Instructs Values (3,2)
+--INSERT INTO Instructs Values (3,2)
 
 INSERT INTO Lectures Values (1,'Sunday',1,3)
 INSERT INTO Lectures Values (2,'Monday',2,4)
@@ -248,6 +232,14 @@ INSERT INTO Lectures Values (8,'Saturday',4,2)
 INSERT INTO Lectures Values (9,'Monday',3,1)
 INSERT INTO Lectures Values (10,'Sunday',4,2)
 INSERT INTO Lectures Values (11,'Sunday',2,4)
+
+
+Insert Into Applicant_Intern Values (1,69,'Cairo University',0,2,'uwu.com')
+Insert Into Applicant_Intern Values (2,69,'MIT',0,2,'uwu.com')
+Insert Into Applicant_Intern Values (3,69,'Harvard',1,2,'uwu.com')
+Insert Into Applicant_Intern Values (4,69,'TITS',2,2,'uwu.com')
+Insert Into Applicant_Intern Values (5,69,'University of Toronto',0,2,'uwu.com')
+
 
 INSERT INTO Takes Values (1,1,2020,'A')
 INSERT INTO Takes Values (1,3,2020,'W')
@@ -265,6 +257,4 @@ INSERT INTO Takes Values (5,1,2020,'C')
 INSERT INTO Takes Values (5,2,2020,'B')
 INSERT INTO Takes Values (5,3,2020,'A')
 INSERT INTO Takes Values (5,4,2020,'A')
-
-
 --insert into takes (App_ID,CourseID,Year_of_Intern) values(2,4,2000)

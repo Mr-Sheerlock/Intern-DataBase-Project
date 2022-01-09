@@ -21,13 +21,9 @@ namespace DBapplication.Admin
             {
                 p.Visible = false;
             }
-
         }
-        
 
-
-
-            static string NullToString(object Value)
+        static string NullToString(object Value)
         {
 
             // Value.ToString() allows for Value being DBNull, but will also convert int, double, etc.
