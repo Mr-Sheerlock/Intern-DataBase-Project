@@ -645,5 +645,152 @@ namespace DBapplication
         //}
         #endregion
 
+
+        #region Instructors
+        public DataTable SelectApplicants(string ApplicantID)
+        {
+            string query = "Select DISTINCT Student.ID, Student.F_Name, Student.L_Name, Grade_of_Entrance_Exam, Years_of_Experience, College, Student.Gender, Student.TelephoneNumber" +
+                " From Accounts AS Student, Accounts AS Instructor, Applicant_Intern, Takes, Course, Instructs" +
+                " Where Student.ID = Applicant_Intern.ID" +
+                " AND Status_of_application = 0 " +
+                " AND Applicant_Intern.ID = Takes.App_ID " +
+                " AND Takes.CourseID = Course.CourseID " +
+                " AND Instructs.CourseID = Course.CourseID " +
+                " AND Instructs.Instruct_ID= '" + ApplicantID + "' ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectInterns(string ApplicantID)
+        {
+            string query = "Select DISTINCT Student.ID, Student.F_Name, Student.L_Name, Takes.CourseID,Takes.Grade, Student.Gender, Student.TelephoneNumber" +
+                " From Accounts AS Student, Accounts AS Instructor, Applicant_Intern, Takes, Course, Instructs" +
+                " Where Student.ID = Applicant_Intern.ID" +
+                " AND Status_of_application = 2 " +
+                " AND Applicant_Intern.ID = Takes.App_ID " +
+                " AND Takes.CourseID = Course.CourseID " +
+                " AND Instructs.CourseID = Course.CourseID " +
+                " AND Instructs.Instruct_ID= '" + ApplicantID + "' ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable SelectLecturesdate(string ApplicantID)
+        {
+            string query = "Select DISTINCT LectureNo, LectureDay" +
+                " from Instructs, Course, Lectures" +
+                " Where Lectures.Course_ID= Course.CourseID" +
+                " AND Instructs.CourseID = Course.CourseID" +
+                " AND Instructs.Instruct_ID= '" + ApplicantID + "' ";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public int ChangeDate(string NewDay, string ApplicantID, string LectNumber)
+        {
+
+            string query = "Update Lectures Set LectureDay = '" + NewDay + "' " +
+                " Where Lectures.LectureNo = '" + LectNumber + "' " +
+                " AND Lectures.Course_ID in ( Select Course.CourseID" +
+                " from Course, Lectures, Instructs" +
+                " Where Course.CourseID = Lectures.Course_ID" +
+                " AND Course.CourseID = Instructs.CourseID" +
+                " AND Instructs.Instruct_ID ='" + ApplicantID + "');";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int approveApplicant(int id)
+        {
+            string query = "Update Applicant_intern Set Status_of_application = 2 Where ID = " + id + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int RejectApplicant(int id)
+        {
+            string query = "Update Applicant_intern Set Status_of_application = 1 Where ID = " + id + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int SetGradeA(int id, int year)
+        {
+            string query = "Update Takes Set Grade = 'A' Where App_ID = " + id + "AND Year_of_Intern = " + year + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int SetGradeB(int id, int year)
+        {
+            string query = "Update Takes Set Grade = 'B' Where App_ID = " + id + "AND Year_of_Intern = " + year + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public int SetGradeC(int id, int year)
+        {
+            string query = "Update Takes Set Grade = 'C' Where App_ID = " + id + "AND Year_of_Intern = " + year + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public int SetGradeD(int id, int year)
+        {
+            string query = "Update Takes Set Grade = 'D' Where App_ID = " + id + "AND Year_of_Intern = " + year + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public int SetGradeF(int id, int year)
+        {
+            string query = "Update Takes Set Grade = 'F' Where App_ID = " + id + "AND Year_of_Intern = " + year + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int SetGradeT(int id, int year)
+        {
+            string query = "Update Takes Set Grade = 'T' Where App_ID = " + id + "AND Year_of_Intern = " + year + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        //public int deleteIntern(int id)
+        //{
+        //    string query = "Delete Applicant_Intern Where ID = " + id + ";";
+        //    return dbMan.ExecuteNonQuery(query);
+        //}
+
+        public int ChangetoCompl(int id)
+        {
+            string query = "Update Applicant_Intern Set Status_of_application = 3 Where ID = " + id + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int InternToApp(int id)
+        {
+            string query = "Update Accounts Set Job_Code = 4 Where ID = " + id + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+
+        public int AppToIntern(int id)
+        {
+            string query = "Update Accounts Set Job_Code = 3 Where ID = " + id + ";";
+            return dbMan.ExecuteNonQuery(query);
+        }
+        public DataTable SelectAdminInfo()
+        {
+            string query = "Select UserName, F_Name, L_Name, Age, Gender, TelephoneNumber From Accounts Where Job_Code = 1";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable CheckYearEnd()
+        {
+            string query = "Select Count(*) From Takes Where Grade IS NULL";
+            return dbMan.ExecuteReader(query);
+        }
+
+        public DataTable Countapplicants(string ApplicantID)
+        {
+            string query = "Select Count(*) From Accounts where Accounts.ID in (Select DISTINCT Student.ID" +
+               " From Accounts AS Student, Accounts AS Instructor, Applicant_Intern, Takes, Course, Instructs" +
+               " Where Student.ID = Applicant_Intern.ID" +
+               " AND Status_of_application = 0 " +
+               " AND Applicant_Intern.ID = Takes.App_ID " +
+               " AND Takes.CourseID = Course.CourseID " +
+               " AND Instructs.CourseID = Course.CourseID " +
+               " AND Instructs.Instruct_ID= '" + ApplicantID + "' )";
+            return dbMan.ExecuteReader(query);
+        }
+
+        #endregion
+
+
     }
 }

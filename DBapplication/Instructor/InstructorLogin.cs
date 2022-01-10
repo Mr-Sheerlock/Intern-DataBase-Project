@@ -38,20 +38,27 @@ namespace DBapplication
 
         private void Lectures_Button_Click(object sender, EventArgs e)
         {
-            Lectures_InstructorView l= new Lectures_InstructorView();
+            Lectures_InstructorView l= new Lectures_InstructorView(InstructorId, CurrentYear);
             l.Show();
         }
 
         private void Intern_Results_Button_Click(object sender, EventArgs e)
         {
-            Instructor.InternshipGrading g = new Instructor.InternshipGrading();
+            Instructor.InternshipGrading g = new Instructor.InternshipGrading(InstructorId, CurrentYear);
             g.Show();
         }
 
         private void View_Applications_Button_Click(object sender, EventArgs e)
         {
-            Instructor.ViewApplications a = new Instructor.ViewApplications();
+            Instructor.ViewApplications a = new Instructor.ViewApplications(InstructorId);
             a.Show();
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Instructor.InsStat h = new Instructor.InsStat();
+            h.Show();
+
         }
     }
 }
