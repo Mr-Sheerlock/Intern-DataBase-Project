@@ -34,7 +34,7 @@ namespace DBapplication
             else
             {
                 short x;
-                if (Int16.TryParse(Years_TextBox.Text, out x) == false)
+                if (Int16.TryParse(Years_TextBox.Text, out x) == false || Convert.ToInt16(Years_TextBox.Text)<0)
                 {
                     MessageBox.Show("Please write suitable years of experience.");
                 }

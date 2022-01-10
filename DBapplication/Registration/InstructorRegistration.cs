@@ -60,7 +60,7 @@ namespace DBapplication
                 else
                 {
                     short x;
-                    if (Int16.TryParse(Age_Textbox.Text, out x) == false)
+                    if (Int16.TryParse(Age_Textbox.Text, out x) == false || Convert.ToInt16(Age_Textbox.Text)<0)
                     {
 
                         MessageBox.Show("Please write a suitable Age.");

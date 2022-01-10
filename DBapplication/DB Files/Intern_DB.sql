@@ -146,115 +146,214 @@ ON UPDATE CASCADE
 )
 
 
------------------Inserting values into Accounts----------------
+-----------------Inserting values into Tables----------------
+
+
+
+--Accounts
 
 --Applicant1
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
 values
-(1 , 'a4IW3jR1u0XoSAL9kgIXew==','Lol','1','4','M')
+(1 ,'Ahmed','Mostafa','Joo', 'a4IW3jR1u0XoSAL9kgIXew==','1','4','M','12345678901')
 --pass is lol 
+
 --Applicant2
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
 values
-(2 , 'a4IW3jR1u0XoSAL9kgIXew==','Loler','1','4','M')
-
+(2 ,'Mostafa','Ahmed','Mostafa21', 'a4IW3jR1u0XoSAL9kgIXew==','1','4','M','12345678901')
 --pass is lol 
+
+--Applicant3
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
+values
+(3 ,'John','Ahmed','JohnAliJoseph', 'a4IW3jR1u0XoSAL9kgIXew==','1','4','F','12345678901')
+--pass is lol 
+
+
+--Applicant4
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
+values
+(4 ,'Ali','Ahmed','AliA23', 'a4IW3jR1u0XoSAL9kgIXew==','1','4','M','12345678901')
+--pass is lol 
+
+
+--Applicant5
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
+values
+(5 ,'Tarek','Mohammed','TM1993', 'a4IW3jR1u0XoSAL9kgIXew==','1','4','M','12345678901')
+--pass is lol 
+
 --Instructor1
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
 values
-(3 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr','1','2','F')
+(6 ,'Mohammed','Hassan','MH1951', 'a4IW3jR1u0XoSAL9kgIXew==','1','2','M','12345678901')
+--pass is lol 
+
+
 --Instructor2
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
 values
-(4 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr2','1','2','M')
---instructor3
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
+(7 ,'Hassan','Mohammed','HMT1948', 'a4IW3jR1u0XoSAL9kgIXew==','1','2','M','12345678901')
+--pass is lol 
+
+--Intern1
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
 values
-(5 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr3','1','2','F')
---instructor4
-insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
+(8 ,'Abdullha','Junior','AJ1993', 'a4IW3jR1u0XoSAL9kgIXew==','1','3','M','12345678901')
+--pass is lol 
+
+--Intern2
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
 values
-(6 , 'a4IW3jR1u0XoSAL9kgIXew==','LolInstr4','1','2','M')
+(9 ,'Hussein','Junior','HJ1923', 'a4IW3jR1u0XoSAL9kgIXew==','1','3','M','12345678901')
+--pass is lol 
+
+--Intern3
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
+values
+(10 ,'Amir','Junior','AJ1923', 'a4IW3jR1u0XoSAL9kgIXew==','1','3','M','12345678901')
+--pass is lol 
+
+--Intern4
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
+values
+(11 ,'Amira','Junior','ArJ1923', 'a4IW3jR1u0XoSAL9kgIXew==','1','3','M','12345678901')
+--pass is lol 
+
+
+--Instructor3
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
+values
+(12 ,'Marco','Melad','MM1948', 'a4IW3jR1u0XoSAL9kgIXew==','1','2','M','12345678901')
+--pass is lol 
+
+
+--Instructor4
+insert into Accounts (ID,F_Name,L_Name,UserName,Pass,Account_Status,Job_Code,Gender,TelephoneNumber)
+values
+(13 ,'Mohamed','Ahmed','DJT1948', 'a4IW3jR1u0XoSAL9kgIXew==','1','2','M','12345678901')
+--pass is lol 
+
+
+--Admins
 
 insert into Accounts (ID,Pass,UserName,Account_Status,Job_Code,Gender)
-values (7,'x1D5YVXi+aeWnsNMO5Wh6w==','JeJo','1','1','M')
+values (14,'x1D5YVXi+aeWnsNMO5Wh6w==','JeJo','1','1','M')
+--password is xd
+
+
+-----Departments
 
 insert into department values (1,'R&D')
 insert into department values (2,'ML')
 insert into department values (3,'Sales')
 
-insert into Locations values(1, 'Giza',1)
+
+--Locations 
+--R&D has 2 branches
+insert into Locations values(1, 'Mohandseen',1)
 insert into Locations values(2, 'Helwan',1)
+
+--ML has 2 branches
 insert into Locations values(3, 'Giza',2)
 insert into Locations values(4, 'Helwan',2)
+
+--Sales has one branch
 insert into Locations values (5, 'Zayed',3)
 
-insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
-values (1,'MLone',5,0,2,3)
-insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
-values (2,'MLtwo',5,0,2,4)
-insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
-values (3,'R&D1',5,0,1,1)
-insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
-values (4,'R&D1',5,0,1,2)   
-insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
-values (5,'Sales1',5,0,3,5)
-insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
-values (6,'MLone',5,0,2,3)
---8alebn handtr n-associate el course bl mkan m4 bl department
 
 
---Insert in instructs 
+
+-----Courses
+--First ML branch has 2 courses
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
+values (1,'MLone',1,0,2,3)
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
+values (2,'MLtwo',2,0,2,3)
+
+-- Second ML branch has only one course
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo) 
+values (3,'MLone',1,0,2,4)
+
+--Each of R&D branchs has one course
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
+values (4,'R&D1',2,0,1,1)
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
+values (5,'R&D1',1,0,1,2)   
+
+--Sales has only one course 
+insert into Course (CourseID,CourseName,Capacity,Enrolled, DepNo,BranchNo)  
+values (6,'Sales1',2,0,3,5)
+
+
+----Instructs  --instructors are   6,7,11,12
 
 insert into Instructs (CourseID,Instruct_ID)
-values ('1','3')
+values ('1','6')
 
 insert into Instructs (CourseID,Instruct_ID)
-values ('4','4')
+values ('2','7')
 
 insert into Instructs (CourseID,Instruct_ID)
-values ('6','6')
+values ('4','11')
 
-INSERT INTO Instructs Values (5,5)
---INSERT INTO Instructs Values (3,2)
 
+--no, day,CID, LocID
+--Lectures of MLone course in Giza
 INSERT INTO Lectures Values (1,'Sunday',1,3)
-INSERT INTO Lectures Values (2,'Monday',2,4)
-INSERT INTO Lectures Values (3,'Tuesday',2,1)
-INSERT INTO Lectures Values (4,'Wednesday',2,1)
-INSERT INTO Lectures Values (5,'Saturday',3,1)
-INSERT INTO Lectures Values (6,'Thursday',3,1)
-INSERT INTO Lectures Values (7,'Wednesday',4,2)
-INSERT INTO Lectures Values (8,'Saturday',4,2)
-INSERT INTO Lectures Values (9,'Monday',3,1)
-INSERT INTO Lectures Values (10,'Sunday',4,2)
-INSERT INTO Lectures Values (11,'Sunday',2,4)
+INSERT INTO Lectures Values (2,'Monday',1,3)
+INSERT INTO Lectures Values (3,'Tuesday',1,3)
+INSERT INTO Lectures Values (4,'Wednesday',1,3)
+
+--Lectures of MLtwo course in Helwan
+INSERT INTO Lectures Values (1,'Thursday',2,4)
+INSERT INTO Lectures Values (2,'Saturday',2,4)
+INSERT INTO Lectures Values (3,'Sunday',2,4)
+INSERT INTO Lectures Values (4,'Monday',2,4)
+
+--Lectures of R&D1 course in Mohandseen
+INSERT INTO Lectures Values (1,'Monday',4,1)
+INSERT INTO Lectures Values (2,'Sunday',4,1)
+INSERT INTO Lectures Values (3,'Tuesday',4,1)
+
+--interns and applying applicants 
+--Status of application
+	--0 for ongoing, 1 for rejected, 2 for accepted, 3 for ended	
+--Applicants
+
+Insert Into Applicant_Intern Values (2,'A','Cairo University',0,0,'uwu.com')
+Insert Into Applicant_Intern Values (3,'B','MIT',0,0,'uwu.com')
+Insert Into Applicant_Intern Values (4,'C','Harvard',1,0,'uwu.com')
+Insert Into Applicant_Intern Values (5,'D','TITS',2,0,'uwu.com')
 
 
-Insert Into Applicant_Intern Values (1,69,'Cairo University',0,2,'uwu.com')
-Insert Into Applicant_Intern Values (2,69,'MIT',0,2,'uwu.com')
-Insert Into Applicant_Intern Values (3,69,'Harvard',1,2,'uwu.com')
-Insert Into Applicant_Intern Values (4,69,'TITS',2,2,'uwu.com')
-Insert Into Applicant_Intern Values (5,69,'University of Toronto',0,2,'uwu.com')
+--Interns 8,9,10
+Insert Into Applicant_Intern Values (8,'A','University of Toronto',0,2,'uwu.com')
+Insert Into Applicant_Intern Values (9,'A','University of Toronto',0,2,'uwu.com')
+Insert Into Applicant_Intern Values (10,'A','University of Toronto',0,2,'uwu.com')
 
 
-INSERT INTO Takes Values (1,1,2020,'A')
-INSERT INTO Takes Values (1,3,2020,'W')
-INSERT INTO Takes Values (1,5,2020,'B')
-INSERT INTO Takes Values (2,1,2020,'B')
-INSERT INTO Takes Values (2,2,2020,'W')
-INSERT INTO Takes Values (2,3,2020,'A')
-INSERT INTO Takes Values (3,1,2020,'C')
-INSERT INTO Takes Values (3,2,2020,'D')
-INSERT INTO Takes Values (3,4,2020,'W')
-INSERT INTO Takes Values (4,2,2020,'A')
-INSERT INTO Takes Values (4,3,2020,'A')
-INSERT INTO Takes Values (4,5,2020,'A')
-INSERT INTO Takes Values (5,1,2020,'C')
-INSERT INTO Takes Values (5,2,2020,'B')
-INSERT INTO Takes Values (5,3,2020,'A')
-INSERT INTO Takes Values (5,4,2020,'A')
---insert into takes (App_ID,CourseID,Year_of_Intern) values(2,4,2000)
+--ID, CID,year,grade
+INSERT INTO Takes Values (2,1,2000,'A')
+
+--INSERT INTO Takes Values (1,1,2020,'A')
+--INSERT INTO Takes Values (1,3,2020,'W')
+--INSERT INTO Takes Values (1,5,2020,'B')
+--INSERT INTO Takes Values (2,1,2020,'B')
+--INSERT INTO Takes Values (2,2,2020,'W')
+--INSERT INTO Takes Values (2,3,2020,'A')
+--INSERT INTO Takes Values (3,1,2020,'C')
+--INSERT INTO Takes Values (3,2,2020,'D')
+--INSERT INTO Takes Values (3,4,2020,'W')
+--INSERT INTO Takes Values (4,2,2020,'A')
+--INSERT INTO Takes Values (4,3,2020,'A')
+--INSERT INTO Takes Values (4,5,2020,'A')
+--INSERT INTO Takes Values (5,1,2020,'C')
+--INSERT INTO Takes Values (5,2,2020,'B')
+--INSERT INTO Takes Values (5,3,2020,'A')
+--INSERT INTO Takes Values (5,4,2020,'A')
+
 
 
 

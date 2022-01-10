@@ -49,6 +49,7 @@ namespace DBapplication.Applicant
             DepartmentID = dt.Rows[(int)Department_Combobox.SelectedIndex][0].ToString();
 
             dt2 = controllerObj.SelectLocations(DepartmentID);
+            Branch_Combobox.DataSource = dt2;
             Branch_Combobox.DisplayMember = "LocationName";
             BranchID = dt2.Rows[0][0].ToString();
         }
