@@ -88,7 +88,7 @@ namespace DBapplication.Admin
             "Courses and Their Instructors Data",
             "Count For Grade G  in Course C in Year Y "});
             this.StatOpMenu_cmbox.Location = new System.Drawing.Point(356, 10);
-            this.StatOpMenu_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StatOpMenu_cmbox.Margin = new System.Windows.Forms.Padding(2);
             this.StatOpMenu_cmbox.Name = "StatOpMenu_cmbox";
             this.StatOpMenu_cmbox.Size = new System.Drawing.Size(319, 21);
             this.StatOpMenu_cmbox.TabIndex = 6;
@@ -98,7 +98,7 @@ namespace DBapplication.Admin
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(276, 424);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -158,7 +158,7 @@ namespace DBapplication.Admin
             // Year_textbox
             // 
             this.Year_textbox.Location = new System.Drawing.Point(38, 13);
-            this.Year_textbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Year_textbox.Margin = new System.Windows.Forms.Padding(2);
             this.Year_textbox.Name = "Year_textbox";
             this.Year_textbox.Size = new System.Drawing.Size(76, 20);
             this.Year_textbox.TabIndex = 14;
@@ -168,7 +168,7 @@ namespace DBapplication.Admin
             this.SHOWSTAT_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.SHOWSTAT_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SHOWSTAT_BTN.Location = new System.Drawing.Point(684, 384);
-            this.SHOWSTAT_BTN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SHOWSTAT_BTN.Margin = new System.Windows.Forms.Padding(2);
             this.SHOWSTAT_BTN.Name = "SHOWSTAT_BTN";
             this.SHOWSTAT_BTN.Size = new System.Drawing.Size(160, 36);
             this.SHOWSTAT_BTN.TabIndex = 15;
@@ -178,6 +178,7 @@ namespace DBapplication.Admin
             // 
             // Grade_cmbox
             // 
+            this.Grade_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Grade_cmbox.FormattingEnabled = true;
             this.Grade_cmbox.Items.AddRange(new object[] {
             "A",
@@ -187,16 +188,17 @@ namespace DBapplication.Admin
             "F",
             "W"});
             this.Grade_cmbox.Location = new System.Drawing.Point(49, 6);
-            this.Grade_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Grade_cmbox.Margin = new System.Windows.Forms.Padding(2);
             this.Grade_cmbox.Name = "Grade_cmbox";
             this.Grade_cmbox.Size = new System.Drawing.Size(39, 21);
             this.Grade_cmbox.TabIndex = 16;
             // 
             // loc_combox
             // 
+            this.loc_combox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.loc_combox.FormattingEnabled = true;
             this.loc_combox.Location = new System.Drawing.Point(61, 6);
-            this.loc_combox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.loc_combox.Margin = new System.Windows.Forms.Padding(2);
             this.loc_combox.Name = "loc_combox";
             this.loc_combox.Size = new System.Drawing.Size(76, 21);
             this.loc_combox.TabIndex = 17;
@@ -205,7 +207,7 @@ namespace DBapplication.Admin
             // 
             this.course_cmbox.FormattingEnabled = true;
             this.course_cmbox.Location = new System.Drawing.Point(49, 2);
-            this.course_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.course_cmbox.Margin = new System.Windows.Forms.Padding(2);
             this.course_cmbox.Name = "course_cmbox";
             this.course_cmbox.Size = new System.Drawing.Size(48, 21);
             this.course_cmbox.TabIndex = 18;
@@ -214,7 +216,7 @@ namespace DBapplication.Admin
             // 
             this.Dep_cmbox.FormattingEnabled = true;
             this.Dep_cmbox.Location = new System.Drawing.Point(104, 6);
-            this.Dep_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Dep_cmbox.Margin = new System.Windows.Forms.Padding(2);
             this.Dep_cmbox.Name = "Dep_cmbox";
             this.Dep_cmbox.Size = new System.Drawing.Size(72, 21);
             this.Dep_cmbox.TabIndex = 19;
@@ -231,9 +233,10 @@ namespace DBapplication.Admin
             // 
             // DepID_cmbox
             // 
+            this.DepID_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepID_cmbox.FormattingEnabled = true;
             this.DepID_cmbox.Location = new System.Drawing.Point(84, 2);
-            this.DepID_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DepID_cmbox.Margin = new System.Windows.Forms.Padding(2);
             this.DepID_cmbox.Name = "DepID_cmbox";
             this.DepID_cmbox.Size = new System.Drawing.Size(41, 21);
             this.DepID_cmbox.TabIndex = 21;
@@ -250,9 +253,10 @@ namespace DBapplication.Admin
             // 
             // BranchID_cmbox
             // 
+            this.BranchID_cmbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.BranchID_cmbox.FormattingEnabled = true;
             this.BranchID_cmbox.Location = new System.Drawing.Point(81, 27);
-            this.BranchID_cmbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BranchID_cmbox.Margin = new System.Windows.Forms.Padding(2);
             this.BranchID_cmbox.Name = "BranchID_cmbox";
             this.BranchID_cmbox.Size = new System.Drawing.Size(36, 21);
             this.BranchID_cmbox.TabIndex = 23;
@@ -264,7 +268,7 @@ namespace DBapplication.Admin
             this.depid_panel.Controls.Add(this.BRANCHID_LBL);
             this.depid_panel.Controls.Add(this.DEPID_LBL);
             this.depid_panel.Location = new System.Drawing.Point(6, 178);
-            this.depid_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.depid_panel.Margin = new System.Windows.Forms.Padding(2);
             this.depid_panel.Name = "depid_panel";
             this.depid_panel.Size = new System.Drawing.Size(138, 55);
             this.depid_panel.TabIndex = 24;
@@ -274,7 +278,7 @@ namespace DBapplication.Admin
             this.coursepanel.Controls.Add(this.course_cmbox);
             this.coursepanel.Controls.Add(this.Course_LBL);
             this.coursepanel.Location = new System.Drawing.Point(6, 54);
-            this.coursepanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.coursepanel.Margin = new System.Windows.Forms.Padding(2);
             this.coursepanel.Name = "coursepanel";
             this.coursepanel.Size = new System.Drawing.Size(150, 39);
             this.coursepanel.TabIndex = 25;
@@ -284,7 +288,7 @@ namespace DBapplication.Admin
             this.locationpanel.Controls.Add(this.loc_combox);
             this.locationpanel.Controls.Add(this.Location_LBL);
             this.locationpanel.Location = new System.Drawing.Point(6, 141);
-            this.locationpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.locationpanel.Margin = new System.Windows.Forms.Padding(2);
             this.locationpanel.Name = "locationpanel";
             this.locationpanel.Size = new System.Drawing.Size(150, 32);
             this.locationpanel.TabIndex = 25;
@@ -294,7 +298,7 @@ namespace DBapplication.Admin
             this.gradepanel.Controls.Add(this.Grade_LBL);
             this.gradepanel.Controls.Add(this.Grade_cmbox);
             this.gradepanel.Location = new System.Drawing.Point(6, 98);
-            this.gradepanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gradepanel.Margin = new System.Windows.Forms.Padding(2);
             this.gradepanel.Name = "gradepanel";
             this.gradepanel.Size = new System.Drawing.Size(98, 38);
             this.gradepanel.TabIndex = 25;
@@ -304,7 +308,7 @@ namespace DBapplication.Admin
             this.departmentname_panel.Controls.Add(this.Dep_cmbox);
             this.departmentname_panel.Controls.Add(this.DEPART_LBL);
             this.departmentname_panel.Location = new System.Drawing.Point(6, 54);
-            this.departmentname_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.departmentname_panel.Margin = new System.Windows.Forms.Padding(2);
             this.departmentname_panel.Name = "departmentname_panel";
             this.departmentname_panel.Size = new System.Drawing.Size(178, 28);
             this.departmentname_panel.TabIndex = 25;
@@ -314,7 +318,7 @@ namespace DBapplication.Admin
             this.yearpanel.Controls.Add(this.Year_textbox);
             this.yearpanel.Controls.Add(this.Year_LBL);
             this.yearpanel.Location = new System.Drawing.Point(6, 10);
-            this.yearpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.yearpanel.Margin = new System.Windows.Forms.Padding(2);
             this.yearpanel.Name = "yearpanel";
             this.yearpanel.Size = new System.Drawing.Size(134, 39);
             this.yearpanel.TabIndex = 27;
@@ -334,7 +338,7 @@ namespace DBapplication.Admin
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.operations_LBL);
             this.Controls.Add(this.StatOpMenu_cmbox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Statistics";
             this.Text = "Statistics";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

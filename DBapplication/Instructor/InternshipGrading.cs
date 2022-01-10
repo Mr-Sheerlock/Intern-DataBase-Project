@@ -26,7 +26,7 @@ namespace DBapplication.Instructor
             Remaining = 1;      // or any number other than 0
             controllerObj = new Controller();
             idSelected = -1;
-            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId);
+            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId, Year);
             InternsGradesGrid.Refresh();
         }
 
@@ -67,7 +67,12 @@ namespace DBapplication.Instructor
                 return;
             }
             controllerObj.SetGradeA(idSelected, Year);      // Sets intern grade
-            controllerObj.InternToApp(idSelected);          // sets intern as applicant again
+
+            if (controllerObj.CheckCurrentYear() == 0)
+            {
+                controllerObj.SetAllintapp();
+            }
+            //controllerObj.InternToApp(idSelected);          // sets intern as applicant again
             ////controllerObj.ChangetoCompl(idSelected);
             ////// Checks whether all interns have been graded, if so, then the year has ended
             ////// and we will now enter the new year
@@ -78,7 +83,7 @@ namespace DBapplication.Instructor
             ////    // Change year here
             ////    // Also do this in the rest of the grade buttons
             ////}
-            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId);
+            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId, Year);
             InternsGradesGrid.Refresh();
 
             InternsGradesGrid.ClearSelection();
@@ -102,9 +107,14 @@ namespace DBapplication.Instructor
                 return;
             }
             controllerObj.SetGradeB(idSelected, Year);
-            controllerObj.InternToApp(idSelected);          // sets intern as applicant again
+
+            if (controllerObj.CheckCurrentYear() == 0)
+            {
+                controllerObj.SetAllintapp();
+            }
+            //controllerObj.InternToApp(idSelected);          // sets intern as applicant again
             controllerObj.ChangetoCompl(idSelected);         // Removes intern from applicant/intern table
-            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId);
+            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId,Year);
             InternsGradesGrid.Refresh();
 
             InternsGradesGrid.ClearSelection();
@@ -128,9 +138,14 @@ namespace DBapplication.Instructor
                 return;
             }
             controllerObj.SetGradeC(idSelected, Year);
-            controllerObj.InternToApp(idSelected);          // sets intern as applicant again
+
+            if (controllerObj.CheckCurrentYear() == 0)
+            {
+                controllerObj.SetAllintapp();
+            }
+            //controllerObj.InternToApp(idSelected);          // sets intern as applicant again
             controllerObj.ChangetoCompl(idSelected);         // Removes intern from applicant/intern table
-            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId);
+            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId,Year);
             InternsGradesGrid.Refresh();
 
             InternsGradesGrid.ClearSelection();
@@ -154,9 +169,14 @@ namespace DBapplication.Instructor
                 return;
             }
             controllerObj.SetGradeD(idSelected, Year);
-            controllerObj.InternToApp(idSelected);          // sets intern as applicant again
+
+            if (controllerObj.CheckCurrentYear() == 0)
+            {
+                controllerObj.SetAllintapp();
+            }
+            //controllerObj.InternToApp(idSelected);          // sets intern as applicant again
             controllerObj.ChangetoCompl(idSelected);         // Removes intern from applicant/intern table
-            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId);
+            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId, Year);
             InternsGradesGrid.Refresh();
 
             InternsGradesGrid.ClearSelection();
@@ -180,9 +200,14 @@ namespace DBapplication.Instructor
                 return;
             }
             controllerObj.SetGradeF(idSelected, Year);
-            controllerObj.InternToApp(idSelected);          // sets intern as applicant again
+
+            if (controllerObj.CheckCurrentYear() == 0)
+            {
+                controllerObj.SetAllintapp();
+            }
+            //controllerObj.InternToApp(idSelected);          // sets intern as applicant again
             controllerObj.ChangetoCompl(idSelected);         // Removes intern from applicant/intern table
-            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId);
+            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId, Year);
             InternsGradesGrid.Refresh();
 
             InternsGradesGrid.ClearSelection();
@@ -206,9 +231,17 @@ namespace DBapplication.Instructor
                 return;
             }
             controllerObj.SetGradeT(idSelected, Year);
-            controllerObj.InternToApp(idSelected);          // sets intern as applicant again
+
+            if (controllerObj.CheckCurrentYear() == 0)
+            {
+                controllerObj.SetAllintapp();
+            }
+
+            //controllerObj.InternToApp(idSelected);          // sets intern as applicant again
+
+
             controllerObj.ChangetoCompl(idSelected);         // Removes intern from applicant/intern table
-            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId);
+            InternsGradesGrid.DataSource = controllerObj.SelectInterns(InstructorId, Year);
             InternsGradesGrid.Refresh();
 
             InternsGradesGrid.ClearSelection();

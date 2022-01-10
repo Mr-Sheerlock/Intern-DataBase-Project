@@ -12,9 +12,18 @@ namespace DBapplication
 {
     public partial class ViewAdmins : Form
     {
+        Controller controllerObj;
         public ViewAdmins()
         {
             InitializeComponent();
+            controllerObj = new Controller();
+            AdminDataGrid.DataSource = controllerObj.SelectAdminInfo();
+            AdminDataGrid.Refresh();
+        }
+
+        private void InternsGradesGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

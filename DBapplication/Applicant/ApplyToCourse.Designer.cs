@@ -108,6 +108,7 @@
             this.Name = "ApplyToCourse";
             this.RightToLeftLayout = true;
             this.Text = "Apply To Course";
+//            this.Load += new System.EventHandler(this.ApplyToCourse_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

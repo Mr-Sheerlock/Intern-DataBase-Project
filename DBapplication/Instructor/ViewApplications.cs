@@ -16,17 +16,19 @@ namespace DBapplication.Instructor
         int idSelected;
         //int Dnombre;
         string InstructorId;
+        int Year;
         DataTable dt;
 
-        public ViewApplications(string Userid)
-        {
+        public ViewApplications(string Userid, int year)
+        {   
+            Year = year;
             InitializeComponent();
             // ha-call hena el query elly bt3ml display lel 7agat el gowa el datagrid
             InstructorId = Userid;
             controllerObj = new Controller();
             idSelected = -1;
             //Dnombre = -1;
-            PendingApplicantsGrid.DataSource = controllerObj.SelectApplicants(InstructorId);
+            PendingApplicantsGrid.DataSource = controllerObj.SelectApplicants(InstructorId,Year);
             PendingApplicantsGrid.Refresh();
             
 
@@ -63,7 +65,7 @@ namespace DBapplication.Instructor
             controllerObj.approveApplicant(idSelected);
             controllerObj.AppToIntern(idSelected);      // sets applicant as intern again
             //controllerObj.AppToIntern(idSelected, Dnombre);      // sets applicant as intern again
-            PendingApplicantsGrid.DataSource = controllerObj.SelectApplicants(InstructorId);
+            PendingApplicantsGrid.DataSource = controllerObj.SelectApplicants(InstructorId,Year);
             PendingApplicantsGrid.Refresh();
 
             PendingApplicantsGrid.ClearSelection();
@@ -90,7 +92,7 @@ namespace DBapplication.Instructor
                 return;
             }
             controllerObj.RejectApplicant(idSelected);
-            PendingApplicantsGrid.DataSource = controllerObj.SelectApplicants(InstructorId);
+            PendingApplicantsGrid.DataSource = controllerObj.SelectApplicants(InstructorId,Year);
             PendingApplicantsGrid.Refresh();
 
             PendingApplicantsGrid.ClearSelection();

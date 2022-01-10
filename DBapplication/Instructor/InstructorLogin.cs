@@ -32,7 +32,7 @@ namespace DBapplication
 
         private void View_Admins_Button_Click(object sender, EventArgs e)
         {
-            ViewAdmins v= new ViewAdmins();
+            ViewAdmins v = new ViewAdmins();
             v.Show();
         }
 
@@ -50,7 +50,7 @@ namespace DBapplication
 
         private void View_Applications_Button_Click(object sender, EventArgs e)
         {
-            Instructor.ViewApplications a = new Instructor.ViewApplications(InstructorId);
+            Instructor.ViewApplications a = new Instructor.ViewApplications(InstructorId,CurrentYear);
             a.Show();
         }
         

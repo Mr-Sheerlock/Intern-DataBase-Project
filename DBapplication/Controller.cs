@@ -361,7 +361,7 @@ namespace DBapplication
         {
             string query = "select count(App_ID) "
                             + "from takes "
-                            + "where Grade is NULL ';";
+                            + "where Grade is NULL;";
             return Convert.ToInt16(dbMan.ExecuteScalar(query));
         }
 
@@ -416,6 +416,13 @@ namespace DBapplication
             return dbMan.ExecuteNonQuery(query);
         }
 
+
+        public int SetAllintapp()
+        {
+
+            string query = "Update Accounts Set Job_Code= '4' where Job_Code='3'";
+            return dbMan.ExecuteNonQuery(query);
+        }
 
         #endregion
 
@@ -647,20 +654,21 @@ namespace DBapplication
 
 
         #region Instructors
-        public DataTable SelectApplicants(string ApplicantID)
+        public DataTable SelectApplicants(string ApplicantID, int Year)
         {
             string query = "Select DISTINCT Student.ID, Student.F_Name, Student.L_Name, Grade_of_Entrance_Exam, Years_of_Experience, College, Student.Gender, Student.TelephoneNumber" +
                 " From Accounts AS Student, Accounts AS Instructor, Applicant_Intern, Takes, Course, Instructs" +
                 " Where Student.ID = Applicant_Intern.ID" +
-                " AND Status_of_application = 0 " +
+                " AND (Status_of_application = 0 OR  Status_of_application = 3)  " +
                 " AND Applicant_Intern.ID = Takes.App_ID " +
                 " AND Takes.CourseID = Course.CourseID " +
                 " AND Instructs.CourseID = Course.CourseID " +
-                " AND Instructs.Instruct_ID= '" + ApplicantID + "' ";
+                " AND Instructs.Instruct_ID= '" + ApplicantID + "' " +
+                " AND Takes.Year_of_Intern= '" + Year +"' ;";
             return dbMan.ExecuteReader(query);
         }
 
-        public DataTable SelectInterns(string ApplicantID)
+        public DataTable SelectInterns(string ApplicantID, int currentyear)
         {
             string query = "Select DISTINCT Student.ID, Student.F_Name, Student.L_Name, Takes.CourseID,Takes.Grade, Student.Gender, Student.TelephoneNumber" +
                 " From Accounts AS Student, Accounts AS Instructor, Applicant_Intern, Takes, Course, Instructs" +
@@ -669,7 +677,8 @@ namespace DBapplication
                 " AND Applicant_Intern.ID = Takes.App_ID " +
                 " AND Takes.CourseID = Course.CourseID " +
                 " AND Instructs.CourseID = Course.CourseID " +
-                " AND Instructs.Instruct_ID= '" + ApplicantID + "' ";
+                " AND Instructs.Instruct_ID= '" + ApplicantID + "' "+
+                "AND Takes.Year_of_Intern= '"+ currentyear +"';";
             return dbMan.ExecuteReader(query);
         }
 
